@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/**
+*  Main home page visitors see when they visit just /
+*/
+Route::get('/', 'pizzaController@show');
+
+
+/**
+*  /pizza
+*/
+Route::get('/popPizzas', 'pizzaController@show2');
