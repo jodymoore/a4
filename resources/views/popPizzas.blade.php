@@ -2,7 +2,6 @@
 
 @section('content')
 @include('header')
-<br>
 <div id="table">
     <div class= "popPizzas-table" id="left-col">
 	    <img  id="chs" src="/images/Cheese.png">

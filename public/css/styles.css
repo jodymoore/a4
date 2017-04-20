@@ -73,6 +73,12 @@
         margin-left: -250px;
     }
 
+    #signIn {
+        color: red;
+        margin-top: -35px;
+        margin-left: 75%;
+    }
+
     #left-col {
         float: left;
     }
@@ -88,6 +94,14 @@
         text-align: center;
         color: white;
         margin-bottom: 40px;
+    }
+
+    #header-controls {
+        text-align: left;
+        color: white;
+        display: inline-block;
+        margin-right: -50%;
+        margin-left: 10%;
     }
 
     footer {

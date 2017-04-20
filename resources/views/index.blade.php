@@ -4,6 +4,7 @@
 
 @include('header')
 <h4 id="welcome">Welcome to Pizza Shop</h4>
+<a href="#"><h4 id="signIn">Sign In</h4></a>
 <div id="container">
  <!-- Carousel code Starts -->
     <div  id="login_carousel" class="carousel slide" data-ride="carousel" style="width: 80%;  margin: 0 auto">
