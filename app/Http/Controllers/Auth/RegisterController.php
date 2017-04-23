@@ -6,6 +6,9 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Customer;
+use Session;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -27,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -62,6 +65,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
+       // insert data to customers table
+
+        $customer = new Customer();
+
+        $customer->name  = $data['name']; 
+
+        $customer->Email = $data['email'];
+
+        $customer->phoneNumber = $data['phoneNumber'];
+
+        $customer->password = $data['password']; 
+
+        $customer->zipcode = $data['zipcode'];
+
+        $customer->save();
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

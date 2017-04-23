@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Pizza Shop'),
 
     /*
     |--------------------------------------------------------------------------
@@ -178,6 +178,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Barryvdh\Debugbar\ServiceProvider::class,
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        Darryldecode\Cart\CartServiceProvider::class,
 
     ],
 
@@ -228,6 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
 
     ],
 

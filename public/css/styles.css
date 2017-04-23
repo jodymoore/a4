@@ -10,12 +10,21 @@
     #nav {
         border: 1px solid white;
         border-radius: 5px;
-        width: 80%;
+        width: 70%;
         height: 60px;
         margin-left: auto;
         margin-right: auto;
         margin-top: -5px;
         margin-bottom: 8px;
+        text-align: center;
+    }
+
+    .container {
+        background-color: transparent;
+    }
+
+    .form-horizontal {
+        background-color: black;
     }
 
     .nav1 {
@@ -28,14 +37,33 @@
     	margin-left: -65%;
     	margin-bottom: 15px;
     }
+    
+    .message {
+        color: white;
+    }
+
     nav a {
         color: white;
         text-decoration: none;
         padding: 2px 5px 2px 5px;
         background-color: red;
+        height: 60px;
+    }
+    
+    #form label {
+        margin-left: 15px;
     }
 
+    #form input {
+        margin-left: 15px;
+        color: black;
+    }
     .popPizzas-table h4 {
+      float:left;
+      padding-left: 15px;
+    }
+
+    .popPizzas-table p {
       float:left;
       padding-left: 15px;
     }
@@ -61,16 +89,25 @@
         width: 200px;
         height: 30px;
         background-color: red;
-        margin-top: 200px;
-        margin-left: -172px;
+        margin-top: 25%;
+        margin-left: -45%;
+    }
+
+    #myOrder {
+        color: white;
+    }
+
+    #checkout {
+       margin-top: -9.5%;
+       margin-left: 60%;
     }
 
     #own-order {
         width: 200px;
         height: 30px;
         background-color: red;
-        margin-top: 200px;
-        margin-left: -250px;
+        margin-top: 32%;
+        margin-left: -70%;
     }
 
     #signIn {
@@ -88,6 +125,47 @@
         color: white;
         display: inline-block;
         width: 80%;
+    }
+
+    #createAccount {
+        text-align: center;
+        color: white;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 86px;
+        margin-left: -11px;
+    }
+
+    #Lform {
+        float:left;
+        margin-right: 10%;
+    }
+    #Rform select {
+        margin-left: 15px;
+    }
+
+    #form {
+        padding-top: 15px;
+        display: inline-block;
+        color: white;
+        text-align: left;
+        width: 40%;
+        border: 2px solid white;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px;
+
+    }
+
+    .panel-body {
+        padding: 15px;
+        background-color: black;
+        color: white;
+    }
+
+    .form-group {
+        text-align: center;
     }
 
     #title h1 {

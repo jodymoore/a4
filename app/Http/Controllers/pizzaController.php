@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class pizzaController extends Controller
+class PizzaController extends Controller
 {
+
     /*
      *  Show
      */
@@ -21,4 +22,5 @@ class pizzaController extends Controller
 
         return view('popPizzas');
     }
+
 }
