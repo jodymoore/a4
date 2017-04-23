@@ -33,7 +33,7 @@
 
     </div>
 
-    <h1>Pizza Shop</h1> 
+    <h1>Quik Pizza</h1> 
     @include('nav')
       <div id="checkout" class="col-xs-4"> 
           <ul class="nav navbar-nav navbar-right">

@@ -28,7 +28,7 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/';
 
-    $latestOrders = Customer::orderBy('title','asc')->get();
+    #$latestOrders = Customer::orderBy('title','asc')->get();
 
     /**
      * Create a new controller instance.
