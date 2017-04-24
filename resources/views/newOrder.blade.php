@@ -73,9 +73,6 @@
 		</div>
 		</div>
 
-	 
-	    <input id="itemNum1" type="hidden" name="n" value="1" >
-
 	    <input id="placeOrder" type="submit" name="order" value="Place Order" class='btn btn-primary  btn-small'>
 
     </div>
