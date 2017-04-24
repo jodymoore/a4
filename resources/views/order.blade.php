@@ -7,22 +7,19 @@
 	<h4>MY ORDER</h4>
 </div>
 
-
 <div >
-<form method="POST" action="/order">
+<form method="POST" action="/order/execute">
 
     {{ csrf_field() }}
 
-
-
     <div id="form">
-        @if(!$custOrder)
+        @if(is_null($order))
         <div>
             <h4>Cart Empty</h4>
         </div>
     @else
         <div>
-            {{ $custOrder }}
+            {{ $order }}
         </div>
 
     @endif

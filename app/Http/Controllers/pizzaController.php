@@ -23,4 +23,14 @@ class PizzaController extends Controller
         return view('popPizzas');
     }
 
+    /*
+     *  newOrder
+     */
+    public function showNewOrder(Request $request) {
+
+        return view('newOrder');
+    }
+
+
+
 }

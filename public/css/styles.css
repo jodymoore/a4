@@ -76,6 +76,15 @@
         margin-bottom: 20px;
     }
 
+
+
+    .newOrder-table {
+        width: 500px;
+        background-color: black;
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
+
     #right-col {
         float: right;
     }
@@ -91,6 +100,15 @@
         background-color: red;
         margin-top: 25%;
         margin-left: -45%;
+    }
+
+
+    #placeOrder {
+        width: 150px;
+        height: 30px;
+        background-color: red;
+        margin-top: 35%;
+        margin-bottom: 15px;
     }
 
     #myOrder {
@@ -127,6 +145,15 @@
         width: 80%;
     }
 
+    #newOrderTable {
+        margin-top: 20px;
+        color: white;
+        display: inline-block;
+        width: 80%;
+        margin-left: 33%;
+        margin-right: 33%;
+    }
+
     #createAccount {
         text-align: center;
         color: white;
@@ -143,6 +170,24 @@
     }
     #Rform select {
         margin-left: 15px;
+    }
+
+    #wrap {
+
+        margin-top: 3%;
+        width: 300px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    #meats {
+        float:left;
+        width: 50%;
+    }
+
+    #veg {
+        float: right;
+        width: 50%;
     }
 
     #form {

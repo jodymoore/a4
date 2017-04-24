@@ -40,7 +40,25 @@ Route::get('/order', 'OrderController@show');
 /**
 *  /order/cheese
 */
-Route::get('/order/cheese', 'OrderController@cheese');
+Route::post('/order/{n}', 'OrderController@order');
+
+/**
+*  /newOrder
+*/
+Route::get('/newOrder', 'pizzaController@showNewOrder');
+
+/**
+*
+*  post
+*  /newOrder
+*/
+Route::post('/newOrder', 'orderController@CreateOwnOrder');
+
+/**
+*  post
+*  /order/execute
+*/
+Route::post('/order/execute', 'OrderController@execute');
 
 /**
 *  /order/peperroni
