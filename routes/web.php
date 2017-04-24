@@ -52,7 +52,7 @@ Route::get('/newOrder', 'pizzaController@showNewOrder');
 *  post
 *  /newOrder
 */
-Route::post('/newOrder', 'orderController@CreateOwnOrder');
+Route::post('/newOrder', 'OrderController@CreateOwnOrder');
 
 /**
 *  post
