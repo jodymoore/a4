@@ -117,7 +117,7 @@ class CartController extends Controller
 
         $order = "";
         $price = 5.99;
-        $itemNum = 006;
+        $itemNum = 'CREATE YOU OWN';
 
         $pSize = $request->selectSize;
 
@@ -191,7 +191,7 @@ class CartController extends Controller
         Cart::add($itemNum, $order, $price, 1, array());
 
 
-         Session::flash('message',$order.' was added to your order.');
+        Session::flash('message',$order.' was added to your order.');
 
         #Cart::add(005, $order, $price, 1, array());
         // need to hand this to order blade or checkout.

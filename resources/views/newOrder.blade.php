@@ -73,7 +73,7 @@
 		</div>
 		</div>
 
-	    <input id="addToOrder" type="submit" name="addToOrder" value="add To Order" class='btn btn-primary  btn-small'>
+	    <input id="addToOrder" type="submit" name="addToOrder" value="Add To Order" class='btn btn-primary  btn-small'>
 
     </div>
 </form>
