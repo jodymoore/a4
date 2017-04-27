@@ -37,10 +37,7 @@
     	margin-left: -65%;
     	margin-bottom: 15px;
     }
-    
-    .message {
-        color: white;
-    }
+
 
     nav a {
         color: white;
@@ -234,7 +231,9 @@
 
     .message {
         background-color: green;
-        border-radius: 15px
+        border-radius: 15px;
+        color: white;
+        width: 50%;
     }
 
     #displayCart-wrapper {

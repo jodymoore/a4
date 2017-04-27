@@ -36,11 +36,7 @@
     <h1>Quik Pizza</h1> 
   
       <div id="checkout" class="col-xs-4"> 
-          @if(Session::get('message') != null)
-        <div class="message">
-            {{ Session::get('message')}}
-        </div>
-    @endif
+
          <div id="total">
             Total: ${{$total = Cart::getTotal()}} 
          </div>
@@ -48,6 +44,12 @@
           <ul class="nav navbar-nav navbar-right">
               <li><a href="/order">CHECK OUT</a></li>
           </ul>
+              @if(Session::get('message') != null)
+        <div class="message">
+            {{ Session::get('message')}}
+        </div>
+    @endif
      </div>
+
 </div>
   @include('nav')
