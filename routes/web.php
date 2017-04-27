@@ -11,11 +11,6 @@
 |
 */
 
-/**
-*  Register
-*/
-Route::post('/register', 'RegistrationController@CreateAccount');
-
 
 if(config('app.env') == 'local') {
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
@@ -26,21 +21,10 @@ if(config('app.env') == 'local') {
 */
 Route::get('/', 'PizzaController@show');
 
-
 /**
 *  /pizza
 */
 Route::get('/popPizzas', 'PizzaController@show2');
-
-/**
-*  /order
-*/
-Route::get('/order', 'OrderController@show');
-
-/**
-*  /order/cheese
-*/
-Route::post('/order/{n}', 'OrderController@order');
 
 /**
 *  /newOrder
@@ -48,28 +32,32 @@ Route::post('/order/{n}', 'OrderController@order');
 Route::get('/newOrder', 'pizzaController@showNewOrder');
 
 /**
+*  /order
+*/
+Route::get('/order', 'CartController@show');
+
+/**
+*  /clearCart
+*/
+Route::post('/clearCart', 'CartController@clearCart');
+
+/**
+*  /order/popPizza
+*/
+Route::post('/popOrder', 'CartController@order');
+
+/**
 *
 *  post
 *  /newOrder
 */
-Route::post('/newOrder', 'OrderController@CreateOwnOrder');
+Route::post('/newOrder', 'CartController@CreateOwnOrder');
 
 /**
 *  post
 *  /order/execute
 */
-Route::post('/order/execute', 'OrderController@execute');
-
-/**
-*  /order/peperroni
-*/
-Route::get('/order/pepperoni', 'OrderController@pep');
-/**
-*  /registration
-*/
-Route::get('/registration', 'RegistrationController@show');
-
-
+Route::post('/order/execute', 'CartController@execute');
 
 Auth::routes();
 

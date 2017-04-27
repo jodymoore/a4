@@ -15,11 +15,7 @@
 </head>
 <body>
 
-    @if(Session::get('message') != null)
-        <div class="message">
-            {{ Session::get('message')}}
-        </div>
-    @endif
+
     <div id="container">
         <div id="inner">
         <header>

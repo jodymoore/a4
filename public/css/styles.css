@@ -76,7 +76,13 @@
         margin-bottom: 20px;
     }
 
+    #selectCheese {
+        color: black;
+    }
 
+    #selectSize {
+        color: black;
+    }
 
     .newOrder-table {
         width: 500px;
@@ -103,7 +109,7 @@
     }
 
 
-    #placeOrder {
+    #addToOrder {
         width: 150px;
         height: 30px;
         background-color: red;
@@ -116,8 +122,17 @@
     }
 
     #checkout {
-       margin-top: -9.5%;
+       margin-top: -5%;
        margin-left: 60%;
+       display: inline-block;
+    }
+
+    #total {
+        background-color: white;
+        border-radius: 10px;
+        width: 50px; 
+        margin-left: 266px;
+        margin-bottom: -60px;
     }
 
     #own-order {
@@ -201,6 +216,53 @@
         margin-right: auto;
         border-radius: 10px;
 
+    }
+
+    #cart {
+        padding-top: 15px;
+        display: inline-block;
+        color: black;
+        text-align: left;
+        width: 40%;
+        border: 2px solid white;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px;
+        background-color: #dbd8be;
+        padding-bottom: 20px;
+    }
+
+    .message {
+        background-color: green;
+        border-radius: 15px
+    }
+
+    #displayCart-wrapper {
+        width: 100%;
+        height: 100px;
+        display: inline-block;
+        border-top: 2px solid white;
+        border-bottom: 2px solid white;
+        margin-bottom: 5px;
+        font-size: 18px;
+
+    }
+
+    #cartRight {
+       width: 50%; 
+       height: 100%;
+       float: right;
+    }
+
+    #cartLeft {
+        width: 50%;
+        height: 100%;
+        float: left;
+    }
+
+    #cartOrderButton {
+        text-align: center;
+        margin-top: 10px;
     }
 
     .panel-body {

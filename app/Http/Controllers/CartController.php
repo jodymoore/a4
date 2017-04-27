@@ -4,21 +4,42 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CustomerOrder;
+use Illuminate\Contracts\Auth;
+use Session;
+use Cart;
 
-class OrderController extends Controller
+
+class CartController extends Controller
 {
     /*
      *  
      */
     public function show(Request $request) {
 
-        if(!isset($order)){
-            $order = null;
-        }
+
+        // $user = Session::getId('name');
+        // if ($user)
+        // {
+        //     echo "Hello $user->name";
+        // }
+
+        $cartCollection = Cart::getContent();
+        $cart = $cartCollection->toArray();
     
-        return view('order')->with([
-            'order' => $order,
+        return view('cart')->with([
+            'cart' => $cart,
         ]);
+    }
+
+    /*
+     *  
+     */
+    public function clearCart() {
+       
+        Cart::clear();
+
+        return view('index');
+
     }
 
     // /*
@@ -43,14 +64,49 @@ class OrderController extends Controller
      /*
      *  a dynamic order function 
      */
-    public function order($n) {
+    public function order(Request $request){
+         
+        $this->validate($request, [
+            'selectSize' => 'required',
+        ]);
 
-        $custOrder = $n; 
+        $price = 5.99;
+        $topping = $request->topping;
+        $pSize = $request->selectSize;
+        $id = null;
+        switch ( $topping) {
+          case 'cheese':
+            $price = $price;
+           $id = 'CHEESE';
+            break;
+          case 'pepperoni':
+            $price = 6.24;
+            $id= 'PEPPERONI';
+            break;
+          case 'supreme':
+            $price = 7.49;
+           $id = "SUPREME";
+            break;
+          case 'vegetable':
+            $price = 8.49;
+            $id = 'VEGETABLE';
+            break;
+          
+          default:
+            $price = 5.99;
+            $id = 'CHEESE';
+            break;
+        }
+        
+
+
+        $order = $pSize." ".$topping." "." pizza"; 
+        Cart::add($id, $order, $price, 1, array());
+
+         Session::flash('message',$order.' was added to your order.');
 
         // need to hand this to order blade or checkout.
-        return view('popPizzas')->with([
-        	'custOrder' => $custOrder,
-        	]);
+        return view('popPizzas');
     }
 
     public function CreateOwnOrder(Request $request) {
@@ -61,6 +117,7 @@ class OrderController extends Controller
 
         $order = "";
         $price = 5.99;
+        $itemNum = 006;
 
         $pSize = $request->selectSize;
 
@@ -114,7 +171,7 @@ class OrderController extends Controller
          }
 
         if($request->has('bellp')){
-            $order = $order.", "."bell pepppers";
+            $order = $order.", "."green peppers";
             $price += .25;
          }
 
@@ -123,24 +180,23 @@ class OrderController extends Controller
             $price += .25;
          }
         if($request->has('jala')){
-            $order = $order.", "."jalapena peppers";
+            $order = $order.", "."jalapeno peppers";
             $price += .25;
          }
         if($request->has('tom')){
             $order = $order.", "."tomatoes";
             $price += .25;
          }
-     $data = $request->session()->all();
-     dump($data);
 
+        Cart::add($itemNum, $order, $price, 1, array());
+
+
+         Session::flash('message',$order.' was added to your order.');
+
+        #Cart::add(005, $order, $price, 1, array());
         // need to hand this to order blade or checkout.
 
-         return view('order')->with([
-
-          'order' => $order,
-          'price' => $price
-
-        ]);
+         return view('newOrder');
     }
 
 

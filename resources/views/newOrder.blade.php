@@ -21,7 +21,7 @@
 	        <label for="selectCheese" >Cheese</label>
 	        <select id="selectCheese" name="selectCheese" >
 	            <option value="reg">Reg</option>
-	            <option value="light">Light</option>
+	            <option value="light">Light</option>p
 	            <option value="none">None</option>
 	        </select> <br>
      <div id="wrap" >
@@ -73,7 +73,7 @@
 		</div>
 		</div>
 
-	    <input id="placeOrder" type="submit" name="order" value="Place Order" class='btn btn-primary  btn-small'>
+	    <input id="addToOrder" type="submit" name="addToOrder" value="add To Order" class='btn btn-primary  btn-small'>
 
     </div>
 </form>
