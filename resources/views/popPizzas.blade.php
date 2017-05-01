@@ -10,7 +10,7 @@
         <div class= "popPizzas-table" id="left-col">
         <form action="/popOrder" method="post" accept-charset="utf-8">
          {{ csrf_field() }}
-    	    <img  id="chs" src="/images/Cheese.png">
+    	    <img  id="chs" src="https://s3.amazonaws.com/jwm-product-images/Cheese.png">
     	    <caption><h4>CHEESE</h4></caption><br>
     	    <p>marinara topped with fresh mozzarella </p><br><p> cheese.</p>
 
@@ -29,7 +29,7 @@
         <div class= "popPizzas-table" id="right-col">
         <form action="/popOrder" method="post" accept-charset="utf-8">
          {{ csrf_field() }}
-    	    <img id="pep" src="/images/pepperoni.png">
+    	    <img id="pep" src="https://s3.amazonaws.com/jwm-product-images/pepperoni.png">
     	    <caption><h4>PEPERONI</h4></caption>
     	    <p>marinara topped with fresh mozzarella</p><br><p> cheese and pepperoni.</p>
 
@@ -48,7 +48,7 @@
         <div class= "popPizzas-table" id="left-col">
         <form action="/popOrder" method="post" accept-charset="utf-8">
          {{ csrf_field() }}
-    	    <img id="sup" src="/images/Supreme.png">
+    	    <img id="sup" src="https://s3.amazonaws.com/jwm-product-images/Supreme.png">
     	    <caption><h4>SUPREME</h4></caption>
     	    <p>pepperoni,pork, beef, mushrooms,</p><br><p> green peppers and onions</p>
 

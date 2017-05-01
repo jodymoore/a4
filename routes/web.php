@@ -37,6 +37,21 @@ Route::get('/newOrder', 'pizzaController@showNewOrder');
 Route::get('/order', 'CartController@show');
 
 /**
+*  /order
+*/
+Route::get('/reOrder', 'reOrderController@show');
+
+/**
+*  /reorder_submit
+*/
+Route::get('/reorder_submit', 'reOrderController@submit');
+
+/**
+*  /remove
+*/
+Route::get('/remove', 'CartController@remove');
+
+/**
 *  /clearCart
 */
 Route::post('/clearCart', 'CartController@clearCart');
@@ -62,3 +77,15 @@ Route::post('/order/execute', 'CartController@execute');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+if(App::environment('local')) {
+
+    Route::get('/drop', function() {
+
+        DB::statement('DROP database pizza_shop');
+        DB::statement('CREATE database pizza_shop');
+
+        return 'Dropped pizza_shop; created pizza_shop.';
+    });
+
+};

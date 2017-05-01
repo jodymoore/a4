@@ -30,12 +30,17 @@
                     </div>
         
                    <div id="cartRight">
+
                       ${{$value['price']}} <br>
                       Qty: {{$value['quantity']}} 
-                   </div>
-                    
-                <div>
 
+                      <input id="id" type="hidden" name="id" value="{{ $value['id'] }}" > 
+
+                      <input id="remove" type="button" name="remove" onclick="window.location='{{ url("/remove") }}'" value="remove" class='btn btn-primary  btn-small'>
+                   </div>
+    
+                <div>
+ 
             @endforeach
 
         </div>

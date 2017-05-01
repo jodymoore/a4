@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\CustomerOrder;
-use Illuminate\Contracts\Auth;
+use App\CustomerOrders;
+use Illuminate\Support\Facades\Auth;
 use Session;
 use Cart;
+use App\Customers;
 
 
 class CartController extends Controller
@@ -42,23 +43,67 @@ class CartController extends Controller
 
     }
 
-    // /*
-    //  *  a dynamic order function 
-    //  */
-    // public function execute(Request $request) {
+    /*
+     *  
+     */
+    public function remove(Request $request) {
 
-    //     // get user id from session user use id to insert order info 
-    //     // into customer order database 
-    
-    //     $CustOrderDB = new CustomerOrder();
+        $id = $request->id;
+        dump($id);
+        Cart::remove($id);
+        
+        $cartCollection = Cart::getContent();
+        $cart = $cartCollection->toArray();
 
-    //     $CustOrderDB->cid = 
-    //     $CustOrderDB->name = 
-    //     $CustOrderDB->email = 
-    //     $CustOrderDB->order= 
-    //     $CustOrderDB->phoneNumber = 
+        return view('cart')->with([
+            'cart' => $cart,
+            ]);
 
-    // }
+    }
+
+    /*
+     *  a dynamic order function 
+     */
+    public function execute(Request $request) {
+
+        // get user id from session user use id to insert order info 
+        // into customer order database 
+
+        $id = Auth::id();
+
+        $cartCollection = Cart::getContent();
+        $cart = $cartCollection;
+       
+        // get all the atributes that match $id 
+        $customer = Customers::where('id','=',$id)->first();
+        $cust_order = new CustomerOrders();
+        $count = 0;
+        $orders = [];
+        foreach($cart as $value) {
+            $order[$count++] = $value->quantity.' '.$value->name.', '.$value->price;
+        }
+        
+         $order = implode("\n", $order);
+        
+       
+        
+
+        $cust_order->cid = $id;
+        $cust_order->name = $customer->name;
+        $cust_order->Email = $customer->Email;
+        $cust_order->order = $order;
+        $cust_order->phoneNumber = $customer->phoneNumber;
+        $cust_order->save();
+
+        // send email to customer confirming the order
+
+         $email = $customer->Email;
+
+        return view('cart')->with([
+            'cart' => $cart,
+        ]);
+
+    }
 
 
      /*
@@ -95,6 +140,21 @@ class CartController extends Controller
           default:
             $price = 5.99;
             $id = 'CHEESE';
+            break;
+        }
+
+        switch ( $pSize) {
+          case 'Small':
+            $price = $price;
+            break;
+          case 'Medium':
+            $price += 2.00;
+            break;
+            case 'Large':
+            $price += 3.00;
+            break;
+          default:
+            $price = $price;
             break;
         }
         
@@ -187,6 +247,21 @@ class CartController extends Controller
             $order = $order.", "."tomatoes";
             $price += .25;
          }
+
+        switch ( $price) {
+          case 'Small':
+            $price = $price;
+            break;
+          case 'Medium':
+            $price += 2.00;
+            break;
+            case 'Large':
+            $price += 3.00;
+            break;
+          default:
+            $price = $price;
+            break;
+        }
 
         Cart::add($itemNum, $order, $price, 1, array());
 

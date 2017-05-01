@@ -6,7 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use App\Customer;
+use App\Customers;
 use Session;
 use Illuminate\Http\Request;
 
@@ -68,7 +68,7 @@ class RegisterController extends Controller
         
        // insert data to customers table
 
-        $customer = new Customer();
+        $customer = new Customers();
 
         $customer->name  = $data['name']; 
 

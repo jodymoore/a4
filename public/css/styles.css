@@ -19,6 +19,25 @@
         text-align: center;
     }
 
+    #reOrder {
+        color: white;
+        width: 100%;
+        height: 100px;
+        display: inline-block;
+        border-top: 2px solid white;
+        border-bottom: 2px solid white;
+        margin-bottom: 5px;
+        font-size: 18px;
+    }
+    #reOrder-container {
+        width: 60%;
+        border:2px solid white;
+    }
+
+    #reOrder a{
+        color: white;
+    }
+
     .container {
         background-color: transparent;
     }
