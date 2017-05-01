@@ -31,11 +31,11 @@
 		         <div class="button-group">
 			        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Meats</span> <span class="caret"></span></button>
 			        <ul class="dropdown-menu">
-					  <li><a href="#" class="small" data-value="option1" tabIndex="-1"><input type="checkbox" id="pep" name="pep" />&nbsp;Pepperoni</a></li>
+					  <li><a href="#" class="small" data-value="option1" tabIndex="-1"><input type="checkbox" id="pepperoni" name="pepperoni" />&nbsp;Pepperoni</a></li>
 
-					  <li><a href="#" class="small" data-value="option2" tabIndex="-1"><input type="checkbox" id="itsau" name="itsau" />&nbsp;Italian Sausage</a></li>
+					  <li><a href="#" class="small" data-value="option2" tabIndex="-1"><input type="checkbox" id="italian sausage" name="italian sausage" />&nbsp;Italian Sausage</a></li>
 
-					  <li><a href="#" class="small" data-value="option3" tabIndex="-1"><input type="checkbox" id="beef" name="beef"/>&nbsp;Beef </a></li>
+					  <li><a href="#" class="small" data-value="option3" tabIndex="-1"><input type="checkbox" id="Beef" name="beef"/>&nbsp;Beef </a></li>
 
 					  <li><a href="#" class="small" data-value="option4" tabIndex="-1"><input type="checkbox" id="ham" name="ham"/>&nbsp;Ham</a></li>
 
@@ -53,19 +53,19 @@
 		         <div class="button-group">
 			        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Vegetables</span> <span class="caret"></span></button>
 			        <ul class="dropdown-menu">
-			          <li><a href="#" class="small" data-value="option1" tabIndex="-1"><input type="checkbox" id="mush" name="mush"/>&nbsp;Mushrooms</a></li>
+			          <li><a href="#" class="small" data-value="option1" tabIndex="-1"><input type="checkbox" id="mushrooms" name="mushrooms"/>&nbsp;Mushrooms</a></li>
 
-					  <li><a href="#" class="small" data-value="option1" tabIndex="-1"><input type="checkbox" id="spin" name="spin"/>&nbsp;Spinach</a></li>
+					  <li><a href="#" class="small" data-value="option1" tabIndex="-1"><input type="checkbox" id="spinach" name="spinach"/>&nbsp;Spinach</a></li>
 
-					  <li><a href="#" class="small" data-value="option2" tabIndex="-1"><input type="checkbox" id="redp" name="redp" />&nbsp;Red Peppers</a></li>
+					  <li><a href="#" class="small" data-value="option2" tabIndex="-1"><input type="checkbox" id="red peppers" name="red peppers" />&nbsp;Red Peppers</a></li>
 
-					  <li><a href="#" class="small" data-value="option3" tabIndex="-1"><input type="checkbox" id="bellp" name="bellp"/>&nbsp;Bell Peppers</a></li>
+					  <li><a href="#" class="small" data-value="option3" tabIndex="-1"><input type="checkbox" id="bell peppers" name="bell peppers"/>&nbsp;Bell Peppers</a></li>
 
-					  <li><a href="#" class="small" data-value="option4" tabIndex="-1"><input type="checkbox" id="pina" name="pina"/>&nbsp;Pineapple</a></li>
+					  <li><a href="#" class="small" data-value="option4" tabIndex="-1"><input type="checkbox" id="pine apple" name="pina"/>&nbsp;Pineapple</a></li>
 
-					  <li><a href="#" class="small" data-value="option5" tabIndex="-1"><input type="checkbox" id="jala" name="jala"/>&nbsp;Jalapeno Peppers</a></li>
+					  <li><a href="#" class="small" data-value="option5" tabIndex="-1"><input type="checkbox" id="jalapeno peppers" name="jalapeno peppers"/>&nbsp;Jalapeno Peppers</a></li>
 
-					  <li><a href="#" class="small" data-value="option5" tabIndex="-1"><input type="checkbox" id="tom" name="tom"/>&nbsp;Tomatoes</a></li>
+					  <li><a href="#" class="small" data-value="option5" tabIndex="-1"><input type="checkbox" id="tomatoes" name="tomatoes"/>&nbsp;Tomatoes</a></li>
 			        </ul>
 		     </div>
 		    </div>

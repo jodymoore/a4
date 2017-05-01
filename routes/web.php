@@ -49,7 +49,7 @@ Route::get('/reorder_submit', 'reOrderController@submit');
 /**
 *  /remove
 */
-Route::get('/remove', 'CartController@remove');
+Route::post('/order/remove', 'CartController@remove');
 
 /**
 *  /clearCart

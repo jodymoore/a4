@@ -35,8 +35,10 @@
                       Qty: {{$value['quantity']}} 
 
                       <input id="id" type="hidden" name="id" value="{{ $value['id'] }}" > 
-
-                      <input id="remove" type="button" name="remove" onclick="window.location='{{ url("/remove") }}'" value="remove" class='btn btn-primary  btn-small'>
+                      <form method="POST" action="/order/remove">
+                          {{ csrf_field() }}
+                          <input id="remove" type="submit" name="remove" value="remove" class='btn btn-primary  btn-small'>
+                      </form>
                    </div>
     
                 <div>

@@ -40,7 +40,6 @@ class CartController extends Controller
         Cart::clear();
 
         return view('index');
-
     }
 
     /*
@@ -58,7 +57,6 @@ class CartController extends Controller
         return view('cart')->with([
             'cart' => $cart,
             ]);
-
     }
 
     /*
@@ -102,9 +100,7 @@ class CartController extends Controller
         return view('cart')->with([
             'cart' => $cart,
         ]);
-
     }
-
 
      /*
      *  a dynamic order function 
@@ -158,12 +154,10 @@ class CartController extends Controller
             break;
         }
         
-
-
         $order = $pSize." ".$topping." "." pizza"; 
         Cart::add($id, $order, $price, 1, array());
 
-         Session::flash('message',$order.' was added to your order.');
+        Session::flash('message',$order.' was added to your order.');
 
         // need to hand this to order blade or checkout.
         return view('popPizzas');
@@ -186,67 +180,35 @@ class CartController extends Controller
 
         $order = $order.$pSize." pizza".", ".$amtCheese;
 
-        // meat selections
+        // ingredient selections
 
-        if($request->has('pep')){
-            $order = $order.", "."pepperoni";
-            $price += .25;
-         }
+        $input = $request->all('checkboxes');
 
-        if($request->has('itsau')){
-            $order = $order.", "."italian sausage";
-            $price += .25;
-         }
+        $badArray = ["_token", "selectSize", "selectCheese", "addToOrder"];
 
-        if($request->has('beef')){
-            $order = $order.", "."beef";
-            $price += .25;
-         }
+        foreach ($input as $key => $value) {
+            if(!in_array($key, $badArray)){
+            // remove underscore
+            switch ( $key) {
+              case 'italian_sausage':
+                $key = "italian sausage";
+                break;
+              case 'red_peppers':
+                $key = "red peppers";
+                break;
+              case 'bell_peppers':
+                $key = "bell peppers";
+                break;
+              case 'jalapeno_peppers':
+                $key = "jalapeno peppers";
+                break;
+            }
 
-        if($request->has('ham')){
-            $order = $order.", "."ham";
+            $order = $order.", ".$key;
             $price += .25;
-         }
 
-        if($request->has('pork')){
-            $order = $order.", "."pork";
-            $price += .25;
-         }
-        
-        // vegetables selections
-
-        if($request->has('mush')){
-            $order = $order.", "."mushrooms";
-            $price += .25;
-         }
-
-        if($request->has('spin')){
-            $order = $order.", "."spinach";
-            $price += .25;
-         }
-
-        if($request->has('redp')){
-            $order = $order.", "."red peppers";
-            $price += .25;
-         }
-
-        if($request->has('bellp')){
-            $order = $order.", "."green peppers";
-            $price += .25;
-         }
-
-        if($request->has('pina')){
-            $order = $order.", "."pineapple";
-            $price += .25;
-         }
-        if($request->has('jala')){
-            $order = $order.", "."jalapeno peppers";
-            $price += .25;
-         }
-        if($request->has('tom')){
-            $order = $order.", "."tomatoes";
-            $price += .25;
-         }
+            }   
+        }
 
         switch ( $price) {
           case 'Small':
@@ -271,9 +233,6 @@ class CartController extends Controller
         #Cart::add(005, $order, $price, 1, array());
         // need to hand this to order blade or checkout.
 
-         return view('newOrder');
+        return view('newOrder');
     }
-
-
-
 }
