@@ -36,10 +36,18 @@
     <h1>Quik Pizza</h1> 
   
       <div id="checkout" class="col-xs-4"> 
+         
+         @if(Cart::isEmpty())
 
-         <div id="total">
-            Total: ${{$total = Cart::getTotal()}} 
-         </div>
+             
+    
+         @else
+
+             <div id="total">
+                 Total: ${{$total = Cart::getTotal()}} 
+             </div>
+
+         @endif
           
           <ul class="nav navbar-nav navbar-right">
               <li><a href="/order">CHECK OUT</a></li>

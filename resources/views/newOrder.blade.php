@@ -61,7 +61,7 @@
 
 					  <li><a href="#" class="small" data-value="option3" tabIndex="-1"><input type="checkbox" id="bell peppers" name="bell peppers"/>&nbsp;Bell Peppers</a></li>
 
-					  <li><a href="#" class="small" data-value="option4" tabIndex="-1"><input type="checkbox" id="pine apple" name="pina"/>&nbsp;Pineapple</a></li>
+					  <li><a href="#" class="small" data-value="option4" tabIndex="-1"><input type="checkbox" id="pineapple" name="pineapple"/>&nbsp;Pineapple</a></li>
 
 					  <li><a href="#" class="small" data-value="option5" tabIndex="-1"><input type="checkbox" id="jalapeno peppers" name="jalapeno peppers"/>&nbsp;Jalapeno Peppers</a></li>
 

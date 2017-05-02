@@ -44,7 +44,7 @@ Route::get('/reOrder', 'reOrderController@show');
 /**
 *  /reorder_submit
 */
-Route::get('/reorder_submit', 'reOrderController@submit');
+Route::post('/reorder_submit', 'reOrderController@submit');
 
 /**
 *  /remove

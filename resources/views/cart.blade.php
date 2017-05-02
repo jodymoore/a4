@@ -13,7 +13,7 @@
     {{ csrf_field() }}
 
     <div id="cart">
-        @if(is_null($cart))
+        @if(Cart::isEmpty())
         <div>
             <h4>Cart Empty</h4>
         </div>
@@ -26,6 +26,7 @@
 
                     <div id="cartLeft">
                         <strong>{{$value['id']}}</strong> <br>
+                        <input id="name" type="hidden" name="name" value="{{ $value['name'] }}" > 
                         {{$value['name']}}
                     </div>
         
@@ -35,12 +36,12 @@
                       Qty: {{$value['quantity']}} 
 
                       <input id="id" type="hidden" name="id" value="{{ $value['id'] }}" > 
-                      <form method="POST" action="/order/remove">
+                      
                           {{ csrf_field() }}
-                          <input id="remove" type="submit" name="remove" value="remove" class='btn btn-primary  btn-small'>
-                      </form>
+                          <button id="remove" type="submit" name="remove" value="remove" formaction="/order/remove" class='btn btn-primary  btn-small' ><i class="fa fa-trash-o"></i></button>
+
                    </div>
-    
+     
                 <div>
  
             @endforeach
@@ -49,7 +50,7 @@
 
     @endif
     <div id="cartOrderButton">
-	        <input id="cartOrderButton" type="submit" name="cartOrderButton" value="SUBMIT ORDER" class='btn btn-primary  btn-small'>
+	        <input id="cartOrderButton" type="submit" name="cartOrderButton"  formaction="/order/execute" value="SUBMIT ORDER" class='btn btn-primary  btn-small'>
         </div>
     </div>
 

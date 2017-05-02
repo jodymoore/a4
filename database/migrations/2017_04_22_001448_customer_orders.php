@@ -18,7 +18,7 @@ class CustomerOrders extends Migration
             # Increments method will make a Primary, Auto-Incrementing field.
             # Most tables start off this way
             $table->increments('order_id');
-            $table->integer('cid');
+            $table->integer('cid');  //<------- this will need to be a foriegn key
            
 
             # This generates two columns: `created_at` and `updated_at` to
@@ -29,6 +29,7 @@ class CustomerOrders extends Migration
             $table->string('name');
             $table->string('Email');
             $table->string('order');
+            $table->float('price');
             $table->string('phoneNumber');
        });
     }

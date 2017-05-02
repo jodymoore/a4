@@ -27,7 +27,6 @@ class Customers extends Migration
             $table->string('name');
             $table->string('Email');
             $table->string('phoneNumber');
-            $table->string('password');
             $table->integer('zipcode');
        });
     }

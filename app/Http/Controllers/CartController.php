@@ -48,8 +48,11 @@ class CartController extends Controller
     public function remove(Request $request) {
 
         $id = $request->id;
-        dump($id);
+        $name = $request->name;
+
         Cart::remove($id);
+
+        Session::flash('message',$name.' was removed from your order.');
         
         $cartCollection = Cart::getContent();
         $cart = $cartCollection->toArray();
@@ -67,38 +70,55 @@ class CartController extends Controller
         // get user id from session user use id to insert order info 
         // into customer order database 
 
-        $id = Auth::id();
+        $cartArry = [];
+
+        if(Cart::isEmpty()) {
+
+            return view('cart');
+
+        }
+        else {
+
+            $id = Auth::id();
+         
+            $cartCollection = Cart::getContent();
+            $cart = $cartCollection;
+
+            $price = 0;
+           
+            // get all the atributes that match $id 
+            $customer = Customers::where('id','=',$id)->first();
+            $cust_order = new CustomerOrders();
+            $count = 0;
+            $orders = [];
+            foreach($cart as $value) {
+                $order[$count++] = $value->quantity.' '.$value->name.', ';
+                $price += $value->price;
+            }
+            
+            $order = implode("\n", $order);
+          
+            $cust_order->cid = $id;
+            $cust_order->name = $customer->name;
+            $cust_order->Email = $customer->Email;
+            $cust_order->order = $order;
+            $cust_order->price = $price;
+            $cust_order->phoneNumber = $customer->phoneNumber;
+            $cust_order->save();
+
+            // send email to customer confirming the order
+            
+            $cartArry = $cartCollection->toArray();
+            Cart::clear();
+            $email = $customer->Email;
+
+        }
 
         $cartCollection = Cart::getContent();
-        $cart = $cartCollection;
-       
-        // get all the atributes that match $id 
-        $customer = Customers::where('id','=',$id)->first();
-        $cust_order = new CustomerOrders();
-        $count = 0;
-        $orders = [];
-        foreach($cart as $value) {
-            $order[$count++] = $value->quantity.' '.$value->name.', '.$value->price;
-        }
-        
-         $order = implode("\n", $order);
-        
-       
-        
+        $cart = $cartCollection->toArray();
 
-        $cust_order->cid = $id;
-        $cust_order->name = $customer->name;
-        $cust_order->Email = $customer->Email;
-        $cust_order->order = $order;
-        $cust_order->phoneNumber = $customer->phoneNumber;
-        $cust_order->save();
-
-        // send email to customer confirming the order
-
-         $email = $customer->Email;
-
-        return view('cart')->with([
-            'cart' => $cart,
+        return view('thankyou')->with([
+            'cartArry' => $cartArry,
         ]);
     }
 
@@ -226,7 +246,6 @@ class CartController extends Controller
         }
 
         Cart::add($itemNum, $order, $price, 1, array());
-
 
         Session::flash('message',$order.' was added to your order.');
 
