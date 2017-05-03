@@ -167,7 +167,7 @@ class CartController extends Controller
 
         $order = "";
         $price = 5.99;
-        $itemNum = 'CREATE YOU OWN';
+        $itemNum = 'CREATE YOUR OWN';
 
         $pSize = $request->selectSize;
 
