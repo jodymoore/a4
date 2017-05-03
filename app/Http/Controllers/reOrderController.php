@@ -37,7 +37,7 @@ class reOrderController extends Controller
             $id[$count++] = $value->order_id;
         }
 
-        return view('reOrder')->with([
+        return view('reorder')->with([
             'custOldOrders' => $custOldOrders,
             'total' => $total,
             'id' => $id,
