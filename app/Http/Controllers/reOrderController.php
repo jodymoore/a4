@@ -9,7 +9,7 @@ use Cart;
 use Illuminate\Support\Facades\Auth;
 
 
-class ReorderController extends Controller
+class reOrderController extends Controller
 {
 
      /*

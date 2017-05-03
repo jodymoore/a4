@@ -39,12 +39,12 @@ Route::get('/order', 'CartController@show');
 /**
 *  /order
 */
-Route::get('/reOrder', 'ReorderController@show');
+Route::get('/reOrder', 'reOrderController@show');
 
 /**
 *  /reorder_submit
 */
-Route::post('/reorder_submit', 'ReorderController@submit');
+Route::post('/reorder_submit', 'reOrderController@submit');
 
 /**
 *  /remove
