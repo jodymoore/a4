@@ -76,8 +76,6 @@ class RegisterController extends Controller
 
         $customer->phoneNumber = $data['phoneNumber'];
 
-        $customer->password = $data['password']; 
-
         $customer->zipcode = $data['zipcode'];
 
         $customer->save();
