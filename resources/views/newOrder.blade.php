@@ -29,17 +29,17 @@
 		  <div class="row">
 		      <div class="col-lg-12">
 		         <div class="button-group">
-			        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Meats</span> <span class="caret"></span></button>
-			        <ul class="dropdown-menu">
-					  <li><a href="#" class="small" data-value="option1" tabIndex="-1"><input type="checkbox" id="pepperoni" name="pepperoni" />&nbsp;Pepperoni</a></li>
+			      <h4>Meats</h4>
+			        <ul>
+					  <input type="checkbox" id="pepperoni" name="pepperoni" />Pepperoni <br>
 
-					  <li><a href="#" class="small" data-value="option2" tabIndex="-1"><input type="checkbox" id="italian sausage" name="italian sausage" />&nbsp;Italian Sausage</a></li>
+					  <input type="checkbox" id="italian sausage" name="italian sausage" />Italian Sausage <br>
 
-					  <li><a href="#" class="small" data-value="option3" tabIndex="-1"><input type="checkbox" id="Beef" name="beef"/>&nbsp;Beef </a></li>
+					  <input type="checkbox" id="Beef" name="beef"/>Beef <br>
 
-					  <li><a href="#" class="small" data-value="option4" tabIndex="-1"><input type="checkbox" id="ham" name="ham"/>&nbsp;Ham</a></li>
+					  <input type="checkbox" id="ham" name="ham"/>Ham <br>
 
-					  <li><a href="#" class="small" data-value="option5" tabIndex="-1"><input type="checkbox" id="pork" name="pork" />&nbsp;Pork</a></li>
+					  <input type="checkbox" id="pork" name="pork" />Pork <br>
 
 			        </ul>
 		     </div>
@@ -47,25 +47,25 @@
 		  </div>
 		</div>
 
-		<div  id="veg" >
+		<div id="veg" >
 		  <div class="row">
 		      <div class="col-lg-12">
 		         <div class="button-group">
-			        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Vegetables</span> <span class="caret"></span></button>
-			        <ul class="dropdown-menu">
-			          <li><a href="#" class="small" data-value="option1" tabIndex="-1"><input type="checkbox" id="mushrooms" name="mushrooms"/>&nbsp;Mushrooms</a></li>
+			        <h4>Vegetables</h4>
+			        <ul>
+			            <input type="checkbox" id="mushrooms" name="mushrooms"/>Mushrooms <br>
 
-					  <li><a href="#" class="small" data-value="option1" tabIndex="-1"><input type="checkbox" id="spinach" name="spinach"/>&nbsp;Spinach</a></li>
+					    <input type="checkbox" id="spinach" name="spinach"/>Spinach <br>
 
-					  <li><a href="#" class="small" data-value="option2" tabIndex="-1"><input type="checkbox" id="red peppers" name="red peppers" />&nbsp;Red Peppers</a></li>
+					    <input type="checkbox" id="red peppers" name="red peppers" />Red Peppers <br>
 
-					  <li><a href="#" class="small" data-value="option3" tabIndex="-1"><input type="checkbox" id="bell peppers" name="bell peppers"/>&nbsp;Bell Peppers</a></li>
+					    <input type="checkbox" id="bell peppers" name="bell peppers"/>Bell Peppers <br>
 
-					  <li><a href="#" class="small" data-value="option4" tabIndex="-1"><input type="checkbox" id="pineapple" name="pineapple"/>&nbsp;Pineapple</a></li>
+					    <input type="checkbox" id="pineapple" name="pineapple"/>Pineapple <br>
 
-					  <li><a href="#" class="small" data-value="option5" tabIndex="-1"><input type="checkbox" id="jalapeno peppers" name="jalapeno peppers"/>&nbsp;Jalapeno Peppers</a></li>
+					    <input type="checkbox" id="jalapeno peppers" name="jalapeno peppers"/>Jalapeno Peppers <br>
 
-					  <li><a href="#" class="small" data-value="option5" tabIndex="-1"><input type="checkbox" id="tomatoes" name="tomatoes"/>&nbsp;Tomatoes</a></li>
+					    <input type="checkbox" id="tomatoes" name="tomatoes"/>Tomatoes <br>
 			        </ul>
 		     </div>
 		    </div>

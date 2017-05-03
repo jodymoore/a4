@@ -141,7 +141,7 @@
         width: 150px;
         height: 30px;
         background-color: red;
-        margin-top: 35%;
+        margin-top: 2%;
         margin-bottom: 15px;
     }
 
@@ -218,7 +218,7 @@
     #wrap {
 
         margin-top: 3%;
-        width: 300px;
+        width: 360px;
         margin-right: auto;
         margin-left: auto;
     }
@@ -230,12 +230,45 @@
 
     #meats {
         float:left;
-        width: 50%;
+        width: 47%;
+        background-color: #F5F5DC;
+        color: black;
+        border-radius: 10px;
+        margin-right: 3%;
+    }
+
+    #meats input{
+        float:left;
+        margin-left: -15%;
+    }
+
+    #meats ul{
+        margin-right: 
+    }
+
+    #meats h4{
+        border-bottom: 1px solid black;
+        padding-bottom: 2px;
+    }
+
+    #veg input{
+        float:left;
+        margin-left: -15%;
+    }
+
+    #veg h4{
+        border-bottom: 2px solid black;
+        padding-bottom: 2px;
     }
 
     #veg {
-        float: right;
-        width: 50%;
+        float:left;
+        width: 47%;
+        background-color: #F5F5DC;
+        color: black;
+        border-radius: 10px;
+        margin-left: 3%;
+
     }
 
     #form {
@@ -270,17 +303,18 @@
         border-radius: 15px;
         color: white;
         width: 50%;
+        padding: 4px 4px 4px 4px;
     }
 
     #displayCart-wrapper {
         width: 100%;
-        height: 100px;
         display: inline-block;
         border-top: 2px solid white;
         border-bottom: 2px solid white;
         margin-bottom: 5px;
         font-size: 18px;
-
+        padding-bottom: 5px;
+        padding-top: 5px;
     }
 
     #cartRight {

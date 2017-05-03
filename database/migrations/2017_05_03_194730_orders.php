@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CustomerOrders extends Migration
+class Orders extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CustomerOrders extends Migration
      */
     public function up()
     {
-        Schema::create('customer_orders', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
 
             # Increments method will make a Primary, Auto-Incrementing field.
             # Most tables start off this way
             $table->increments('order_id');
-            $table->integer('cid');  //<------- this will need to be a foriegn key
+            $table->integer('cust_id')->unsigned();  
            
 
             # This generates two columns: `created_at` and `updated_at` to
@@ -27,10 +27,11 @@ class CustomerOrders extends Migration
 
             # The rest of the fields...
             $table->string('name');
-            $table->string('Email');
+            $table->string('email');
             $table->string('order');
-            $table->float('price');
-            $table->string('phoneNumber');
+            $table->float('total');
+
+            $table->foreign('cust_id')->references('id')->on('customers');
        });
     }
 
@@ -41,7 +42,7 @@ class CustomerOrders extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer_orders');
+        Schema::dropIfExists('orders');
 
     }
 }

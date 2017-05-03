@@ -20,7 +20,7 @@
                 <option value="Small">Small</option>
             </select> 
 
-            <input id="topping" type="hidden" name="topping" value="cheese" >
+            <input id="pid" type="hidden" name="pid" value="1" >
 
     	    <input id="orderNowC" type="submit" name="orderNowC" value="Order Now" class='btn btn-primary  btn-small'>
             </form>
@@ -39,7 +39,7 @@
                 <option value="Small">Small</option>
             </select> 
 
-             <input id="topping" type="hidden" name="topping" value="pepperoni" >
+             <input id="pid" type="hidden" name="pid" value="2" >
 
     	     <input id="orderNowP" type="submit" name="orderNowP" value="Order Now" onclick="window.location='{{ url("/order/pepperoni") }}'" class='btn btn-primary  btn-small'>
              </form>
@@ -58,7 +58,7 @@
                 <option value="Small">Small</option>
             </select> 
              
-            <input id="topping" type="hidden" name="topping" value="supreme" >
+            <input id="pid" type="hidden" name="pid" value="3" >
 
     	    <input id="orderNowS" type="submit" name="orderNowS" value="Order Now" class='btn btn-primary  btn-small'>
             </form>
@@ -71,13 +71,13 @@
     	    <caption><h4>VEGETABLE</h4></caption>
     	    <p>marinara topped with fresh mozzarella</p><br><p> cheese,green peppers,mushrooms,</p><br> <p>and black olives.</p>
 
-    	    <select id="selectSize" name="selectSize" value="Size">
+    	    <select id="selectSize" name="selectSize" value="4">
                 <option value="Large">Large</option>
                 <option value="Medium">Medium</option>
                 <option value="Small">Small</option>
             </select> 
 
-             <input id="topping" type="hidden" name="topping" value="vegetable" >
+             <input id="pid" type="hidden" name="pid" value="vegetable" >
 
     	     <input id="own-orderV" type="submit" name="orderNowV" value="Order Now" class='btn btn-primary  btn-small'>
              </form>

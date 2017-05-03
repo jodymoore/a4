@@ -49,11 +49,12 @@
         </div>
 
     @endif
-    <div id="cartOrderButton">
-	        <input id="cartOrderButton" type="submit" name="cartOrderButton"  formaction="/order/execute" value="SUBMIT ORDER" class='btn btn-primary  btn-small'>
-        </div>
-    </div>
 
+
+    </div>
+        <div id="cartOrderButton">
+          <input id="cartOrderButton" type="submit" name="cartOrderButton"  formaction="/order/execute" value="SUBMIT ORDER" class='btn btn-primary  btn-small'>
+        </div>
     </div>
 </form>
 

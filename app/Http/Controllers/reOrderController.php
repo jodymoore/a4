@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\CustomerOrders;
+use App\Orders;
 use Session;
 use Cart;
 use Illuminate\Support\Facades\Auth;
@@ -24,22 +24,22 @@ class reOrderController extends Controller
         // query customer_orders database
         // get login id
         $id = Auth::id(); 
-        $oldOrders = CustomerOrders::where('cid','=',$id)->get();
+        $oldOrders = Orders::where('cust_id','=',$id)->get();
         $custOldOrders = [];
-        $price = [];
+        $total = [];
         $id = [];
 
         $count = 0;
 
         foreach($oldOrders as $value) {
             $custOldOrders[$count++] = $value->order;
-            $price[$count++] = $value->price;
+            $total[$count++] = $value->total;
             $id[$count++] = $value->order_id;
         }
 
         return view('reOrder')->with([
             'custOldOrders' => $custOldOrders,
-            'price' => $price,
+            'total' => $total,
             'id' => $id,
         ]);
     }

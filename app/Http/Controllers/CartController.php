@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\CustomerOrders;
+use App\Orders;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Cart;
 use App\Customers;
+use App\Products;
 
 
 class CartController extends Controller
@@ -70,6 +71,14 @@ class CartController extends Controller
         // get user id from session user use id to insert order info 
         // into customer order database 
 
+        // info flagger
+       #$custInfo = null;
+
+        // if not logged in redirect to temp form page
+        if(!Auth::check()) {
+            return redirect()->route('login');
+        }
+
         $cartArry = [];
 
         if(Cart::isEmpty()) {
@@ -88,7 +97,7 @@ class CartController extends Controller
            
             // get all the atributes that match $id 
             $customer = Customers::where('id','=',$id)->first();
-            $cust_order = new CustomerOrders();
+            $cust_order = new Orders();
             $count = 0;
             $orders = [];
             foreach($cart as $value) {
@@ -98,16 +107,15 @@ class CartController extends Controller
             
             $order = implode("\n", $order);
           
-            $cust_order->cid = $id;
+            $cust_order->cust_id = $id;
             $cust_order->name = $customer->name;
-            $cust_order->Email = $customer->Email;
+            $cust_order->email = $customer->Email;
             $cust_order->order = $order;
-            $cust_order->price = $price;
-            $cust_order->phoneNumber = $customer->phoneNumber;
+            $cust_order->total = $price;
             $cust_order->save();
 
             // send email to customer confirming the order
-            
+            $total = Cart::getTotal();
             $cartArry = $cartCollection->toArray();
             Cart::clear();
             $email = $customer->Email;
@@ -119,6 +127,7 @@ class CartController extends Controller
 
         return view('thankyou')->with([
             'cartArry' => $cartArry,
+            'total' => $total,
         ]);
     }
 
@@ -126,56 +135,23 @@ class CartController extends Controller
      *  a dynamic order function 
      */
     public function order(Request $request){
+
          
         $this->validate($request, [
             'selectSize' => 'required',
         ]);
 
-        $price = 5.99;
-        $topping = $request->topping;
+        $pid = $request->pid;
         $pSize = $request->selectSize;
-        $id = null;
-        switch ( $topping) {
-          case 'cheese':
-            $price = $price;
-           $id = 'CHEESE';
-            break;
-          case 'pepperoni':
-            $price = 6.24;
-            $id= 'PEPPERONI';
-            break;
-          case 'supreme':
-            $price = 7.49;
-           $id = "SUPREME";
-            break;
-          case 'vegetable':
-            $price = 8.49;
-            $id = 'VEGETABLE';
-            break;
-          
-          default:
-            $price = 5.99;
-            $id = 'CHEESE';
-            break;
-        }
 
-        switch ( $pSize) {
-          case 'Small':
-            $price = $price;
-            break;
-          case 'Medium':
-            $price += 2.00;
-            break;
-            case 'Large':
-            $price += 3.00;
-            break;
-          default:
-            $price = $price;
-            break;
-        }
-        
-        $order = $pSize." ".$topping." "." pizza"; 
-        Cart::add($id, $order, $price, 1, array());
+        $product = Products::where('pid','=',$pid)->first();
+
+        $price = $product->price;
+        $topping = $product->topping;
+        $desc = $product->desc;
+             
+        $order = $pSize." ".strtolower($topping)." "." pizza"; 
+        Cart::add($topping, $order, $price, 1, array());
 
         Session::flash('message',$order.' was added to your order.');
 
@@ -205,24 +181,25 @@ class CartController extends Controller
         $input = $request->all('checkboxes');
 
         $badArray = ["_token", "selectSize", "selectCheese", "addToOrder"];
+        dump($pSize);
 
         foreach ($input as $key => $value) {
             if(!in_array($key, $badArray)){
-            // remove underscore
-            switch ( $key) {
-              case 'italian_sausage':
-                $key = "italian sausage";
-                break;
-              case 'red_peppers':
-                $key = "red peppers";
-                break;
-              case 'bell_peppers':
-                $key = "bell peppers";
-                break;
-              case 'jalapeno_peppers':
-                $key = "jalapeno peppers";
-                break;
-            }
+                // remove underscore
+                switch ( $key) {
+                  case 'italian_sausage':
+                    $key = "italian sausage";
+                    break;
+                  case 'red_peppers':
+                    $key = "red peppers";
+                    break;
+                  case 'bell_peppers':
+                    $key = "bell peppers";
+                    break;
+                  case 'jalapeno_peppers':
+                    $key = "jalapeno peppers";
+                    break;
+                }
 
             $order = $order.", ".$key;
             $price += .25;
@@ -230,7 +207,7 @@ class CartController extends Controller
             }   
         }
 
-        switch ( $price) {
+        switch ( $pSize) {
           case 'Small':
             $price = $price;
             break;

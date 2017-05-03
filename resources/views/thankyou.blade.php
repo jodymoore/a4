@@ -33,9 +33,12 @@
                 <div>
 
             @endforeach
-         <h4>A confirmation email has been sent to your e-mail address on file.</h4>
+        
         </div>
+
     </div>
+    Total: ${{$total}} 
+    <h4>A confirmation email has been sent to your e-mail address on file.</h4>
     </div>
 
 @endsection
