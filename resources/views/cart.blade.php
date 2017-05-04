@@ -25,7 +25,7 @@
                 <div id="displayCart-wrapper">
 
                     <div id="cartLeft">
-                        <strong>{{$value['id']}}</strong> <br>
+                        <strong>{{$value['attributes']['topping']}}</strong> <br>
                         <input id="name" type="hidden" name="name" value="{{ $value['name'] }}" > 
                         {{$value['name']}}
                     </div>

@@ -9,6 +9,7 @@ use Session;
 use Cart;
 use App\Customers;
 use App\Products;
+use LoginController;
 
 
 class CartController extends Controller
@@ -140,9 +141,30 @@ class CartController extends Controller
         $this->validate($request, [
             'selectSize' => 'required',
         ]);
-
+             
         $pid = $request->pid;
         $pSize = $request->selectSize;
+
+        $sizeId = null;
+
+        switch ( $pSize) {
+          case 'Small':
+            $sizeId = 1;
+            break;
+          case 'Medium':
+            $sizeId += 2;
+            break;
+            case 'Large':
+            $sizeId += 3;
+            break;
+          default:
+            $sizeId = 0;
+            break;
+        }
+
+
+
+        $id = $pid.$sizeId;
 
         $product = Products::where('pid','=',$pid)->first();
 
@@ -151,12 +173,26 @@ class CartController extends Controller
         $desc = $product->desc;
              
         $order = $pSize." ".strtolower($topping)." "." pizza"; 
-        Cart::add($topping, $order, $price, 1, array());
+       #Cart::add($topping, $order, $price, 1, array());
+
+                // array format
+        Cart::add(array(
+            'id' => $id,
+            'name' => $order,
+            'price' => $price,
+            'quantity' => 1,
+            'attributes' => array(
+                'size' => $pSize,
+                'topping' => $topping,
+            
+          ),
+        ));
 
         Session::flash('message',$order.' was added to your order.');
 
         // need to hand this to order blade or checkout.
         return view('popPizzas');
+
     }
 
     public function CreateOwnOrder(Request $request) {

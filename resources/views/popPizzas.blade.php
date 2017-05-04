@@ -71,13 +71,13 @@
     	    <caption><h4>VEGETABLE</h4></caption>
     	    <p>marinara topped with fresh mozzarella</p><br><p> cheese,green peppers,mushrooms,</p><br> <p>and black olives.</p>
 
-    	    <select id="selectSize" name="selectSize" value="4">
+    	    <select id="selectSize" name="selectSize" value="Size">
                 <option value="Large">Large</option>
                 <option value="Medium">Medium</option>
                 <option value="Small">Small</option>
             </select> 
 
-             <input id="pid" type="hidden" name="pid" value="vegetable" >
+             <input id="pid" type="hidden" name="pid" value="4" >
 
     	     <input id="own-orderV" type="submit" name="orderNowV" value="Order Now" class='btn btn-primary  btn-small'>
              </form>

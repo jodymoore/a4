@@ -29,7 +29,7 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/';
 
-    #$latestOrders = Customer::orderBy('title','asc')->get();
+
 
     /**
      * Create a new controller instance.
@@ -39,5 +39,10 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
+        $orderCtr = 0;
+    }
+
+    public function getId($ctr) {
+        return $ctr += 1;
     }
 }
