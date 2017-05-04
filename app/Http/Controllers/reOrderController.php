@@ -24,13 +24,20 @@ class reOrderController extends Controller
         // query customer_orders database
         // get login id
         $id = Auth::id(); 
+
         $oldOrders = Orders::where('cust_id','=',$id)->get();
+
         $custOldOrders = [];
         $total = [];
         $id = [];
 
         $count = 0;
 
+        // foreach ($oldOrders as $value) {
+        //     dump($value);
+        // }
+
+        
         foreach($oldOrders as $value) {
             $custOldOrders[$count++] = $value->order;
             $total[$count++] = $value->total;

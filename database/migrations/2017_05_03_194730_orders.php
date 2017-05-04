@@ -31,7 +31,7 @@ class Orders extends Migration
             $table->string('order');
             $table->float('total');
 
-            $table->foreign('cust_id')->references('id')->on('customers');
+            $table->foreign('cust_id')->references('id')->on('users');
        });
     }
 

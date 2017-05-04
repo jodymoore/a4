@@ -16,8 +16,10 @@ class UsersTableSeeder extends Seeder
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'name' => 'Jody Moore',
-	        'Email' => 'jodymoore@g.harvard.edu',
+	        'email' => 'jodymoore@g.harvard.edu',
 	        'password' => crypt('root','rl'),
+	        'phoneNumber' => '555-555-555',
+	        'zipcode' => '722132',
 
 	    ]);
 
@@ -25,8 +27,10 @@ class UsersTableSeeder extends Seeder
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'name' => 'Rhiannon Moore',
-	        'Email' => 'rlov11@global.com',
+	        'email' => 'rlov11@global.com',
 	        'password' => crypt('root','rl'),
+	        'phoneNumber' => '555-555-555',
+	        'zipcode' => '722132',
 
 	    ]);
 
@@ -34,8 +38,10 @@ class UsersTableSeeder extends Seeder
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'name' => 'Sam Watterston',
-	        'Email' => 'samual@thisisIt.com',
+	        'email' => 'samual@thisisIt.com',
 	        'password' => crypt('root','rl'),
+	        'phoneNumber' => '555-555-555',
+	        'zipcode' => '722132',
 
 	    ]);
 
@@ -43,8 +49,10 @@ class UsersTableSeeder extends Seeder
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'name' => 'Sheila wWlson',
-	        'Email' => 'sheila@g.harvard.edu',
+	        'email' => 'sheila@g.harvard.edu',
 	        'password' => crypt('root','rl'),
+	        'phoneNumber' => '555-555-555',
+	        'zipcode' => '722132',
 
 	    ]);
     }

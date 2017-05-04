@@ -7,9 +7,10 @@ use App\Orders;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Cart;
-use App\Customers;
 use App\Products;
 use LoginController;
+use App\User;
+use App\Order_Product;
 
 
 class CartController extends Controller
@@ -83,9 +84,10 @@ class CartController extends Controller
             $cart = $cartCollection;
 
             $price = 0;
+            $prodId = null;
            
             // get all the atributes that match $id 
-            $customer = Customers::where('id','=',$id)->first();
+            $customer = User::where('id','=',$id)->first();
             $cust_order = new Orders();
             $count = 0;
             $orders = [];
@@ -93,13 +95,14 @@ class CartController extends Controller
             foreach($cart as $value) {
                 $order[$count++] = $value->quantity.' '.$value->name.', ';
                 $price += $value->price;
+                $prodId = $value->id;
             }
             
             $order = implode("\n", $order);
           
             $cust_order->cust_id = $id;
             $cust_order->name = $customer->name;
-            $cust_order->email = $customer->Email;
+            $cust_order->email = $customer->email;
             $cust_order->order = $order;
             $cust_order->total = $price;
             $cust_order->save();
@@ -109,12 +112,20 @@ class CartController extends Controller
             Cart::clear();
 
             // send email to customer confirming the order
-            $email = $customer->Email;
+            $email = $customer->email;
 
         }
 
         $cartCollection = Cart::getContent();
         $cart = $cartCollection->toArray();
+
+        // insert into Order_Product pivot 
+        // $order_product = new Order_Product;
+        // $order_product->cust_id = $id;
+        // $order_product->product_id = $prodId;
+        // $order_product->save();
+
+
 
         return view('thankyou')->with([
             'cartArry' => $cartArry,
@@ -243,7 +254,6 @@ class CartController extends Controller
             }   
         }
 
-
         $cartCollection = Cart::getContent();
         $carts = $cartCollection->toArray();
 
@@ -256,7 +266,6 @@ class CartController extends Controller
                $id++;
             }
         }
-
 
         // Place order into Cart array format
         Cart::add(array(
