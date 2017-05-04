@@ -120,10 +120,10 @@ class CartController extends Controller
         $cart = $cartCollection->toArray();
 
         // insert into Order_Product pivot 
-        // $order_product = new Order_Product;
-        // $order_product->cust_id = $id;
-        // $order_product->product_id = $prodId;
-        // $order_product->save();
+        $order_product = new Order_Product;
+        $order_product->cust_id = $id;
+        $order_product->product_id = $prodId;
+        $order_product->save();
 
 
 
