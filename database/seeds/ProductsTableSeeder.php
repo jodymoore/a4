@@ -46,7 +46,7 @@ class ProductsTableSeeder extends Seeder
 	        'desc' => 'marinara topped with fresh mozzarella cheese,green peppers, 
 	                   mushrooms, and black olives.',
 	        'image_url' => 'https://s3.amazonaws.com/jwm-product-images/Cheese.png',
-	        'price' => 9.50,
+	        'price' => 9.49,
 	    ]);
 
     }
