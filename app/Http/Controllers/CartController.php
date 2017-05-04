@@ -229,29 +229,36 @@ class CartController extends Controller
 
         foreach ($input as $key => $value) {
             if(!in_array($key, $badArray)){
+
                 // remove underscore
-                switch ( $key) {
-                  case 'italian_sausage':
-                    $key = "italian sausage";
-                    break;
-                  case 'red_peppers':
-                    $key = "red peppers";
-                    break;
-                  case 'bell_peppers':
-                    $key = "bell peppers";
-                    break;
-                  case 'jalapeno_peppers':
-                    $key = "jalapeno peppers";
-                    break;
+                for ($i = 0; $i < strlen($key); $i++){
+                   if ($key[$i] == '_') {
+                       $key[$i] = ' ';
+                   }
                 }
 
-            $order = $order.", ".$key;
-            $price += .25;
+                $order = $order.", ".$key;
+                $price += .25;
 
             }   
         }
 
-        // Cart array format
+
+        $cartCollection = Cart::getContent();
+        $carts = $cartCollection->toArray();
+
+        foreach ($carts as $cart => $value) {
+
+            if(strcmp($order,$value['name']) == 0) {
+               $id = $id;
+            }
+            else {
+               $id++;
+            }
+        }
+
+
+        // Place order into Cart array format
         Cart::add(array(
             'id' => $id,
             'name' => $order,
