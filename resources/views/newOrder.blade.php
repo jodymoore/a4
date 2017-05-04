@@ -22,7 +22,7 @@
 	        <select id="selectCheese" name="selectCheese" >
 	            <option value="reg">Reg</option>
 	            <option value="light">Light</option>p
-	            <option value="none">None</option>
+	            <option value="extra">Extra</option>
 	        </select> <br>
      <div id="wrap" >
 		<div  id="meats" >

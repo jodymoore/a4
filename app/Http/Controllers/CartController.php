@@ -162,8 +162,6 @@ class CartController extends Controller
             break;
         }
 
-
-
         $id = $pid.$sizeId;
 
         $product = Products::where('pid','=',$pid)->first();
@@ -201,12 +199,36 @@ class CartController extends Controller
             'selectSize' => 'required',
         ]);
 
-        $order = "";
-        $price = 5.99;
-        $itemNum = 'CREATE YOUR OWN';
-
         $pSize = $request->selectSize;
 
+        $order = "";
+        $price = 5.99;
+        $topping = 'CREATE YOUR OWN';
+        $sizeId = null;
+
+        switch ( $pSize) {
+          case 'Small':
+            $sizeId = 1;
+            $price = $price;
+            break;
+          case 'Medium':
+            $sizeId += 2;
+            $price += 2.00;
+            break;
+            case 'Large':
+            $sizeId += 3;
+            $price += 3.00;
+            break;
+          default:
+            $sizeId = 0;
+            $price = $price;
+            break;
+        }
+        
+        $pid = 6;
+        $id = $pid.$sizeId;
+
+    
         $amtCheese = $request->selectCheese;
         $amtCheese = $amtCheese." "."cheese";
 
@@ -217,7 +239,6 @@ class CartController extends Controller
         $input = $request->all('checkboxes');
 
         $badArray = ["_token", "selectSize", "selectCheese", "addToOrder"];
-        dump($pSize);
 
         foreach ($input as $key => $value) {
             if(!in_array($key, $badArray)){
@@ -243,22 +264,20 @@ class CartController extends Controller
             }   
         }
 
-        switch ( $pSize) {
-          case 'Small':
-            $price = $price;
-            break;
-          case 'Medium':
-            $price += 2.00;
-            break;
-            case 'Large':
-            $price += 3.00;
-            break;
-          default:
-            $price = $price;
-            break;
-        }
 
-        Cart::add($itemNum, $order, $price, 1, array());
+        #Cart::add($itemNum, $order, $price, 1, array());
+                       // array format
+        Cart::add(array(
+            'id' => $id,
+            'name' => $order,
+            'price' => $price,
+            'quantity' => 1,
+            'attributes' => array(
+                'size' => $pSize,
+                'topping' => $topping,
+            
+          ),
+        ));
 
         Session::flash('message',$order.' was added to your order.');
 

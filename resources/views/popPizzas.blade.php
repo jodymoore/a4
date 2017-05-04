@@ -30,7 +30,7 @@
         <form action="/popOrder" method="post" accept-charset="utf-8">
          {{ csrf_field() }}
     	    <img id="pep" src="https://s3.amazonaws.com/jwm-product-images/pepperoni.png">
-    	    <caption><h4>PEPERONI</h4></caption>
+    	    <caption><h4>PEPPERONI</h4></caption>
     	    <p>marinara topped with fresh mozzarella</p><br><p> cheese and pepperoni.</p>
 
     	    <select id="selectSize" name="selectSize" value="Size">
@@ -50,7 +50,7 @@
          {{ csrf_field() }}
     	    <img id="sup" src="https://s3.amazonaws.com/jwm-product-images/Supreme.png">
     	    <caption><h4>SUPREME</h4></caption>
-    	    <p>pepperoni,pork, beef, mushrooms,</p><br><p> green peppers and onions</p>
+    	    <p>marinara topped with fresh mozzarella</p><p>pepperoni, pork, beef, mushrooms,</p><br><p> green peppers and onions</p>
 
     	    <select id="selectSize" name="selectSize" value="Size">
                 <option value="Large">Large</option>
@@ -69,7 +69,7 @@
          {{ csrf_field() }}
     	    <img  id="own" src="/images/Supreme.png">
     	    <caption><h4>VEGETABLE</h4></caption>
-    	    <p>marinara topped with fresh mozzarella</p><br><p> cheese,green peppers,mushrooms,</p><br> <p>and black olives.</p>
+    	    <p>marinara topped with fresh mozzarella</p><br><p> cheese, green peppers, mushrooms,</p><br> <p>and black olives.</p>
 
     	    <select id="selectSize" name="selectSize" value="Size">
                 <option value="Large">Large</option>
