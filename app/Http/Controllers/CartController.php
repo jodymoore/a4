@@ -15,16 +15,9 @@ use LoginController;
 class CartController extends Controller
 {
     /*
-     *  
+     *  show
      */
     public function show(Request $request) {
-
-
-        // $user = Session::getId('name');
-        // if ($user)
-        // {
-        //     echo "Hello $user->name";
-        // }
 
         $cartCollection = Cart::getContent();
         $cart = $cartCollection->toArray();
@@ -35,7 +28,7 @@ class CartController extends Controller
     }
 
     /*
-     *  
+     *  clearCart
      */
     public function clearCart() {
        
@@ -45,7 +38,7 @@ class CartController extends Controller
     }
 
     /*
-     *  
+     *  remove
      */
     public function remove(Request $request) {
 
@@ -65,16 +58,10 @@ class CartController extends Controller
     }
 
     /*
-     *  a dynamic order function 
+     *  execute 
      */
     public function execute(Request $request) {
-
-        // get user id from session user use id to insert order info 
-        // into customer order database 
-
-        // info flagger
-       #$custInfo = null;
-
+     
         // if not logged in redirect to temp form page
         if(!Auth::check()) {
             return redirect()->route('login');
@@ -88,7 +75,8 @@ class CartController extends Controller
 
         }
         else {
-
+            
+            // get user id 
             $id = Auth::id();
          
             $cartCollection = Cart::getContent();
@@ -101,6 +89,7 @@ class CartController extends Controller
             $cust_order = new Orders();
             $count = 0;
             $orders = [];
+
             foreach($cart as $value) {
                 $order[$count++] = $value->quantity.' '.$value->name.', ';
                 $price += $value->price;
@@ -115,10 +104,11 @@ class CartController extends Controller
             $cust_order->total = $price;
             $cust_order->save();
 
-            // send email to customer confirming the order
             $total = Cart::getTotal();
             $cartArry = $cartCollection->toArray();
             Cart::clear();
+
+            // send email to customer confirming the order
             $email = $customer->Email;
 
         }
@@ -136,7 +126,6 @@ class CartController extends Controller
      *  a dynamic order function 
      */
     public function order(Request $request){
-
          
         $this->validate($request, [
             'selectSize' => 'required',
@@ -147,42 +136,42 @@ class CartController extends Controller
 
         $sizeId = null;
 
-        switch ( $pSize) {
-          case 'Small':
-            $sizeId = 1;
-            break;
-          case 'Medium':
-            $sizeId += 2;
-            break;
-            case 'Large':
-            $sizeId += 3;
-            break;
-          default:
-            $sizeId = 0;
-            break;
-        }
-
-        $id = $pid.$sizeId;
-
         $product = Products::where('pid','=',$pid)->first();
 
         $price = $product->price;
         $topping = $product->topping;
         $desc = $product->desc;
-             
-        $order = $pSize." ".strtolower($topping)." "." pizza"; 
-       #Cart::add($topping, $order, $price, 1, array());
 
-                // array format
+        switch ( $pSize) {
+          case 'Small':
+            $sizeId = 1;
+            $price = $price;
+            break;
+          case 'Medium':
+            $sizeId += 2;
+            $price += 2.00;
+            break;
+            case 'Large':
+            $sizeId += 3;
+            $price += 3.00;
+            break;
+          default:
+            $sizeId = 0;
+            $price = $price;
+            break;
+        }
+         
+        $id = $pid.$sizeId;    
+        $order = $pSize." ".strtolower($topping)." "." pizza"; 
+
+        // Cart array format
         Cart::add(array(
             'id' => $id,
             'name' => $order,
             'price' => $price,
             'quantity' => 1,
             'attributes' => array(
-                'size' => $pSize,
-                'topping' => $topping,
-            
+                'topping' => $topping,          
           ),
         ));
 
@@ -227,15 +216,13 @@ class CartController extends Controller
         
         $pid = 6;
         $id = $pid.$sizeId;
-
-    
+   
         $amtCheese = $request->selectCheese;
         $amtCheese = $amtCheese." "."cheese";
 
         $order = $order.$pSize." pizza".", ".$amtCheese;
 
         // ingredient selections
-
         $input = $request->all('checkboxes');
 
         $badArray = ["_token", "selectSize", "selectCheese", "addToOrder"];
@@ -264,25 +251,18 @@ class CartController extends Controller
             }   
         }
 
-
-        #Cart::add($itemNum, $order, $price, 1, array());
-                       // array format
+        // Cart array format
         Cart::add(array(
             'id' => $id,
             'name' => $order,
             'price' => $price,
             'quantity' => 1,
             'attributes' => array(
-                'size' => $pSize,
-                'topping' => $topping,
-            
+                'topping' => $topping,     
           ),
         ));
 
         Session::flash('message',$order.' was added to your order.');
-
-        #Cart::add(005, $order, $price, 1, array());
-        // need to hand this to order blade or checkout.
 
         return view('newOrder');
     }
