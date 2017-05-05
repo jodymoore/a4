@@ -5,59 +5,80 @@
 @include('header')
 <div id="createAccount">
 	<h4>Edit Your Quik Pizza Account</h4>
-</div>
+</div>         
+    <div class="panel-body">
+        <form id="form" class="form-horizontal" role="form" method="POST" action="/save">
+            {{ csrf_field() }}
+            <input type='hidden' name='id' value='{{ $user->id }}'>
 
+            <div class="form-group">
+                <label for="name" class="col-md-4 control-label">Name</label>
 
-<div >
-<form method="POST" action="/save" >
+                <div class="col-md-6">
+                    <input id="name" type="text" class="form-control" name="name" value={{ old('Name',$user['attributes']['name']) }} required autofocus>
 
-    {{ csrf_field() }}
+                </div>
+            </div>
 
-    <div id="form">
+            <div class="form-group">
+                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
-       <br>
-       <div id=Lform>
-	        <label for="fullName" ><h5>Full Name</h5></label><br>
-	        <input id="Fname" type="text" name="Fname" value={{ old('First Name',$user['attributes']['name']) }} required>&nbsp
-	        <input id="Lname" type="text" name="Lname"  value={{ old('Last Name',$lastName) }} required>
-	        <br>
-	        <input type='hidden' name='name' value='{{ $user->name }}'>
+                <div class="col-md-6">
+                    <input id="email" type="email" class="form-control" name="email" value={{ old('you@example.com',$user['attributes']['email']) }} required>
 
-	        <label for="email" ><h5>E-mail Address</h5></label><br>
-	        <input id="email" type='text' name="email" value={{ old('you@example.com',$user['attributes']['email']) }} ><br>
+                </div>
+            </div>
+             <div class="form-group">
+                <label for="phoneNumber" class="col-md-4 control-label">Phone Number</label>
+                <div class="col-md-6">
+                    <input id="phoneNumber" type="text" class="form-control" name="phoneNumber" value={{ old('(xxx)xxx-xxxx)',$user['attributes']['phoneNumber']) }} required>
 
-	        <label for="phoneNumber" ><h5>Phone Number</h5></label><br>
-	        <input id="phoneNumber" type='text' name="phoneNumber" value={{ old('(xxx)xxx-xxxx)',$user['attributes']['phoneNumber']) }} >&nbsp
-	        <input id="Ext" type='text' name="Ext"  value="Ext" ><br>
+                </div>
+            </div>
 
-	        <label for="password" ><h5>Password</h5></label><br>
-	        <input id="password" type='text' name="password" value={{ old('Password',$user['attributes']['password']) }} ><br><br>
-	        <input id="confrmPswrd" type='text' name="confrmPswrd" value={{ old('Confirm Password',$user['attributes']['password']) }} ><br><br>
-       </div>
-       <div id="Rform">
+            <div class="form-group">
+                <label for="password" class="col-md-4 control-label">Password</label>
 
+                <div class="col-md-6">
+                    <input id="password" type="password" class="form-control" name="password" value={{ old('Password',$user['attributes']['password']) }} required>
 
-	        <label for="zipcode" ><h5>Zipcode</h5></label><br>
-	        <input id="zipcode" type='text' name="zipcode" value={{ old('xxxx',$user['attributes']['zipcode']) }}><br><br>
+                </div>
+            </div>
 
-	        <input id="editAccount" type="submit" name="editAccount" value="Edit YOUR ACCOUNT" class='btn btn-primary  btn-small'>
+            <div class="form-group">
+                <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
 
-	        <input type='hidden' name='id' value='{{ $user->id }}'>
-        </div>
+                <div class="col-md-6">
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value={{ old('Confirm Password',$user['attributes']['password']) }} required>
+                </div>
+            </div>
 
-    </div>
-</form>
+            <div class="form-group">
+                <label for="zipcode" class="col-md-4 control-label">Zipcode</label>
 
-<form action="/delete/{{ $user->id }}" method="get" accept-charset="utf-8">
+                <div class="col-md-6">
+                    <input id="zipcode" type="text" class="form-control" name="zipcode" value={{ old('xxxx',$user['attributes']['zipcode']) }} required>
 
-    {{ csrf_field() }}
+                </div>
+            </div>
 
-    <input type='hidden' name='id' value='{{ $user->id }}'>
+            <div class="form-group">
+                <div class="col-md-6 col-md-offset-4">
+                    <button type="submit" class="btn btn-primary">
+                        Edit Your Account
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <form action="/delete/{{ $user->id }}" method="get" accept-charset="utf-8">
+
+        {{ csrf_field() }}
+
+        <input type='hidden' name='id' value='{{ $user->id }}'>
 	
-	 <input id="DeleteAccount" type="submit" name="deleteAccount" value="DELETE YOUR ACCOUNT" class='btn btn-primary  btn-small'>
+	     <input id="DeleteAccount" type="submit" name="deleteAccount" value="DELETE YOUR ACCOUNT" class='btn btn-primary  btn-small'>
 
-</form>
-
-</div>
-
+       </form>
+    </div>
 @endsection
