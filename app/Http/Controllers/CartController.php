@@ -10,7 +10,6 @@ use Cart;
 use App\Products;
 use LoginController;
 use App\User;
-use App\Order_Product;
 
 
 class CartController extends Controller
@@ -119,11 +118,11 @@ class CartController extends Controller
         $cartCollection = Cart::getContent();
         $cart = $cartCollection->toArray();
 
-        // insert into Order_Product pivot 
-        $order_product = new Order_Product;
-        $order_product->cust_id = $id;
-        $order_product->product_id = $prodId;
-        $order_product->save();
+        // // insert into Order_Product pivot 
+        // $orders_products = new Orders_Products;
+        // $orders_products->cust_id = $id;
+        // $orders_products->product_id = $prodId;
+        // $orders_products->save();
 
 
 
