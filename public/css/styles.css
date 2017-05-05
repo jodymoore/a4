@@ -19,6 +19,14 @@
         text-align: center;
     }
 
+    form h2 {
+        color: white;
+    }
+
+    #deleteconf {
+        color: white;
+    }
+
     #reOrder {
         color: white;
         width: 100%;

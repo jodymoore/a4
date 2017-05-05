@@ -19,10 +19,12 @@
        <div id=Lform>
 	        <label for="fullName" ><h5>Full Name</h5></label><br>
 	        <input id="Fname" type="text" name="Fname" value={{ old('First Name',$user['attributes']['name']) }} required>&nbsp
-	        <input id="Lname" type="text" name="Lname"  value={{ old('Last Name',$lastName) }} required><br>
+	        <input id="Lname" type="text" name="Lname"  value={{ old('Last Name',$lastName) }} required>
+	        <br>
+	        <input type='hidden' name='name' value='{{ $user->name }}'>
 
-	        <label for="Email" ><h5>E-mail Address</h5></label><br>
-	        <input id="Email" type='text' name="Email" value={{ old('you@example.com',$user['attributes']['email']) }} ><br>
+	        <label for="email" ><h5>E-mail Address</h5></label><br>
+	        <input id="email" type='text' name="email" value={{ old('you@example.com',$user['attributes']['email']) }} ><br>
 
 	        <label for="phoneNumber" ><h5>Phone Number</h5></label><br>
 	        <input id="phoneNumber" type='text' name="phoneNumber" value={{ old('(xxx)xxx-xxxx)',$user['attributes']['phoneNumber']) }} >&nbsp
@@ -44,6 +46,16 @@
         </div>
 
     </div>
+</form>
+
+<form action="/delete/{{ $user->id }}" method="get" accept-charset="utf-8">
+
+    {{ csrf_field() }}
+
+    <input type='hidden' name='id' value='{{ $user->id }}'>
+	
+	 <input id="DeleteAccount" type="submit" name="deleteAccount" value="DELETE YOUR ACCOUNT" class='btn btn-primary  btn-small'>
+
 </form>
 
 </div>

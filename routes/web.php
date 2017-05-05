@@ -32,14 +32,23 @@ Route::get('/popPizzas', 'PizzaController@show2');
 Route::post('/edit/{id}', 'PizzaController@edit');
 
 /**
+*  /delete
+*/
+# Get route to confirm deletion of user
+Route::get('/delete/{id}', 'PizzaController@confirmDeletion');
+
+# Post route to actually destroy the user
+Route::post('/delete', 'PizzaController@delete');
+
+/**
 *  /saveEdit
 */
-Route::post('/save', 'PizzaController@save');
+Route::post('/save', 'PizzaController@saveEdits');
 
 /**
 *  /newOrder
 */
-Route::get('/newOrder', 'pizzaController@showNewOrder');
+Route::get('/newOrder', 'PizzaController@showNewOrder');
 
 /**
 *  /order
