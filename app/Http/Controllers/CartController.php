@@ -79,8 +79,7 @@ class CartController extends Controller
             // get user id 
             $id = Auth::id();
          
-            $cartCollection = Cart::getContent();
-            $cart = $cartCollection;
+            $cart = Cart::getContent();
 
             $price = 0;
             $prodId = null;
@@ -106,24 +105,26 @@ class CartController extends Controller
             $cust_order->total = $price;
             $cust_order->save();
 
-
             // get last order_id from db
             $getOrder = Orders::all()->last();
             $order_id = $getOrder['attributes']['order_id'];
 
-           
-
-            $getOrder->products()->attach($order_id,['order_id']);
+            // save to pivot table
+            #$getOrder->products()->attach($order_id,['order_id']);
 
             $total = Cart::getTotal();
-            $cartArry = $cartCollection->toArray();
+            $cartArry = $cart->toArray();
             Cart::clear();
 
-            // send email to customer confirming the order
+            // customer email
             $email = $customer->email;
+
+            // send email to customer confirming the order
+            #**** TODO****#
 
         }
 
+        // get cleared contents of Cart
         $cartCollection = Cart::getContent();
         $cart = $cartCollection->toArray();
 
