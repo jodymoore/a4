@@ -27,6 +27,16 @@ Route::get('/', 'PizzaController@show');
 Route::get('/popPizzas', 'PizzaController@show2');
 
 /**
+*  /edit
+*/
+Route::post('/edit/{id}', 'PizzaController@edit');
+
+/**
+*  /saveEdit
+*/
+Route::post('/save', 'PizzaController@save');
+
+/**
 *  /newOrder
 */
 Route::get('/newOrder', 'pizzaController@showNewOrder');

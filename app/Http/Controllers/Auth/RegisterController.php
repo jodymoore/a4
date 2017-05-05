@@ -58,6 +58,17 @@ class RegisterController extends Controller
     }
 
     /**
+     * Edit
+     *
+     */
+     function edit($id)
+    {
+        $user = User::find($id);
+
+        return view('edit')->with('user', $user);
+    }
+
+    /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
@@ -66,19 +77,6 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         
-       // insert data to customers table
-
-        $customer = new Customers();
-
-        $customer->name  = $data['name']; 
-
-        $customer->Email = $data['email'];
-
-        $customer->phoneNumber = $data['phoneNumber'];
-
-        $customer->zipcode = $data['zipcode'];
-
-        $customer->save();
 
         return User::create([
             'name' => $data['name'],

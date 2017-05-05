@@ -4,7 +4,7 @@
 
 @include('header')
 <div id="createAccount">
-	<h4>Create Your Pizza Shop Account</h4>
+	<h4>Create Your Quik Pizza Account</h4>
 </div>
 
 

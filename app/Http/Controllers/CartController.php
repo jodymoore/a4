@@ -94,9 +94,9 @@ class CartController extends Controller
             foreach($cart as $value) {
                 $order[$count++] = $value->quantity.' '.$value->name.', ';
                 $price += $value->price;
-                $prodId = $value->id;
             }
-            
+
+            // turn array into string to store in db
             $order = implode("\n", $order);
           
             $cust_order->cust_id = $id;
@@ -105,6 +105,15 @@ class CartController extends Controller
             $cust_order->order = $order;
             $cust_order->total = $price;
             $cust_order->save();
+
+
+            // get last order_id from db
+            $getOrder = Orders::all()->last();
+            $order_id = $getOrder['attributes']['order_id'];
+
+           
+
+            $getOrder->products()->attach($order_id,['order_id']);
 
             $total = Cart::getTotal();
             $cartArry = $cartCollection->toArray();
@@ -117,13 +126,6 @@ class CartController extends Controller
 
         $cartCollection = Cart::getContent();
         $cart = $cartCollection->toArray();
-
-        // // insert into Order_Product pivot 
-        // $orders_products = new Orders_Products;
-        // $orders_products->cust_id = $id;
-        // $orders_products->product_id = $prodId;
-        // $orders_products->save();
-
 
 
         return view('thankyou')->with([

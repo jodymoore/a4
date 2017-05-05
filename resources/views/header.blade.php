@@ -26,6 +26,17 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+                                    <li>
+                                        <a href="/edit/{{ Auth::user()->id }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('edit-form').submit();">
+                                            Edit
+                                        </a>
+
+                                        <form id="edit-form" action="/edit/{{ Auth::user()->id }}" method="POST" >
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
                                 </ul>
                             </li>
                         @endif
