@@ -29,7 +29,7 @@ Route::get('/popPizzas', 'PizzaController@show2');
 /**
 *  /edit
 */
-Route::post('/edit/{id}', 'PizzaController@edit');
+Route::get('/edit/{id}', 'PizzaController@edit');
 
 /**
 *  /delete

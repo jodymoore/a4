@@ -6,7 +6,6 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use App\Customers;
 use Session;
 use Illuminate\Http\Request;
 
@@ -55,17 +54,6 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
-    }
-
-    /**
-     * Edit
-     *
-     */
-     function edit($id)
-    {
-        $user = User::find($id);
-
-        return view('edit')->with('user', $user);
     }
 
     /**

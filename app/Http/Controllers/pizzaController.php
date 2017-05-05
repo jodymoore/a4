@@ -62,7 +62,6 @@ class PizzaController extends Controller
 
         $user = User::find($request->id);
         
-        dump($request->name);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phoneNumber = $request->phoneNumber;
@@ -86,7 +85,7 @@ class PizzaController extends Controller
     */
     public function confirmDeletion($id) {
 
-        # Get the book they're attempting to delete
+        # Get the user you attempting to delete
         $user = User::find($id);
 
         if(!$user) {

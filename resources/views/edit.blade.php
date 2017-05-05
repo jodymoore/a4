@@ -58,7 +58,6 @@
 
                 <div class="col-md-6">
                     <input id="zipcode" type="text" class="form-control" name="zipcode" value={{ old('xxxx',$user['attributes']['zipcode']) }} required>
-
                 </div>
             </div>
 
@@ -73,11 +72,9 @@
 
         <form action="/delete/{{ $user->id }}" method="get" accept-charset="utf-8">
 
-        {{ csrf_field() }}
-
-        <input type='hidden' name='id' value='{{ $user->id }}'>
-	
-	     <input id="DeleteAccount" type="submit" name="deleteAccount" value="DELETE YOUR ACCOUNT" class='btn btn-primary  btn-small'>
+	        <input type='hidden' name='id' value='{{ $user->id }}'>
+		
+		     <input id="DeleteAccount" type="submit" name="deleteAccount" value="DELETE YOUR ACCOUNT" class='btn btn-primary  btn-small'>
 
        </form>
     </div>
