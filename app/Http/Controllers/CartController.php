@@ -10,6 +10,7 @@ use Cart;
 use App\Products;
 use LoginController;
 use App\User;
+use Mail;
 
 
 class CartController extends Controller
@@ -85,7 +86,7 @@ class CartController extends Controller
             $prodId = null;
            
             // get all the atributes that match $id 
-            $customer = User::where('id','=',$id)->first();
+            $user = User::where('id','=',$id)->first();
             $cust_order = new Orders();
             $count = 0;
             $orders = [];
@@ -99,8 +100,8 @@ class CartController extends Controller
             $order = implode("\n", $order);
           
             $cust_order->cust_id = $id;
-            $cust_order->name = $customer->name;
-            $cust_order->email = $customer->email;
+            $cust_order->name = $user->name;
+            $cust_order->email = $user->email;
             $cust_order->order = $order;
             $cust_order->total = $price;
             $cust_order->save();
@@ -116,11 +117,15 @@ class CartController extends Controller
             $cartArry = $cart->toArray();
             Cart::clear();
 
-            // customer email
-            $email = $customer->email;
-
             // send email to customer confirming the order
             #**** TODO****#
+            Mail::send('confirm', ['user' => $user], 
+                function ($m) use ($user) {
+                    $m->from(env('MAIL_FROM'), 'Quik Pizza');
+
+                    $m->to($user->email, $user->name)->subject('confirming order!');
+                }
+            );
 
         }
 
