@@ -6,7 +6,7 @@
 <h4 id="welcome">Welcome to Quik Pizza</h4>
 <div id="container">
  <!-- Carousel code Starts -->
-    <div  id="login_carousel" class="carousel slide" data-ride="carousel" style="width: 80%;  margin: 0 auto">
+    <div  id="login_carousel" class="carousel slide" data-ride="carousel" >
       <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#login_carousel" data-slide-to="0" class="active"></li>
@@ -24,14 +24,14 @@
         </div>
 
         <div class="item">
-          <img class="img-rounded" src="/images/images.jpeg" alt="44">
+          <img class="img-rounded" src="/images/pizza-pic3.jpg" alt="44">
           <div class="carousel-caption">
 
             <p></p>
           </div>
         </div> 
         <div class="item">
-          <img class="img-rounded" src="/images/p1.jpeg" alt="47">
+          <img class="img-rounded" src="/images/pizza-pic4.jpg" alt="47">
           <div class="carousel-caption">
 
             <p></p>

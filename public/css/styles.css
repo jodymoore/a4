@@ -19,6 +19,11 @@
         text-align: center;
     }
 
+    #login_carousel {
+        width: 80%;  
+        margin: 0 auto;   
+    }
+
     form h2 {
         color: white;
     }
@@ -160,6 +165,7 @@
        margin-top: -5%;
        margin-left: 60%;
        display: inline-block;
+       border-radius: 10px;
     }
 
     #total {

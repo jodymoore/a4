@@ -7,7 +7,7 @@
 @section('content')
 
     <h1 id="deleteconf" >Confirm deletion</h1>
-    <form method='POST' action='/delete/{{ $user->id }}'>
+    <form method='post' action='/delete'>
 
         {{ csrf_field() }}
 

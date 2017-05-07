@@ -99,7 +99,7 @@ class CartController extends Controller
             // turn array into string to store in db
             $order = implode("\n", $order);
           
-            $cust_order->cust_id = $id;
+            $cust_order->user_id = $id;
             $cust_order->name = $user->name;
             $cust_order->email = $user->email;
             $cust_order->order = $order;

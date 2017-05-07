@@ -15,7 +15,7 @@ class OrdersTableSeeder extends Seeder
         Orders::insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	        'cust_id' => 1,
+	        'user_id' => 1,
 	        'name' => 'Jody Moore',
 	        'email' => 'jodymoore@g.harvard.edu',
 	        'order' =>'1 Large pepperoni pizza',
@@ -25,7 +25,7 @@ class OrdersTableSeeder extends Seeder
         Orders::insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	        'cust_id' => 1,
+	        'user_id' => 1,
 	        'name' => 'Jody Moore',
 	        'email' => 'jodymoore@g.harvard.edu',
 	        'order' =>'1 Large supreme pizza',
@@ -35,7 +35,7 @@ class OrdersTableSeeder extends Seeder
         Orders::insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	        'cust_id' => 1,
+	        'user_id' => 1,
 	        'name' => 'Jody Moore',
 	        'email' => 'jodymoore@g.harvard.edu',
 	        'order' =>'1 Large vegetable pizza',
@@ -45,7 +45,7 @@ class OrdersTableSeeder extends Seeder
         Orders::insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	        'cust_id' => 1,
+	        'user_id' => 1,
 	        'name' => 'Jody Moore',
 	        'email' => 'jodymoore@g.harvard.edu',
 	        'order' =>'1 medium cheese pizza',
@@ -55,7 +55,7 @@ class OrdersTableSeeder extends Seeder
 	    Orders::insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	        'cust_id' => 2,
+	        'user_id' => 2,
 	        'name' => 'Rhiannon Moore',
 	        'email' => 'rlov11@global.com',	        
 	        'order' =>'1 small pepperoni pizza',
@@ -65,7 +65,7 @@ class OrdersTableSeeder extends Seeder
 	    Orders::insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	        'cust_id' => 2,
+	        'user_id' => 2,
 	        'name' => 'Rhiannon Moore',
 	        'email' => 'rlov11@global.com',	        
 	        'order' =>'1 Large cheese pizza',
@@ -76,7 +76,7 @@ class OrdersTableSeeder extends Seeder
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'name' => 'Rhiannon Moore',
-	        'cust_id' => 2,
+	        'user_id' => 2,
 	        'email' => 'rlov11@global.com',	        
 	        'order' =>'1 Large supreme pizza',
 	        'total' => 10.99,
@@ -85,7 +85,7 @@ class OrdersTableSeeder extends Seeder
 	    Orders::insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	        'cust_id' => 2,
+	        'user_id' => 2,
 	        'name' => 'Rhiannon Moore',
 	        'email' => 'rlov11@global.com',	        
 	        'order' =>'1 medium cheese pizza',

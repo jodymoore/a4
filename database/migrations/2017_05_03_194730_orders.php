@@ -18,7 +18,7 @@ class Orders extends Migration
             # Increments method will make a Primary, Auto-Incrementing field.
             # Most tables start off this way
             $table->increments('order_id');
-            $table->integer('cust_id')->unsigned();  
+            $table->integer('user_id')->unsigned();  
            
 
             # This generates two columns: `created_at` and `updated_at` to
@@ -31,7 +31,7 @@ class Orders extends Migration
             $table->string('order');
             $table->float('total');
 
-            $table->foreign('cust_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
        });
     }
 

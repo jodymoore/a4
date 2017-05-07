@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Session;
+use Illuminate\Validation\Rule;
 
 class PizzaController extends Controller
 {
@@ -51,17 +52,21 @@ class PizzaController extends Controller
     public function saveEdits(Request $request)
     {
 
-        // $this->validate($request, [
-
-        //     'name' => 'required|string|max:255',
-        //     'email' => 'required|string|email|max:255|unique:users',
-        //     'password' => 'required|string|min:6|confirmed',
-        //     'phoneNumber' => 'required|numeric|size:11 ',
-        //     'zipcode' => 'required|numeric|size:5',
-        // ]);
-
         $user = User::find($request->id);
-        
+
+        $errors = $this->validate($request, [
+
+            'name' => 'required|string|max:255',
+            'email' => [
+                'required',
+                Rule::unique('users')->ignore($user->id),
+            ],
+            'password' => 'required|string|min:6|confirmed',
+            'phoneNumber' => 'required|alpha_dash|size:12 ',
+            'zipcode' => 'required|numeric|min:5',
+        ]);
+
+    
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phoneNumber = $request->phoneNumber;
@@ -75,7 +80,7 @@ class PizzaController extends Controller
         $user->save();
 
         Session::flash('message', 'Your account has been updated!');
-        return view('index');
+        return view('index')->with('errors',$errors);
     }
 
 
@@ -104,19 +109,18 @@ class PizzaController extends Controller
 
         # Get the user to be deleted
         $user = User::find($request->id);
-        dump($user->id);
 
         if(!$user) {
             Session::flash('message', 'Deletion failed; user not found.');
             return redirect('/index');
         }
 
-
+        $user->orders()->delete();
         $user->delete();
 
         # Finish
         Session::flash('message', $user->name.' was deleted.');
-        return redirect('/index');
+        return view('index');
     }
 
 }

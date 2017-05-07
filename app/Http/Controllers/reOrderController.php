@@ -25,31 +25,31 @@ class reOrderController extends Controller
         // get login id
         $id = Auth::id(); 
 
-        $oldOrders = Orders::where('cust_id','=',$id)->get();
+        $oldOrders = Orders::where('user_id','=',$id)->get();
 
         $custOldOrders = [];
         $total = [];
         $id = [];
 
-        $count = 0;
+        $count1 = 0;
+        $count2 = 0;
+        $count3 = 0;
+      
 
-        // foreach ($oldOrders as $value) {
-        //     dump($value);
-        // }
-
-        
         foreach($oldOrders as $value) {
-            $custOldOrders[$count++] = $value->order;
-            $total[$count++] = $value->total;
-            $id[$count++] = $value->order_id;
+            $custOldOrders[$count1++] = $value->order;
+            $total[$count2++] = $value->total;
+            $id[$count3++] = $value->order_id;
+
         }
 
         return view('reorder')->with([
-            'custOldOrders' => $custOldOrders,
+            'orders' => $custOldOrders,
             'total' => $total,
             'id' => $id,
         ]);
     }
+
 
     public function submit(Request $request) {
             

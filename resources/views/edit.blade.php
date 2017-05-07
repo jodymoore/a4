@@ -61,6 +61,16 @@
                 </div>
             </div>
 
+            @if(count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            {{ $error }}
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <div class="form-group">
                 <div class="col-md-6 col-md-offset-4">
                     <button type="submit" class="btn btn-primary">
