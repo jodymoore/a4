@@ -13,17 +13,17 @@ class OrderProduct extends Migration
      */
     public function up()
     {
-        Schema::create('order_product', function (Blueprint $table) {
+        Schema::create('orders_products', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             # `book_id` and `tag_id` will be foreign keys, so they have to be unsigned
             #  Note how the field names here correspond to the tables they will connect...
             # `book_id` will reference the `books table` and `tag_id` will reference the `tags` table.
-            $table->integer('order_id')->unsigned();
-            $table->integer('product_id')->unsigned();
+            $table->integer('orders_id')->unsigned();
+            $table->integer('products_id')->unsigned();
             # Make foreign keys
-            $table->foreign('order_id')->references('order_id')->on('orders');
-            $table->foreign('product_id')->references('pid')->on('products');
+            $table->foreign('orders_id')->references('order_id')->on('orders');
+            $table->foreign('products_id')->references('pid')->on('products');
         });
     }
     /**
@@ -33,6 +33,6 @@ class OrderProduct extends Migration
      */
     public function down()
     {
-        Schema::drop('order_product');
+        Schema::drop('orders_products');
     }
 }

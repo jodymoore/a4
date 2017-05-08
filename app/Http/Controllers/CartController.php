@@ -37,6 +37,26 @@ class CartController extends Controller
         return view('index');
     }
 
+     /*
+     *  updateCart
+     */
+    public function updateCart() {
+               
+         // you may also want to update a product by reducing its quantity, you do this like so:
+        Cart::update(456, array(
+          'quantity' => -1, // so if the current product has a quantity of 4, it will subtract 1 and will result to 3
+        ));
+
+        // get updated contents to show in cart blade
+        $cart = Cart::getContent()->toArray();
+        
+        return view('cart')->with([
+            'cart' => $cart,
+        ]);
+    }
+
+
+
     /*
      *  remove
      */
@@ -90,25 +110,22 @@ class CartController extends Controller
             $count = 0;
             $productsOrdered = []; 
 
-            foreach($cart as $value) {
-                $productsOrdered[$count++] = $value->quantity.' '.$value->name.', ';
-                $price += $value->price;
-                $productsOrdered = $value->pid;
-            }
-
             // save current order to orders table 
             $cust_order->user_id = $id;
             $cust_order->name = $user->name;
             $cust_order->email = $user->email;
-            $cust_order->total = $price;
+            $cust_order->total = Cart::getTotal();
             $cust_order->save();
 
-            // need a product array made from cart to get product id 
-            // *****TODO *****//
-            
+            foreach($cart as $value) {
+                // need a product array just like tags in foobooks made from Cart contents to get 
+                // product id 
+               $productsOrdered[$count++] = $value['attributes']['pid'];
+            }
 
             // save to pivot table
             $cust_order->products()->sync($productsOrdered);
+    
             $cust_order->save();
 
             $total = Cart::getTotal();
