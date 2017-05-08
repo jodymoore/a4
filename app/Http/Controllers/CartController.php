@@ -117,7 +117,6 @@ class CartController extends Controller
             $cartArry = $cart->toArray();
             Cart::clear();
 
-           
             \Mail::send('confirm', ['user' => $user],
                function($message) use ($user) {
                 $message->to($user->email);
