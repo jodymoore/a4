@@ -18,7 +18,6 @@ class OrdersTableSeeder extends Seeder
 	        'user_id' => 1,
 	        'name' => 'Jody Moore',
 	        'email' => 'jodymoore@g.harvard.edu',
-	        'order' =>'1 Large pepperoni pizza',
 	        'total' => 9.99,
 	    ]);
 
@@ -28,7 +27,6 @@ class OrdersTableSeeder extends Seeder
 	        'user_id' => 1,
 	        'name' => 'Jody Moore',
 	        'email' => 'jodymoore@g.harvard.edu',
-	        'order' =>'1 Large supreme pizza',
 	        'total' => 10.99,
 	    ]);
 
@@ -38,7 +36,6 @@ class OrdersTableSeeder extends Seeder
 	        'user_id' => 1,
 	        'name' => 'Jody Moore',
 	        'email' => 'jodymoore@g.harvard.edu',
-	        'order' =>'1 Large vegetable pizza',
 	        'total' => 11.99,
 	    ]);
 
@@ -48,7 +45,6 @@ class OrdersTableSeeder extends Seeder
 	        'user_id' => 1,
 	        'name' => 'Jody Moore',
 	        'email' => 'jodymoore@g.harvard.edu',
-	        'order' =>'1 medium cheese pizza',
 	        'total' => 6.99,
 	    ]);
 
@@ -58,7 +54,6 @@ class OrdersTableSeeder extends Seeder
 	        'user_id' => 2,
 	        'name' => 'Rhiannon Moore',
 	        'email' => 'rlov11@global.com',	        
-	        'order' =>'1 small pepperoni pizza',
 	        'total' => 5.99,
 	    ]);
 
@@ -68,7 +63,6 @@ class OrdersTableSeeder extends Seeder
 	        'user_id' => 2,
 	        'name' => 'Rhiannon Moore',
 	        'email' => 'rlov11@global.com',	        
-	        'order' =>'1 Large cheese pizza',
 	        'total' => 7.99,
 	    ]);
 
@@ -78,7 +72,6 @@ class OrdersTableSeeder extends Seeder
 	        'name' => 'Rhiannon Moore',
 	        'user_id' => 2,
 	        'email' => 'rlov11@global.com',	        
-	        'order' =>'1 Large supreme pizza',
 	        'total' => 10.99,
 	    ]);
 
@@ -88,7 +81,6 @@ class OrdersTableSeeder extends Seeder
 	        'user_id' => 2,
 	        'name' => 'Rhiannon Moore',
 	        'email' => 'rlov11@global.com',	        
-	        'order' =>'1 medium cheese pizza',
 	        'total' => 6.99,
 	    ]);
 

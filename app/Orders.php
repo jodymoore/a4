@@ -14,7 +14,7 @@ class Orders extends Model
 
 
 	public function user() {
-		# Book belongs to Author
+		# order belongs to User
 		# Define an inverse one-to-many relationship.
 		return $this->belongsTo('App\User');
 	}

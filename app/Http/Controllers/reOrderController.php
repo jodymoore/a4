@@ -64,6 +64,8 @@ class reOrderController extends Controller
         $cartCollection = Cart::getContent();
         $cart = $cartCollection->toArray();
 
+        dump($cart);
+
         return view('cart')->with([
             'cart' => $cart,
         ]);

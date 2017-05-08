@@ -28,7 +28,6 @@ class Orders extends Migration
             # The rest of the fields...
             $table->string('name');
             $table->string('email');
-            $table->string('order');
             $table->float('total');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;

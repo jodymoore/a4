@@ -12,7 +12,6 @@ use LoginController;
 use App\User;
 use Mail;
 
-
 class CartController extends Controller
 {
     /*
@@ -89,29 +88,28 @@ class CartController extends Controller
             $user = User::where('id','=',$id)->first();
             $cust_order = new Orders();
             $count = 0;
-            $orders = [];
+            $productsOrdered = []; 
 
             foreach($cart as $value) {
-                $order[$count++] = $value->quantity.' '.$value->name.', ';
+                $productsOrdered[$count++] = $value->quantity.' '.$value->name.', ';
                 $price += $value->price;
+                $productsOrdered = $value->pid;
             }
 
-            // turn array into string to store in db
-            $order = implode("\n", $order);
-          
+            // save current order to orders table 
             $cust_order->user_id = $id;
             $cust_order->name = $user->name;
             $cust_order->email = $user->email;
-            $cust_order->order = $order;
             $cust_order->total = $price;
             $cust_order->save();
 
-            // get last order_id from db
-            $getOrder = Orders::all()->last();
-            $order_id = $getOrder['attributes']['order_id'];
+            // need a product array made from cart to get product id 
+            // *****TODO *****//
+            
 
             // save to pivot table
-            #$getOrder->products()->attach($order_id,['order_id']);
+            $cust_order->products()->sync($productsOrdered);
+            $cust_order->save();
 
             $total = Cart::getTotal();
             $cartArry = $cart->toArray();
@@ -185,7 +183,8 @@ class CartController extends Controller
             'price' => $price,
             'quantity' => 1,
             'attributes' => array(
-                'topping' => $topping,          
+                'topping' => $topping,
+                'pid' => $pid,         
           ),
         ));
 

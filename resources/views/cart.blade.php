@@ -38,6 +38,8 @@
                       <input id="id" type="hidden" name="id" value="{{ $value['id'] }}" > 
                       
                           {{ csrf_field() }}
+
+
                           <button id="remove" type="submit" name="remove" value="remove" formaction="/order/remove" class='btn btn-primary  btn-small' ><i class="fa fa-trash-o"></i></button>
 
                    </div>
@@ -52,6 +54,7 @@
 
 
     </div>
+    Total: ${{Cart::getTotal()}}
         <div id="cartOrderButton">
           <input id="cartOrderButton" type="submit" name="cartOrderButton"  formaction="/order/execute" value="SUBMIT ORDER" class='btn btn-primary  btn-small'>
         </div>
