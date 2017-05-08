@@ -55,5 +55,16 @@ class UsersTableSeeder extends Seeder
 	        'zipcode' => '72213',
 
 	    ]);
+
+	    User::insert([
+	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+	        'name' => 'Shaun Hillin',
+	        'email' => 'shaunhillin@gmail.com',
+	        'password' => crypt('root','rl'),
+	        'phoneNumber' => '555-555-5555',
+	        'zipcode' => '72213',
+
+	    ]);
     }
 }

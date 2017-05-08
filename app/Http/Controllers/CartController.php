@@ -119,13 +119,19 @@ class CartController extends Controller
 
             // send email to customer confirming the order
             #**** TODO****#
-            Mail::send('confirm', ['user' => $user], 
-                function ($m) use ($user) {
-                    $m->from(env('MAIL_FROM'), 'Quik Pizza');
+            // Mail::send('confirm', ['user' => $user], 
+            //     function ($m) use ($user) {
+            //         $m->from(env('MAIL_FROM'), 'Quik Pizza');
 
-                    $m->to($user->email, $user->name)->subject('confirming order!');
-                }
-            );
+            //         $m->to($user->email, $user->name)->subject('confirming order!');
+            //     }
+            // );
+           
+            Mail::send('confirm', ['user' => $user],
+               function($message) use ($user) {
+                $message->to($user->email);
+                $message->subject('Mailgun Testing');
+            });
 
         }
 
