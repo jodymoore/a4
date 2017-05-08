@@ -41,15 +41,21 @@ class CartController extends Controller
      *  updateCart
      */
     public function updateCart() {
+        
+        // get  cart order id that is to be updated
+        $orderId = null;
+
+        $carts = Cart::getContent();
+
                
          // you may also want to update a product by reducing its quantity, you do this like so:
-        Cart::update(456, array(
+        Cart::update($orderId, array(
           'quantity' => -1, // so if the current product has a quantity of 4, it will subtract 1 and will result to 3
         ));
 
         // get updated contents to show in cart blade
         $cart = Cart::getContent()->toArray();
-        
+
         return view('cart')->with([
             'cart' => $cart,
         ]);
@@ -132,11 +138,11 @@ class CartController extends Controller
             $cartArry = $cart->toArray();
             Cart::clear();
 
-            \Mail::send('confirm', ['user' => $user],
-               function($message) use ($user) {
-                $message->to($user->email);
-                $message->subject('Quik Pizza Confirmation');
-            });
+            // \Mail::send('confirm', ['user' => $user],
+            //    function($message) use ($user) {
+            //     $message->to($user->email);
+            //     $message->subject('Quik Pizza Confirmation');
+            // });
 
         }
 
@@ -204,7 +210,6 @@ class CartController extends Controller
                 'pid' => $pid,         
           ),
         ));
-
         Session::flash('message',$order.' was added to your order.');
 
         // need to hand this to order blade or checkout.
