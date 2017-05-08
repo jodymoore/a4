@@ -10,11 +10,30 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use App\User;
 
 if(config('app.env') == 'local') {
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 }
+
+Route::get('/debug-email', function() {
+    dump(Config::get('mail'));
+
+      $user = User::where('id','=',1)->first();
+       \Mail::send('confirm', ['user' => $user],
+               function($message) use ($user) {
+                $message->to($user->email);
+                $message->subject('Mailgun Testing');
+            });
+
+            //     \Mail::send([], [], function ($message) {
+            //   $message->to('jodymoore@g.harvard.edu')
+            //     ->subject('Hello World')
+            //     ->setBody('This is a test message; Testing 123.');
+            // });
+});
+
+
 
 /**
 *  Main home page visitors see when they visit just /
