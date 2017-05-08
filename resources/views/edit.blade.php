@@ -84,7 +84,7 @@
 
 	        <input type='hidden' name='id' value='{{ $user->id }}'>
 		
-		     <input id="DeleteAccount" type="submit" name="deleteAccount" value="DELETE YOUR ACCOUNT" class='btn btn-primary  btn-small'>
+		    <input id="DeleteAccount" type="submit" name="deleteAccount" value="DELETE YOUR ACCOUNT" class='btn btn-primary  btn-small'>
 
        </form>
     </div>

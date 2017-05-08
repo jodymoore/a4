@@ -127,10 +127,20 @@ class CartController extends Controller
             //     }
             // );
            
-            Mail::send('confirm', ['user' => $user],
-               function($message) use ($user) {
-                $message->to($user->email);
-                $message->subject('Mailgun Testing');
+            // Mail::send('confirm', ['user' => $user],
+            //    function($message) use ($user) {
+            //     $message->to($user->email);
+            //     $message->subject('Mailgun Testing');
+            // });
+
+            Mail::send('confirm', ['user' => $user], function($message) use ($user) {
+
+                $recipient_email = $user->email;
+                $recipient_name  = $user->name;
+                $subject  = 'A test email';
+
+                $message->to($recipient_email, $recipient_name)->subject($subject);
+
             });
 
         }

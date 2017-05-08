@@ -90,14 +90,6 @@
         height: 60px;
     }
 
-    #nav a {
-        color: white;
-        text-decoration: none;
-        padding: 2px 5px 2px 5px;
-        background-color: red;
-        height: 60px;
-        width: 200px;
-    }
     
     #form label {
         margin-left: 15px;

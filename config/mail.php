@@ -54,11 +54,7 @@ return [
     | used globally for all e-mails that are sent by your application.
     |
     */
-
-    'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'jodymoorellc@live.com'),
-        'name' => env('MAIL_FROM_NAME', 'jodymoorellc'),
-    ],
+    'from' => array('address' => 'mail@a4.com', 'name' => 'Quik Pizza'),
 
     /*
     |--------------------------------------------------------------------------

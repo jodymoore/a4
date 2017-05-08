@@ -16,7 +16,7 @@
  
         <div class="carousel-inner">
         <div class="item active">
-          <img class="img-rounded" src="/images/PizzaPageBanner.jpg" alt="00">
+          <img class="img-rounded" src="/images/pizza-pic4.jpg" alt="00">
           <div class="carousel-caption">
 
             <p></p>
@@ -31,7 +31,7 @@
           </div>
         </div> 
         <div class="item">
-          <img class="img-rounded" src="/images/pizza-pic4.jpg" alt="47">
+          <img class="img-rounded" src="/images/pizza-pic6.jpg" alt="47">
           <div class="carousel-caption">
 
             <p></p>

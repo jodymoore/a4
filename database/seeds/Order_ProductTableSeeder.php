@@ -13,11 +13,11 @@ class Order_ProductTableSeeder extends Seeder
      */
     public function run()
     {
+
     	// $orders = Orders::get();
 
 
-
-    	// for ($i=1; $i < count($orders) ; $i++) { 
+    	// for ($orders as $order) { 
 
     	// 	DB::table('order_product')->insert([
 		   //      'created_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -27,6 +27,7 @@ class Order_ProductTableSeeder extends Seeder
 	    //     ]);
     	// 	# code...
     	// }
+    	
         DB::table('order_product')->insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
