@@ -298,7 +298,8 @@ class CartController extends Controller
             'price' => $price,
             'quantity' => 1,
             'attributes' => array(
-                'topping' => $topping,     
+                'topping' => $topping, 
+                'pid' => $pid,     
           ),
         ));
 
