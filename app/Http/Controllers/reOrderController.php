@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use App\Product;
 use Session;
 use Cart;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,16 @@ class reOrderController extends Controller
         $id = [];
         $topping = [];
 
+        $productsOrdered = [];
+
+         
+
+         // need to get products from order_product table
+
+        $products = Order::with('products')->get();
+
+       
+
         foreach($prevOrders as $order) {
             foreach ($order->products as $product) {
 
@@ -42,24 +53,6 @@ class reOrderController extends Controller
             }
         }
 
-          
-        // #$oldOrders = Orders::where('user_id','=',$id)->get();
-
-        // $custOldOrders = [];
-        // $total = [];
-        // $id = [];
-
-        // $count1 = 0;
-        // $count2 = 0;
-        // $count3 = 0;
-      
-
-        // foreach($oldOrders as $value) {
-        //     $custOldOrders[$count1++] = $value->order;
-        //     $total[$count2++] = $value->total;
-        //     $id[$count3++] = $value->order_id;
-
-        // }
 
         return view('reorder')->with([
             'orders' => $orders,

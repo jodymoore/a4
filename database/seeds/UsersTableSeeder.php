@@ -48,7 +48,7 @@ class UsersTableSeeder extends Seeder
 	    User::insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	        'name' => 'Sheila wWlson',
+	        'name' => 'Sheila Wilson',
 	        'email' => 'sheila@g.harvard.edu',
 	        'password' => crypt('root','rl'),
 	        'phoneNumber' => '555-555-5555',

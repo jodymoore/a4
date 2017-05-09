@@ -83,80 +83,6 @@ class CartController extends Controller
             ]);
     }
 
-    /*
-     *  execute 
-     */
-    public function execute(Request $request) {
-     
-        // if not logged in redirect to temp form page
-        if(!Auth::check()) {
-            return redirect()->route('login');
-        }
-
-        $cartArry = [];
-
-        if(Cart::isEmpty()) {
-
-            return view('cart');
-
-        }
-        else {
-            
-            // get user id 
-            $id = Auth::id();
-         
-            $carts = Cart::getContent();
-
-            $price = 0;
-            $prodId = null;
-           
-            // get all the atributes that match $id 
-            $user = User::where('id','=',$id)->first();
-            $cust_order = new Order();
-            $count = 0;
-            $productsOrdered = []; 
-
-            // save current order to orders table 
-            $cust_order->user_id = $id;
-            $cust_order->name = $user->name;
-            $cust_order->email = $user->email;
-            $cust_order->total = Cart::getTotal();
-            $cust_order->save();
-
-            foreach($carts as $cart) {
-                // need a product array just like tags in foobooks made from Cart contents to get 
-                // product id 
-               $productsOrdered[$count++] = $cart['id'];
-            }
-
-            // save to pivot table
-            $cust_order->products()->sync($productsOrdered);
-    
-            $cust_order->save();
-
-            $total = Cart::getTotal();
-            $cartArry = $carts->toArray();
-            Cart::clear();
-
-            // \Mail::send('confirm', ['user' => $user],
-            //    function($message) use ($user) {
-            //     $message->to($user->email);
-            //     $message->subject('Quik Pizza Confirmation');
-            // });
-
-        }
-
-        // get cleared contents of Cart
-        $cartCollection = Cart::getContent();
-        $cart = $cartCollection->toArray();
-
-
-        return view('thankyou')->with([
-            'cartArry' => $cartArry,
-            'total' => $total,
-        ]);
-    }
-
      /*
      *  a dynamic order function 
      */
@@ -267,5 +193,79 @@ class CartController extends Controller
         Session::flash('message',$order.' was added to your order.');
 
         return view('newOrder');
+    }
+
+        /*
+     *  execute 
+     */
+    public function execute(Request $request) {
+     
+        // if not logged in redirect to temp form page
+        if(!Auth::check()) {
+            return redirect()->route('login');
+        }
+
+        $cartArry = [];
+
+        if(Cart::isEmpty()) {
+
+            return view('cart');
+
+        }
+        else {
+            
+            // get user id 
+            $id = Auth::id();
+         
+            $carts = Cart::getContent();
+
+            $price = 0;
+            $prodId = null;
+           
+            // get all the atributes that match $id 
+            $user = User::where('id','=',$id)->first();
+            $cust_order = new Order();
+            $count = 0;
+            $productsOrdered = []; 
+
+            // save current order to orders table 
+            $cust_order->user_id = $id;
+            $cust_order->name = $user->name;
+            $cust_order->email = $user->email;
+            $cust_order->total = Cart::getTotal();
+            $cust_order->save();
+
+            foreach($carts as $cart) {
+                // need a product array just like tags in foobooks made from Cart contents to get 
+                // product id 
+               $productsOrdered[$count++] = $cart['id'];
+            }
+
+            // save to pivot table
+            $cust_order->products()->sync($productsOrdered);
+    
+            $cust_order->save();
+
+            $total = Cart::getTotal();
+            $cartArry = $carts->toArray();
+            Cart::clear();
+
+            // \Mail::send('confirm', ['user' => $user],
+            //    function($message) use ($user) {
+            //     $message->to($user->email);
+            //     $message->subject('Quik Pizza Confirmation');
+            // });
+
+        }
+
+        // get cleared contents of Cart
+        $cartCollection = Cart::getContent();
+        $cart = $cartCollection->toArray();
+
+
+        return view('thankyou')->with([
+            'cartArry' => $cartArry,
+            'total' => $total,
+        ]);
     }
 }
