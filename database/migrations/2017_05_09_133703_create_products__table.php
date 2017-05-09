@@ -18,7 +18,6 @@ class CreateProductsTable extends Migration
         # Increments method will make a Primary, Auto-Incrementing field.
         # Most tables start off this way
         $table->increments('id');
-        $table->string('pid');
 
         # This generates two columns: `created_at` and `updated_at` to
         # keep track of changes to a row

@@ -30,10 +30,11 @@ class OrderProductTableSeeder extends Seeder
     	foreach ($orders as $order) {
     		foreach ($order->products as $product) {
     			$order->sync($product);
+    			$order->save;
     		}
     	}
 
-    	$orders->save;
+    	
     	
      //    DB::table('order_product')->insert([
 	    //     'created_at' => Carbon\Carbon::now()->toDateTimeString(),

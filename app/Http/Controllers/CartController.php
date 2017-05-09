@@ -170,9 +170,11 @@ class CartController extends Controller
         $pSize = $request->selectSize;
 
         $sizeId = null;
-        $id = $pid.$pSize;
-
-        $product = Product::where('pid','=',$id)->first();
+        $id = $pid + $pSize;
+        dump($pSize);
+        dump($pid);
+        dump($id);
+        $product = Product::where('id','=',$id)->first();
 
         $price = $product->price;
         $topping = $product->topping;
@@ -205,37 +207,19 @@ class CartController extends Controller
         ]);
 
         $pSize = $request->selectSize;
+        $id = '13' + $pSize;
+
+        $product = Product::where('id','=',$id)->first();
 
         $order = "";
-        $price = 5.99;
-        $topping = 'CREATE YOUR OWN';
-        $sizeId = null;
+        $price = $product->price;
+        $topping = $product->topping;
 
-        switch ( $pSize) {
-          case 'Small':
-            $sizeId = 1;
-            $price = $price;
-            break;
-          case 'Medium':
-            $sizeId += 2;
-            $price += 2.00;
-            break;
-            case 'Large':
-            $sizeId += 3;
-            $price += 3.00;
-            break;
-          default:
-            $sizeId = 0;
-            $price = $price;
-            break;
-        }
-        
-        $id = '5'.$sizeId;
-   
+
         $amtCheese = $request->selectCheese;
         $amtCheese = $amtCheese." "."cheese";
 
-        $order = $order.$pSize." pizza".", ".$amtCheese;
+        $order = $order.$product->size." pizza".", ".$amtCheese;
 
         // ingredient selections
         $input = $request->all('checkboxes');

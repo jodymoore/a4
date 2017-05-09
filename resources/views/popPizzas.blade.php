@@ -39,7 +39,7 @@
                 <option value="0">Small</option>
             </select> 
 
-             <input id="pid" type="hidden" name="pid" value="2" >
+             <input id="pid" type="hidden" name="pid" value="4" >
 
     	     <input id="orderNowP" type="submit" name="orderNowP" value="Order Now" onclick="window.location='{{ url("/order/pepperoni") }}'" class='btn btn-primary  btn-small'>
              </form>
@@ -58,7 +58,7 @@
                 <option value="0">Small</option>
             </select> 
              
-            <input id="pid" type="hidden" name="pid" value="3" >
+            <input id="pid" type="hidden" name="pid" value="7" >
 
     	    <input id="orderNowS" type="submit" name="orderNowS" value="Order Now" class='btn btn-primary  btn-small'>
             </form>
@@ -77,7 +77,7 @@
                 <option value="0">Small</option>
             </select> 
 
-             <input id="pid" type="hidden" name="pid" value="4" >
+             <input id="pid" type="hidden" name="pid" value="10" >
 
     	     <input id="own-orderV" type="submit" name="orderNowV" value="Order Now" class='btn btn-primary  btn-small'>
              </form>

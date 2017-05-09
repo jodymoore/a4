@@ -22,7 +22,6 @@ class ProductsTableSeeder extends Seeder
 			    switch ( $toppings[$i]) {
 			        case 'CHEESE':
 				      Product::insert([
-				      	    'pid' => '1'.(string)$j,
 					        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 					        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 					        'topping' => $toppings[$i],
@@ -34,7 +33,6 @@ class ProductsTableSeeder extends Seeder
 		               break;
 			        case 'PEPPERONI':
 			          	Product::insert([
-			          		'pid' => '2' .(string)$j,
 					        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 					        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 					        'topping' => $toppings[$i],
@@ -46,7 +44,6 @@ class ProductsTableSeeder extends Seeder
 			           break;
 			        case 'SUPREME':
 			          	Product::insert([
-			          		'pid' => '3'.(string)$j,
 					        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 					        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 					        'topping' => $toppings[$i],
@@ -58,7 +55,6 @@ class ProductsTableSeeder extends Seeder
 			            break;
 			        case 'VEGETABLE':
 			             Product::insert([
-			            	'pid' => '4'.(string)$j,
 					        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 					        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 					        'topping' => $toppings[$i],
@@ -70,14 +66,13 @@ class ProductsTableSeeder extends Seeder
 			            break;
 			        case 'CREATE YOUR OWN':
 			             Product::insert([
-			            	'pid' => '5'.(string)$j,
 					        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 					        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 					        'topping' => $toppings[$i],
 					        'desc' => 'marinara topped with fresh mozzarella cheese and'.' '.$toppings[$i].'.',
 					        'size' => $pSizes[$j],
 					        'image_url' => 'https://s3.amazonaws.com/jwm-product-images/Cheese.png',
-					        'price' =>  0,
+					        'price' =>  $priceArry[$j],
 				         ]);
 			            break;
 

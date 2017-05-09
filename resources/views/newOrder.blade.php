@@ -13,9 +13,9 @@
 		    <caption><h4>Start Order</h4></caption><br>
 		    <label for="selectSize" >Pizza Size</label>
 	        <select id="selectSize" name="selectSize" value="Size">
-	            <option value="Large">Large</option>
-	            <option value="Medium">Medium</option>
-	            <option value="Small">Small</option>
+	            <option value="2">Large</option>
+	            <option value="1">Medium</option>
+	            <option value="0">Small</option>
 	        </select> <br><br>
     
 	        <label for="selectCheese" >Cheese</label>
