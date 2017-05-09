@@ -171,9 +171,7 @@ class CartController extends Controller
 
         $sizeId = null;
         $id = $pid + $pSize;
-        dump($pSize);
-        dump($pid);
-        dump($id);
+
         $product = Product::where('id','=',$id)->first();
 
         $price = $product->price;
