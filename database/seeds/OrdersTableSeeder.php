@@ -21,31 +21,29 @@ class OrdersTableSeeder extends Seeder
 
         $productsArry = [];
 
-        $productPrice = [];
+        $numOfProducts = [2,4,6,3,1,4,3,3,1,2];
 
-        $user = new User();
+        $useridArry = [3,5,1,2,2,5,3,1,3,4];
+
+        $prodId = [3,1,14,2,5,6,8,10,11,15];
+
 
         for ($i=0; $i < $numberOfOrders; $i++) { 
 
-             // get random user id
-             $randUser = rand(1,5);
+             $productPrice = [];
 
-             // get random number of products to place in order
-             $numOfProducts = rand(1,4);
-
-             // use random user id to query DB
-             $user = User::where('id','=',$randUser)->get();
-
-             echo $user ;
-
+             // use user id to query DB
+             $user = User::where('id','=',$useridArry[$i])->first();
+             // this loop is designed to loop over a number of products
+             // and place them in a products array to be added to a users order.
              // loop over number of products 
-             for ($j=0; $j < $numOfProducts ; $j++) { 
-             	// get random product id 
-             	$prodId = rand(1,count($products));
+             for ($j=0; $j < $numOfProducts[$i] ; $j++) { 
+
              	// place product id in products array
-             	$productsArry[] = $products[$j]->id;
+             	$productsArry[] = $products[$prodId[$i]-1]->id;   
+
              	// place product price in price variable
-             	$productPrice[] = $products[$j]->price;
+             	$productPrice[] = $products[$prodId[$i]-1]->price;
              }
              // get total of product price array
              $total = array_sum($productPrice);
@@ -54,88 +52,13 @@ class OrdersTableSeeder extends Seeder
             Order::insert([
 		        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 		        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-		        'user_id' => $randUser,
+		        'user_id' => $useridArry[$i],
 		        'name' => $user->name,
 		        'email' => $user->email,
 		        'total' => $total,
 			]);
+
          }
-
-         // save order model 
-         // sync products to pivot
-
-
-     //    Order::insert([
-	    //     'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'user_id' => 1,
-	    //     'name' => 'Jody Moore',
-	    //     'email' => 'jodymoore@g.harvard.edu',
-	    //     'total' => 9.99,
-	    // ]);
-
-     //    Order::insert([
-	    //     'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'user_id' => 1,
-	    //     'name' => 'Jody Moore',
-	    //     'email' => 'jodymoore@g.harvard.edu',
-	    //     'total' => 10.99,
-	    // ]);
-
-     //    Order::insert([
-	    //     'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'user_id' => 1,
-	    //     'name' => 'Jody Moore',
-	    //     'email' => 'jodymoore@g.harvard.edu',
-	    //     'total' => 11.99,
-	    // ]);
-
-     //    Order::insert([
-	    //     'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'user_id' => 1,
-	    //     'name' => 'Jody Moore',
-	    //     'email' => 'jodymoore@g.harvard.edu',
-	    //     'total' => 6.99,
-	    // ]);
-
-	    // Order::insert([
-	    //     'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'user_id' => 2,
-	    //     'name' => 'Rhiannon Moore',
-	    //     'email' => 'rlov11@global.com',	        
-	    //     'total' => 5.99,
-	    // ]);
-
-	    // Order::insert([
-	    //     'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'user_id' => 2,
-	    //     'name' => 'Rhiannon Moore',
-	    //     'email' => 'rlov11@global.com',	        
-	    //     'total' => 7.99,
-	    // ]);
-
-	    // Order::insert([
-	    //     'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'name' => 'Rhiannon Moore',
-	    //     'user_id' => 2,
-	    //     'email' => 'rlov11@global.com',	        
-	    //     'total' => 10.99,
-	    // ]);
-
-	    // Order::insert([
-	    //     'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'user_id' => 2,
-	    //     'name' => 'Rhiannon Moore',
-	    //     'email' => 'rlov11@global.com',	        
-	    //     'total' => 6.99,
-	    // ]);
 
     }
 }

@@ -14,75 +14,42 @@ class OrderProductTableSeeder extends Seeder
      */
     public function run()
     {
-    	// $orders = Orders::get();
-    	// for ($orders as $order) { 
-    	// 	DB::table('order_product')->insert([
-		   //      'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-		   //      'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-		   //      'order_id' => 1,
-		   //      'product_id' => 2,
-	    //     ]);
-    	// 	# code...
-    	// }
+ 
 
-    	$orders = Order::all();;
+        $products = Product::all();
 
-    	foreach ($orders as $order) {
-    		foreach ($order->products as $product) {
-    			$order->sync($product);
-    			$order->save;
-    		}
-    	}
+        $orders = Order::all();
 
-    	
-    	
-     //    DB::table('order_product')->insert([
-	    //     'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'order_id' => 1,
-	    //     'product_id' => 2,
-	    // ]);
-	    // DB::table('order_product')->insert([
-	    //     'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'order_id' => 2,
-	    //     'product_id' => 5,
-	    // ]);
-	    // DB::table('order_product')->insert([
-	    //     'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'order_id' => 3,
-	    //     'product_id' => 6,
-	    // ]);
-	    // DB::table('order_product')->insert([
-	    //     'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'order_id' => 4,
-	    //     'product_id' => 3,
-	    // ]);
-	    // DB::table('order_product')->insert([
-	    //     'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'order_id' => 5,
-	    //     'product_id' => 5,
-	    // ]);
-	    // DB::table('order_product')->insert([
-	    //     'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'order_id' => 6,
-	    //     'product_id' => 2,
-	    // ]);
-	    // DB::table('order_product')->insert([
-	    //     'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'order_id' => 7,
-	    //     'product_id' => 5,
-	    // ]);
-	    // DB::table('order_product')->insert([
-	    //     'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	    //     'order_id' => 8,
-	    //     'product_id' => 1,
-	    // ]);
+        $productsArry = [];
+
+        $numOfProducts = [2,4,6,3,1,4,3,3,1,2];
+
+        $useridArry = [3,5,1,2,2,5,3,1,3,4];
+
+        $prodId = [3,1,14,2,5,6,8,10,11,15];
+
+        $order = new Order();
+
+        for ($i=0; $i < count($orders); $i++) { 
+
+             // this loop is designed to loop over a number of products
+             // and place them in a products array to be added to a users order.
+             // loop over number of products 
+             for ($j=0; $j < $numOfProducts[$i] ; $j++) { 
+
+             	// place product id in products array
+             	$productsArry[] = $products[$prodId[$i]-1]->id;   
+
+             	// place product price in price variable
+             	#$productPrice[] = $products[$prodId[$i]-1]->price;
+             }
+             // get total of product price array
+            # $total = array_sum($productPrice);
+            $order->where('id', '=', $i)->get();
+            $order->products()->sync($productsArry);
+    
+            $order->save();
+         }
+
     }
 }
