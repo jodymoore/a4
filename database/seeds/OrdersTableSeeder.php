@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Orders;
+use App\Order;
 
 class OrdersTableSeeder extends Seeder
 {
@@ -12,7 +12,7 @@ class OrdersTableSeeder extends Seeder
      */
     public function run()
     {
-        Orders::insert([
+        Order::insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'user_id' => 1,
@@ -21,7 +21,7 @@ class OrdersTableSeeder extends Seeder
 	        'total' => 9.99,
 	    ]);
 
-        Orders::insert([
+        Order::insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'user_id' => 1,
@@ -30,7 +30,7 @@ class OrdersTableSeeder extends Seeder
 	        'total' => 10.99,
 	    ]);
 
-        Orders::insert([
+        Order::insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'user_id' => 1,
@@ -39,7 +39,7 @@ class OrdersTableSeeder extends Seeder
 	        'total' => 11.99,
 	    ]);
 
-        Orders::insert([
+        Order::insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'user_id' => 1,
@@ -48,7 +48,7 @@ class OrdersTableSeeder extends Seeder
 	        'total' => 6.99,
 	    ]);
 
-	    Orders::insert([
+	    Order::insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'user_id' => 2,
@@ -57,7 +57,7 @@ class OrdersTableSeeder extends Seeder
 	        'total' => 5.99,
 	    ]);
 
-	    Orders::insert([
+	    Order::insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'user_id' => 2,
@@ -66,7 +66,7 @@ class OrdersTableSeeder extends Seeder
 	        'total' => 7.99,
 	    ]);
 
-	    Orders::insert([
+	    Order::insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'name' => 'Rhiannon Moore',
@@ -75,7 +75,7 @@ class OrdersTableSeeder extends Seeder
 	        'total' => 10.99,
 	    ]);
 
-	    Orders::insert([
+	    Order::insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'user_id' => 2,

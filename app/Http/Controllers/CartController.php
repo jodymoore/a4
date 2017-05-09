@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Orders;
+use App\Order;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Cart;
-use App\Products;
+use App\Product;
 use LoginController;
 use App\User;
 use Mail;
@@ -20,10 +20,10 @@ class CartController extends Controller
     public function show(Request $request) {
 
         $cartCollection = Cart::getContent();
-        $cart = $cartCollection->toArray();
+        $carts = $cartCollection->toArray();
     
         return view('cart')->with([
-            'cart' => $cart,
+            'carts' => $carts,
         ]);
     }
 
@@ -57,7 +57,7 @@ class CartController extends Controller
         $cart = Cart::getContent()->toArray();
 
         return view('cart')->with([
-            'cart' => $cart,
+            'carts' => $carts,
         ]);
     }
 
@@ -76,10 +76,10 @@ class CartController extends Controller
         Session::flash('message',$name.' was removed from your order.');
         
         $cartCollection = Cart::getContent();
-        $cart = $cartCollection->toArray();
+        $carts = $cartCollection->toArray();
 
         return view('cart')->with([
-            'cart' => $cart,
+            'carts' => $carts,
             ]);
     }
 
@@ -105,14 +105,14 @@ class CartController extends Controller
             // get user id 
             $id = Auth::id();
          
-            $cart = Cart::getContent();
+            $carts = Cart::getContent();
 
             $price = 0;
             $prodId = null;
            
             // get all the atributes that match $id 
             $user = User::where('id','=',$id)->first();
-            $cust_order = new Orders();
+            $cust_order = new Order();
             $count = 0;
             $productsOrdered = []; 
 
@@ -123,10 +123,10 @@ class CartController extends Controller
             $cust_order->total = Cart::getTotal();
             $cust_order->save();
 
-            foreach($cart as $value) {
+            foreach($carts as $cart) {
                 // need a product array just like tags in foobooks made from Cart contents to get 
                 // product id 
-               $productsOrdered[$count++] = $value['attributes']['pid'];
+               $productsOrdered[$count++] = $cart['id'];
             }
 
             // save to pivot table
@@ -135,7 +135,7 @@ class CartController extends Controller
             $cust_order->save();
 
             $total = Cart::getTotal();
-            $cartArry = $cart->toArray();
+            $cartArry = $carts->toArray();
             Cart::clear();
 
             // \Mail::send('confirm', ['user' => $user],
@@ -172,7 +172,7 @@ class CartController extends Controller
         $sizeId = null;
         $id = $pid.$pSize;
 
-        $product = Products::where('pid','=',$id)->first();
+        $product = Product::where('pid','=',$id)->first();
 
         $price = $product->price;
         $topping = $product->topping;
@@ -188,8 +188,7 @@ class CartController extends Controller
             'price' => $price,
             'quantity' => 1,
             'attributes' => array(
-                'topping' => $topping,
-                'pid' => $pid,         
+                'topping' => $topping,        
           ),
         ));
         Session::flash('message',$order.' was added to your order.');
@@ -231,8 +230,7 @@ class CartController extends Controller
             break;
         }
         
-        $pid = '5';
-        $id = $pid.$sizeId;
+        $id = '5'.$sizeId;
    
         $amtCheese = $request->selectCheese;
         $amtCheese = $amtCheese." "."cheese";
@@ -280,8 +278,7 @@ class CartController extends Controller
             'price' => $price,
             'quantity' => 1,
             'attributes' => array(
-                'topping' => $topping, 
-                'pid' => $pid,     
+                'topping' => $topping,     
           ),
         ));
 

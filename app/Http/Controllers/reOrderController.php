@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Orders;
+use App\Order;
 use Session;
 use Cart;
 use Illuminate\Support\Facades\Auth;
@@ -25,12 +25,16 @@ class reOrderController extends Controller
         // get login id
         $id = Auth::id(); 
 
-        $prevOrders = Orders::where('user_id','=',$id)->get();
+        $prevOrders = Order::where('user_id','=',$id)->get();
 
         dump($prevOrders);
-        foreach($prevOrders->products as $product) {
-            dump($product->topping);
-            dump($product->price);
+        foreach($prevOrders as $order) {
+            foreach ($order->products as $product) {
+                dump($product->pid);
+                dump($product->topping);
+                dump($product->price);
+            }
+
         }
 
         // #$oldOrders = Orders::where('user_id','=',$id)->get();

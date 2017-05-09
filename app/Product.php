@@ -5,9 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Products extends Model
+class Product extends Model
 {
     public function orders() {
-        return $this->belongsToMany('App\Orders')->withTimestamps();
+        return $this->belongsToMany('App\Order')->withTimestamps();
     }
 }

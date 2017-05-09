@@ -20,25 +20,24 @@
     @else
         <div>
 
-            @foreach($cart as $value)
+            @foreach($carts as $cart)
              
                 <div id="displayCart-wrapper">
 
                     <div id="cartLeft">
-                        <strong>{{$value['attributes']['topping']}}</strong> <br>
-                        <input id="name" type="hidden" name="name" value="{{ $value['name'] }}" > 
-                        {{$value['name']}}
+                        <strong>{{$cart['attributes']['topping']}}</strong> <br>
+                        <input id="name" type="hidden" name="name" value="{{ $cart['name'] }}" > 
+                        {{$cart['name']}}
                     </div>
         
                    <div id="cartRight">
 
-                      ${{$value['price']}} <br>
-                      Qty: {{$value['quantity']}} 
+                      ${{$cart['price']}} <br>
+                      Qty: {{$cart['quantity']}} 
 
-                      <input id="id" type="hidden" name="id" value="{{ $value['id'] }}" > 
+                      <input id="id" type="hidden" name="id" value="{{ $cart['id'] }}" > 
                       
                           {{ csrf_field() }}
-
 
                           <button id="remove" type="submit" name="remove" value="remove" formaction="/order/remove" class='btn btn-primary  btn-small' ><i class="fa fa-trash-o"></i></button>
 
@@ -51,9 +50,8 @@
         </div>
 
     @endif
-
-
     </div>
+
     Total: ${{Cart::getTotal()}}
         <div id="cartOrderButton">
           <input id="cartOrderButton" type="submit" name="cartOrderButton"  formaction="/order/execute" value="SUBMIT ORDER" class='btn btn-primary  btn-small'>
@@ -63,10 +61,10 @@
 
 </div>
 
-             <form action="/clearCart" method="post" accept-charset="utf-8">
+<form action="/clearCart" method="post" accept-charset="utf-8">
 
-             {{ csrf_field() }}
-                     <input id="clearCart" type="submit" name="clearCart" value="clearCart" class='btn btn-primary  btn-small'>
-             </form>
+{{ csrf_field() }}
+       <input id="clearCart" type="submit" name="clearCart" value="clearCart" class='btn btn-primary  btn-small'>
+</form>
 
 @endsection

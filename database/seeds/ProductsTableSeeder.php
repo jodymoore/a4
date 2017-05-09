@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Products;
+use App\Product;
 
 class ProductsTableSeeder extends Seeder
 {
@@ -21,7 +21,7 @@ class ProductsTableSeeder extends Seeder
 
 			    switch ( $toppings[$i]) {
 			        case 'CHEESE':
-				      Products::insert([
+				      Product::insert([
 				      	    'pid' => '1'.(string)$j,
 					        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 					        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -33,7 +33,7 @@ class ProductsTableSeeder extends Seeder
 					  ]);
 		               break;
 			        case 'PEPPERONI':
-			          	Products::insert([
+			          	Product::insert([
 			          		'pid' => '2' .(string)$j,
 					        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 					        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -45,7 +45,7 @@ class ProductsTableSeeder extends Seeder
 				         ]);            
 			           break;
 			        case 'SUPREME':
-			          	Products::insert([
+			          	Product::insert([
 			          		'pid' => '3'.(string)$j,
 					        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 					        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -57,7 +57,7 @@ class ProductsTableSeeder extends Seeder
 				         ]);
 			            break;
 			        case 'VEGETABLE':
-			             Products::insert([
+			             Product::insert([
 			            	'pid' => '4'.(string)$j,
 					        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 					        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -69,7 +69,7 @@ class ProductsTableSeeder extends Seeder
 				         ]);
 			            break;
 			        case 'CREATE YOUR OWN':
-			             Products::insert([
+			             Product::insert([
 			            	'pid' => '5'.(string)$j,
 					        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 					        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
