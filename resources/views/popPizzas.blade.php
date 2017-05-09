@@ -15,9 +15,9 @@
     	    <p>marinara topped with fresh mozzarella </p><br><p> cheese.</p>
 
             <select id="selectSize" name="selectSize" value="Size">
-                <option value="Large">Large</option>
-                <option value="Medium">Medium</option>
-                <option value="Small">Small</option>
+                <option value="2">Large</option>
+                <option value="1">Medium</option>
+                <option value="0">Small</option>
             </select> 
 
             <input id="pid" type="hidden" name="pid" value="1" >
@@ -34,9 +34,9 @@
     	    <p>marinara topped with fresh mozzarella</p><br><p> cheese and pepperoni.</p>
 
     	    <select id="selectSize" name="selectSize" value="Size">
-                <option value="Large">Large</option>
-                <option value="Medium">Medium</option>
-                <option value="Small">Small</option>
+                <option value="2">Large</option>
+                <option value="1">Medium</option>
+                <option value="0">Small</option>
             </select> 
 
              <input id="pid" type="hidden" name="pid" value="2" >
@@ -53,9 +53,9 @@
     	    <p>marinara topped with fresh mozzarella</p><p>pepperoni, pork, beef, mushrooms,</p><br><p> green peppers and onions</p>
 
     	    <select id="selectSize" name="selectSize" value="Size">
-                <option value="Large">Large</option>
-                <option value="Medium">Medium</option>
-                <option value="Small">Small</option>
+                <option value="2">Large</option>
+                <option value="1">Medium</option>
+                <option value="0">Small</option>
             </select> 
              
             <input id="pid" type="hidden" name="pid" value="3" >
@@ -72,9 +72,9 @@
     	    <p>marinara topped with fresh mozzarella</p><br><p> cheese, green peppers, mushrooms,</p><br> <p>and black olives.</p>
 
     	    <select id="selectSize" name="selectSize" value="Size">
-                <option value="Large">Large</option>
-                <option value="Medium">Medium</option>
-                <option value="Small">Small</option>
+                <option value="2">Large</option>
+                <option value="1">Medium</option>
+                <option value="0">Small</option>
             </select> 
 
              <input id="pid" type="hidden" name="pid" value="4" >

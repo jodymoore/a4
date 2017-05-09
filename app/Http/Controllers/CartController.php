@@ -170,34 +170,16 @@ class CartController extends Controller
         $pSize = $request->selectSize;
 
         $sizeId = null;
+        $id = $pid.$pSize;
 
-        $product = Products::where('pid','=',$pid)->first();
+        $product = Products::where('pid','=',$id)->first();
 
         $price = $product->price;
         $topping = $product->topping;
         $desc = $product->desc;
-
-        switch ( $pSize) {
-          case 'Small':
-            $sizeId = 1;
-            $price = $price;
-            break;
-          case 'Medium':
-            $sizeId += 2;
-            $price += 2.00;
-            break;
-            case 'Large':
-            $sizeId += 3;
-            $price += 3.00;
-            break;
-          default:
-            $sizeId = 0;
-            $price = $price;
-            break;
-        }
          
-        $id = $pid.$sizeId;    
-        $order = $pSize." ".strtolower($topping)." "." pizza"; 
+           
+        $order = $product->size." ".strtolower($topping)." "." pizza"; 
 
         // Cart array format
         Cart::add(array(
@@ -249,7 +231,7 @@ class CartController extends Controller
             break;
         }
         
-        $pid = 6;
+        $pid = '5';
         $id = $pid.$sizeId;
    
         $amtCheese = $request->selectCheese;

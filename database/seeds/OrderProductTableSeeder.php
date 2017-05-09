@@ -1,13 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Orders;
-use App\products;
 
-class Orders_ProductsTableSeeder extends Seeder
+class OrderProductTableSeeder extends Seeder
 {
-
-
 
     /**
      * Run the database seeds.
@@ -27,53 +23,53 @@ class Orders_ProductsTableSeeder extends Seeder
     	// 	# code...
     	// }
     	
-        DB::table('orders_products')->insert([
+        DB::table('order_product')->insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	        'orders_id' => 1,
-	        'products_id' => 2,
+	        'order_id' => 1,
+	        'product_id' => 2,
 	    ]);
-	    DB::table('orders_products')->insert([
+	    DB::table('order_product')->insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	        'orders_id' => 2,
-	        'products_id' => 3,
+	        'order_id' => 2,
+	        'product_id' => 5,
 	    ]);
-	    DB::table('orders_products')->insert([
+	    DB::table('order_product')->insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	        'orders_id' => 3,
-	        'products_id' => 4,
+	        'order_id' => 3,
+	        'product_id' => 6,
 	    ]);
-	    DB::table('orders_products')->insert([
+	    DB::table('order_product')->insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	        'orders_id' => 4,
-	        'products_id' => 2,
+	        'order_id' => 4,
+	        'product_id' => 3,
 	    ]);
-	    DB::table('orders_products')->insert([
+	    DB::table('order_product')->insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	        'orders_id' => 5,
-	        'products_id' => 1,
+	        'order_id' => 5,
+	        'product_id' => 5,
 	    ]);
-	    DB::table('orders_products')->insert([
+	    DB::table('order_product')->insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	        'orders_id' => 6,
-	        'products_id' => 2,
+	        'order_id' => 6,
+	        'product_id' => 2,
 	    ]);
-	    DB::table('orders_products')->insert([
+	    DB::table('order_product')->insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	        'orders_id' => 7,
-	        'products_id' => 3,
+	        'order_id' => 7,
+	        'product_id' => 5,
 	    ]);
-	    DB::table('orders_products')->insert([
+	    DB::table('order_product')->insert([
 	        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	        'orders_id' => 8,
-	        'products_id' => 1,
+	        'order_id' => 8,
+	        'product_id' => 1,
 	    ]);
     }
 }

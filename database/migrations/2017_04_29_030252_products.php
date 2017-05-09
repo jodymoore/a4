@@ -17,7 +17,8 @@ class Products extends Migration
 
         # Increments method will make a Primary, Auto-Incrementing field.
         # Most tables start off this way
-        $table->increments('pid');
+        $table->increments('id');
+        $table->string('pid');
 
         # This generates two columns: `created_at` and `updated_at` to
         # keep track of changes to a row
@@ -25,6 +26,7 @@ class Products extends Migration
 
         # The rest of the fields...
         $table->string('topping');
+        $table->string('size');
         $table->string('desc');
         $table->string('image_url');
         $table->float('price');
