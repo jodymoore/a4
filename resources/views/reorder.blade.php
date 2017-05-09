@@ -10,9 +10,11 @@
                     <form action="reorder_submit" method="post" accept-charset="utf-8">
                     {{ csrf_field() }}
                         <input id="order" type="hidden" name="order" value="{{ $orders[$x] }}" >
-                        <input id="price" type="hidden" name="price" value="" >
-                        <input id="id" type="hidden" name="id" value="" >
-                        $&nbsp;
+                        <input id="price" type="hidden" name="price" value="{{$total[$x]}}" >
+                        <input id="topping" type="hidden" name="topping" value="{{$topping[$x]}}" >
+                        <input id="id" type="hidden" name="id" value="{{$id[$x]}}" >
+                        ${{$total[$x]}}&nbsp;
+                        {{ $orders[$x] }}
                         <a href="#">  </a><br>
                         <input id="reOrderNow" type="submit" name="reOrderNow" value="REORDER" class='btn btn-primary  btn-small'>
                     </form>

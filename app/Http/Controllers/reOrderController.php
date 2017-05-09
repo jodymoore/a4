@@ -27,16 +27,22 @@ class reOrderController extends Controller
 
         $prevOrders = Order::where('user_id','=',$id)->get();
 
-        dump($prevOrders);
+        $orders = [];
+        $total = [];
+        $id = [];
+        $topping = [];
+
         foreach($prevOrders as $order) {
             foreach ($order->products as $product) {
-                dump($product->pid);
-                dump($product->topping);
-                dump($product->price);
-            }
 
+                $orders[] = $product->size." ".strtolower($product->topping)." "." pizza";
+                $total[] = $order->total;
+                $id[] = $product->id;
+                $topping[] = $product->topping;
+            }
         }
 
+          
         // #$oldOrders = Orders::where('user_id','=',$id)->get();
 
         // $custOldOrders = [];
@@ -56,9 +62,10 @@ class reOrderController extends Controller
         // }
 
         return view('reorder')->with([
-            'orders' => $prevOrders,
-            // 'total' => $total,
-            // 'id' => $id,
+            'orders' => $orders,
+            'total' => $total,
+            'id' => $id,
+            'topping' => $topping,
         ]);
     }
 
@@ -68,6 +75,7 @@ class reOrderController extends Controller
         $order = $request->order;
         $price = $request->price;
         $id = $request->id;
+        $topping = $request->topping;
 
         Cart::add($id, $order, $price, 1, array());
 
@@ -85,12 +93,11 @@ class reOrderController extends Controller
         Session::flash('message',$order.' was added to your order.');
 
         $cartCollection = Cart::getContent();
-        $cart = $cartCollection->toArray();
+        $carts = $cartCollection->toArray();
 
-        dump($cart);
 
         return view('cart')->with([
-            'cart' => $cart,
+            'carts' => $carts,
         ]);
 
     }
