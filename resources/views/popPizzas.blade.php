@@ -22,8 +22,6 @@
             </select> 
              <br> 
 
-            <input type="checkbox" id="exCheese" name="exCheese"/>Extra Cheese 
-
             <input id="pid" type="hidden" name="pid" value="1" >
             <br> 
     	    <input id="orderNowC" type="submit" name="orderNowC" value="Order Now" class='btn btn-primary  btn-small'>
@@ -45,8 +43,6 @@
             </select>
              <br>  
 
-            <input type="checkbox" id="exCheese" name="exCheese"/>Extra Cheese 
-
              <input id="pid" type="hidden" name="pid" value="4" >
               <br> 
     	     <input id="orderNowP" type="submit" name="orderNowP" value="Order Now" onclick="window.location='{{ url("/order/pepperoni") }}'" class='btn btn-primary  btn-small'>
@@ -67,8 +63,6 @@
                 <option value="0">Small</option>
             </select> 
              <br> 
-
-            <input type="checkbox" id="exCheese" name="exCheese"/>Extra Cheese 
              
             <input id="pid" type="hidden" name="pid" value="7" >
              <br> 
@@ -90,8 +84,6 @@
                 <option value="0">Small</option>
             </select>
             <br> 
-
-            <input type="checkbox" id="exCheese" name="exCheese"/>Extra Cheese 
 
              <input id="pid" type="hidden" name="pid" value="10" >
               <br> 

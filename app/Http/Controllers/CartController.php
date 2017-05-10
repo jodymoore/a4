@@ -28,41 +28,6 @@ class CartController extends Controller
     }
 
     /*
-     *  clearCart
-     */
-    public function clearCart() {
-       
-        Cart::clear();
-
-        return view('index');
-    }
-
-     /*
-     *  updateCart
-     */
-    public function updateCart() {
-        
-        // get  cart order id that is to be updated
-        $orderId = null;
-
-        $carts = Cart::getContent();
-
-               
-         // you may also want to update a product by reducing its quantity, you do this like so:
-        Cart::update($orderId, array(
-          'quantity' => -1, // so if the current product has a quantity of 4, it will subtract 1 and will result to 3
-        ));
-
-        // get updated contents to show in cart blade
-        $cart = Cart::getContent()->toArray();
-
-        return view('cart')->with([
-            'carts' => $carts,
-        ]);
-    }
-
-
-    /*
      *  remove
      */
     public function remove(Request $request) {
@@ -80,46 +45,6 @@ class CartController extends Controller
         return view('cart')->with([
             'carts' => $carts,
             ]);
-    }
-
-     /*
-     *  order Drink 
-     */
-    public function orderD(Request $request){
-                   
-        $pid = $request->pid;
-        $pSize = $request->selectSize;
-
-        $sizeId = null;
-        $id = $pid + $pSize;
-
-        $product = Product::where('id','=',$id)->first();
-
-        $price = $product->price;
-        $topping = $product->topping;
-        $desc = $product->desc;
-
-        if($request->has('exCheese')) {
-            $price = $price + 1.00;
-        }
-              
-        $order = $product->size." ".strtolower($topping)." "." pizza"; 
-
-        // Cart array format
-        Cart::add(array(
-            'id' => $id,
-            'name' => $order,
-            'price' => $price,
-            'quantity' => 1,
-            'attributes' => array(
-                'topping' => $topping,        
-          ),
-        ));
-        Session::flash('message',$order.' was added to your order.');
-
-        // need to hand this to order blade or checkout.
-        return view('popPizzas');
-
     }
 
      /*
@@ -142,10 +67,6 @@ class CartController extends Controller
         $price = $product->price;
         $topping = $product->topping;
         $desc = $product->desc;
-
-        if($request->has('exCheese')) {
-            $price = $price + 1.00;
-        }
 
         if ($product->id > 12) {
             $order = $product->size." ".strtolower($product->topping);           

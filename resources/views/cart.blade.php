@@ -61,10 +61,4 @@
 
 </div>
 
-<form action="/clearCart" method="post" accept-charset="utf-8">
-
-{{ csrf_field() }}
-       <input id="clearCart" type="submit" name="clearCart" value="clearCart" class='btn btn-primary  btn-small'>
-</form>
-
 @endsection
