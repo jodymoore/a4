@@ -4,7 +4,7 @@
 
 @include('header')
 <h4 id="welcome">Welcome to Quik Pizza</h4>
-<div id="container">
+
  <!-- Carousel code Starts -->
     <div  id="login_carousel" class="carousel slide" data-ride="carousel" >
       <!-- Indicators -->
@@ -49,6 +49,6 @@
     </div>
     <!-- Carousel code Ends --></div>
 
-</div>
+
 
 @endsection
