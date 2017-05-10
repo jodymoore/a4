@@ -252,11 +252,11 @@ class CartController extends Controller
             $cartArry = $carts->toArray();
             Cart::clear();
 
-            \Mail::send('confirm', ['user' => $user],
-               function($message) use ($user) {
-                $message->to($user->email);
-                $message->subject('Quik Pizza Confirmation');
-            });
+            // \Mail::send('confirm', ['user' => $user],
+            //    function($message) use ($user) {
+            //     $message->to($user->email);
+            //     $message->subject('Quik Pizza Confirmation');
+            // });
 
         }
 
