@@ -53,6 +53,8 @@ class reOrderController extends Controller
             }
         }
 
+        dump($orders);
+
 
         return view('reorder')->with([
             'orders' => $orders,

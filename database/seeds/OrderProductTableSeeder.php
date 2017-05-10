@@ -18,39 +18,39 @@ class OrderProductTableSeeder extends Seeder
         // get all the products
         $products = Product::all();
 
+        // get all orders in database should be 10 
         $orders = Order::all();
-
-        
-
+       
+        // number of products in each order 
         $numOfProducts = [2,4,6,3,1,4,3,3,1,2];
 
-        $useridArry = [3,5,1,2,2,5,3,1,3,4];
-
+        // array for product ids 
         $prodId = [3,1,14,2,5,6,8,10,11,15];
-
+        
+        // instance Order Model
         $order = new Order();
 
         for ($i=0; $i < count($orders); $i++) { 
 
             $productsArry = [];
 
-             // this loop is designed to loop over a number of products
-             // and place them in a products array to be added to a users order.
-             // loop over number of products 
-             for ($j=0; $j < $numOfProducts[$i] ; $j++) { 
+            // this loop is designed to loop over a number of products
+            // and place them in a products array to be added to a users order.
+            // loop over number of products 
+            for ($j=0; $j < 1 ; $j++) { 
              	
-               $productsArry[] = $products[$prodId[$i]-1]->id;
-                
-             }
+                $productsArry[] = $products[$prodId[$i]-1]->id;
 
-    
+            }
 
-              $order->find($i+1);
-        
-              $order->products()->sync($productsArry);
-    
-            // $order->save();
-         }
+            $order = $orders->where('id', '=', $i+1)->first();
 
+            foreach ($productsArry as $productId) {
+                $product = Product::where('id', '=', $productId)->first();
+                $order->products()->save($product);
+            }
+  
+        }
+         
     }
 }

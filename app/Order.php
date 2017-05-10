@@ -18,4 +18,5 @@ class Order extends Model
 		# Define an inverse one-to-many relationship.
 		return $this->belongsTo('App\User');
 	}
+
 }

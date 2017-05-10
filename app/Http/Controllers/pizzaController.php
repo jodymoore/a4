@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Session;
 use Illuminate\Validation\Rule;
+use App\Order;
 
 class PizzaController extends Controller
 {

@@ -28,8 +28,8 @@ class User extends Authenticatable
     ];
 
     public function orders() {
-        # Author has many Books
+        # user has many orders
         # Define a one-to-many relationship.
-        return $this->hasMany('App\Orders');
+        return $this->hasMany('App\Order');
     }
 }

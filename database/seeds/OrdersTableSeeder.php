@@ -36,7 +36,7 @@ class OrdersTableSeeder extends Seeder
              // this loop is designed to loop over a number of products
              // and place them in a products array to be added to a users order.
              // loop over number of products 
-             for ($j=0; $j < $numOfProducts[$i] ; $j++) { 
+             for ($j=0; $j < 1 ; $j++) { 
 
              	// place product id in products array
              	$productsArry[] = $products[$prodId[$i]-1]->id;   
