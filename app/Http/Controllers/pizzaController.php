@@ -35,6 +35,14 @@ class PizzaController extends Controller
         return view('newOrder');
     }
 
+    /*
+     *  drinkOrder
+     */
+    public function showDrinkOrder(Request $request) {
+
+        return view('drinks');
+    }
+
     /**
      * Edit
      *

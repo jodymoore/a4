@@ -70,6 +70,11 @@ Route::post('/save', 'PizzaController@saveEdits');
 Route::get('/newOrder', 'PizzaController@showNewOrder');
 
 /**
+*  /newOrder
+*/
+Route::get('/drinks', 'PizzaController@showDrinkOrder');
+
+/**
 *  /order
 */
 Route::get('/order', 'CartController@show');

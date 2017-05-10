@@ -12,6 +12,8 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
+
+    	// Seed pizzas
         $pSizes = ["Small", "Medium", "Large"];
         $toppings = ["CHEESE","PEPPERONI", "SUPREME", "VEGETABLE", "CREATE YOUR OWN"];
         $priceArry = [5.99,6.99,7.99];
@@ -79,6 +81,22 @@ class ProductsTableSeeder extends Seeder
 
 			    }
         	}
+        }
+
+        //Seed drinks to products table
+        $drinks = ["COKE","PEPSI", "DR PEPPER", "DIET COKE"];
+        $drinkPrice = 2.99;
+
+        foreach ($drinks as $drink) {
+			Product::insert([
+		        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+		        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+		        'topping' => $drink,
+		        'desc' => '2-litre bottle'.' '.$drink,
+		        'size' => '2-litre',
+		        'image_url' => '/images/'.$drink.'png',
+		        'price' =>  $drinkPrice ,
+		  ]);
         }
 
     }

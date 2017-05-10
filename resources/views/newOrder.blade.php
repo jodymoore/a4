@@ -41,6 +41,10 @@
 
 					  <input type="checkbox" id="pork" name="pork" />Pork <br>
 
+					  <input type="checkbox" id="bacon" name="bacon"/>Bacon<br>
+
+					  <input type="checkbox" id="salami" name="salami" />Salami <br>
+
 			        </ul>
 		     </div>
 		    </div>

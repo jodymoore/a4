@@ -62,7 +62,6 @@ class CartController extends Controller
     }
 
 
-
     /*
      *  remove
      */
@@ -81,6 +80,46 @@ class CartController extends Controller
         return view('cart')->with([
             'carts' => $carts,
             ]);
+    }
+
+     /*
+     *  order Drink 
+     */
+    public function orderD(Request $request){
+                   
+        $pid = $request->pid;
+        $pSize = $request->selectSize;
+
+        $sizeId = null;
+        $id = $pid + $pSize;
+
+        $product = Product::where('id','=',$id)->first();
+
+        $price = $product->price;
+        $topping = $product->topping;
+        $desc = $product->desc;
+
+        if($request->has('exCheese')) {
+            $price = $price + 1.00;
+        }
+              
+        $order = $product->size." ".strtolower($topping)." "." pizza"; 
+
+        // Cart array format
+        Cart::add(array(
+            'id' => $id,
+            'name' => $order,
+            'price' => $price,
+            'quantity' => 1,
+            'attributes' => array(
+                'topping' => $topping,        
+          ),
+        ));
+        Session::flash('message',$order.' was added to your order.');
+
+        // need to hand this to order blade or checkout.
+        return view('popPizzas');
+
     }
 
      /*
@@ -103,9 +142,18 @@ class CartController extends Controller
         $price = $product->price;
         $topping = $product->topping;
         $desc = $product->desc;
-         
-           
-        $order = $product->size." ".strtolower($topping)." "." pizza"; 
+
+        if($request->has('exCheese')) {
+            $price = $price + 1.00;
+        }
+
+        if ($product->id > 12) {
+            $order = $product->size." ".strtolower($product->topping);           
+        }
+        else {
+            $order = $product->size." ".strtolower($product->topping)." "." pizza";
+        }
+            
 
         // Cart array format
         Cart::add(array(
@@ -175,7 +223,7 @@ class CartController extends Controller
                $id = $id;
             }
             else {
-               $id++;
+               $id++; // <-----right here  will give the wrong product!!!
             }
         }
 
@@ -235,18 +283,20 @@ class CartController extends Controller
             $cust_order->total = Cart::getTotal();
             $cust_order->save();
 
-            
 
             foreach($carts as $cart) {
                 // need a product array just like tags in foobooks made from Cart contents to get 
                 // product id 
                $productsOrdered[$count++] = $cart['id'];
+
+              
             }
 
-            // save to pivot table
-            $cust_order->products()->sync($productsOrdered);
-    
-            $cust_order->save();
+            foreach ($productsOrdered as $product) {
+
+                $product = Product::where('id', '=', $product)->first();
+                $cust_order->products()->save($product);
+            }
 
             $total = Cart::getTotal();
             $cartArry = $carts->toArray();

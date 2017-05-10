@@ -31,9 +31,12 @@ class reOrderController extends Controller
         $orders = [];
         $total = [];
         $id = [];
-        $topping = [];
+        $desc = [];
+        $orderId = [];
 
         $productsOrdered = [];
+
+        $prodPrice = 0;
 
          
 
@@ -41,26 +44,30 @@ class reOrderController extends Controller
 
         $products = Order::with('products')->get();
 
-       
-
         foreach($prevOrders as $order) {
             foreach ($order->products as $product) {
-
-                $orders[] = $product->size." ".strtolower($product->topping)." "." pizza";
-                $total[] = $order->total;
+                
+                if ($product->id > 12) {
+                    $orders[] = $product->size." ".strtolower($product->topping);                  
+                }
+                else {
+                    $orders[] = $product->size." ".strtolower($product->topping)." "." pizza";
+                }
+                
+                $total[] = $product->price;
                 $id[] = $product->id;
-                $topping[] = $product->topping;
+                $desc[] = $product->topping;
+                $orderId[]= $order->id;
+
             }
         }
-
-        dump($orders);
-
 
         return view('reorder')->with([
             'orders' => $orders,
             'total' => $total,
             'id' => $id,
-            'topping' => $topping,
+            'desc' => $desc ,
+            'orderId' => $orderId,
         ]);
     }
 
@@ -72,7 +79,7 @@ class reOrderController extends Controller
         $id = $request->id;
         $topping = $request->topping;
 
-        Cart::add($id, $order, $price, 1, array());
+       # Cart::add($id, $order, $price, 1, array());
 
         // Place order into Cart array format
         Cart::add(array(
