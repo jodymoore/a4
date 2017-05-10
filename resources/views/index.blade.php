@@ -14,28 +14,15 @@
         <li data-target="#login_carousel" data-slide-to="2" class=""></li>
       </ol>
  
-        <div class="carousel-inner">
+      <div class="carousel-inner">
         <div class="item active">
           <img class="img-rounded" src="/images/pizza-pic4.jpg" alt="00">
-          <div class="carousel-caption">
-
-            <p></p>
-          </div>
         </div>
-
         <div class="item">
           <img class="img-rounded" src="/images/pizza-pic3.jpg" alt="44">
-          <div class="carousel-caption">
-
-            <p></p>
-          </div>
         </div> 
         <div class="item">
           <img class="img-rounded" src="/images/pizza-pic6.jpg" alt="47">
-          <div class="carousel-caption">
-
-            <p></p>
-          </div>
         </div>            
       </div>
   
@@ -47,7 +34,7 @@
         <span class="glyphicon glyphicon-chevron-right"></span>
       </a>
     </div>
-    <!-- Carousel code Ends --></div>
+    <!-- Carousel code Ends -->
 
 
 
