@@ -19,8 +19,6 @@ class OrdersTableSeeder extends Seeder
 
         $products = Product::all();
 
-        $productsArry = [];
-
         $numOfProducts = [2,4,6,3,1,4,3,3,1,2];
 
         $useridArry = [3,5,1,2,2,5,3,1,3,4];
@@ -29,6 +27,7 @@ class OrdersTableSeeder extends Seeder
 
 
         for ($i=0; $i < $numberOfOrders; $i++) { 
+        	 $productsArry = [];
 
              $productPrice = [];
 

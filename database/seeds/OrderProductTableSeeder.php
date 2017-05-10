@@ -15,12 +15,12 @@ class OrderProductTableSeeder extends Seeder
     public function run()
     {
  
-
+        // get all the products
         $products = Product::all();
 
         $orders = Order::all();
 
-        $productsArry = [];
+        
 
         $numOfProducts = [2,4,6,3,1,4,3,3,1,2];
 
@@ -32,23 +32,24 @@ class OrderProductTableSeeder extends Seeder
 
         for ($i=0; $i < count($orders); $i++) { 
 
+            $productsArry = [];
+
              // this loop is designed to loop over a number of products
              // and place them in a products array to be added to a users order.
              // loop over number of products 
              for ($j=0; $j < $numOfProducts[$i] ; $j++) { 
-
-             	// place product id in products array
-             	$productsArry[] = $products[$prodId[$i]-1]->id;   
-
-             	// place product price in price variable
-             	#$productPrice[] = $products[$prodId[$i]-1]->price;
+             	
+               $productsArry[] = $products[$prodId[$i]-1]->id;
+                
              }
-             // get total of product price array
-            # $total = array_sum($productPrice);
-            $order->where('id', '=', $i)->get();
-            $order->products()->sync($productsArry);
+
     
-            $order->save();
+
+              $order->find($i+1);
+        
+              $order->products()->sync($productsArry);
+    
+            // $order->save();
          }
 
     }
