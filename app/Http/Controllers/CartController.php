@@ -195,7 +195,7 @@ class CartController extends Controller
         return view('newOrder');
     }
 
-        /*
+     /*
      *  execute 
      */
     public function execute(Request $request) {
@@ -235,6 +235,8 @@ class CartController extends Controller
             $cust_order->total = Cart::getTotal();
             $cust_order->save();
 
+            
+
             foreach($carts as $cart) {
                 // need a product array just like tags in foobooks made from Cart contents to get 
                 // product id 
@@ -250,11 +252,11 @@ class CartController extends Controller
             $cartArry = $carts->toArray();
             Cart::clear();
 
-            // \Mail::send('confirm', ['user' => $user],
-            //    function($message) use ($user) {
-            //     $message->to($user->email);
-            //     $message->subject('Quik Pizza Confirmation');
-            // });
+            \Mail::send('confirm', ['user' => $user],
+               function($message) use ($user) {
+                $message->to($user->email);
+                $message->subject('Quik Pizza Confirmation');
+            });
 
         }
 
