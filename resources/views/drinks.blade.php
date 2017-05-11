@@ -12,7 +12,7 @@
     	    <br>
     	    <br>
     	    <br>
-    	    <p>2 liter bottle Coka Cola.&nbsp;&nbsp;&nbsp;$2.99</p>
+    	    <p>2 liter bottle Coca Cola.&nbsp;&nbsp;&nbsp;$2.99</p>
     	    <br>
     	    <br>
     	    <br>
@@ -74,7 +74,7 @@
     	    <br>
     	    <br>
     	    <br>
-    	    <p>2 liter bottle Diet Cola.&nbsp;&nbsp;&nbsp;$2.99</p>
+    	    <p>2 liter bottle Diet Coke.&nbsp;&nbsp;&nbsp;$2.99</p>
     	    <br>
     	    <br>
     	    <br>
