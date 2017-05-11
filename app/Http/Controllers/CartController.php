@@ -11,6 +11,7 @@ use App\Product;
 use LoginController;
 use App\User;
 use Mail;
+use URL;
 
 class CartController extends Controller
 {
@@ -55,6 +56,10 @@ class CartController extends Controller
         $this->validate($request, [
             'selectSize' => 'required',
         ]);
+
+        $user = Auth::user()->name;
+        $username = list($user) = explode(' ', $user);
+        $firstName = $username[0];
              
         $pid = $request->pid;
         $pSize = $request->selectSize;
@@ -83,13 +88,23 @@ class CartController extends Controller
             'price' => $price,
             'quantity' => 1,
             'attributes' => array(
-                'topping' => $topping,        
+                'topping' => $topping,
+                'firstName' => $firstName,        
           ),
         ));
+
+        dump(Cart::getContent()->toArray());
         Session::flash('message',$order.' was added to your order.');
 
-        // need to hand this to order blade or checkout.
-        return view('popPizzas');
+        if (URL::previous() == 'http://a4.loc/drinks') {
+            return view('drinks'); 
+        }
+        else {
+            // need to hand this to order blade or checkout.
+            return view('popPizzas');  
+        }
+
+
 
     }
 
@@ -98,6 +113,9 @@ class CartController extends Controller
         $this->validate($request, [
             'selectSize' => 'required',
         ]);
+
+        $user = Auth::user()->name;
+        $userName = list($user) = explode(' ', $user);
 
         $pSize = $request->selectSize;
         $id = '13' + $pSize;
@@ -144,7 +162,7 @@ class CartController extends Controller
                $id = $id;
             }
             else {
-               $id++; // <-----right here  will give the wrong product!!!
+               $id++; 
             }
         }
 
@@ -155,7 +173,8 @@ class CartController extends Controller
             'price' => $price,
             'quantity' => 1,
             'attributes' => array(
-                'topping' => $topping,     
+                'topping' => $topping, 
+              'userName' => $userName,    
           ),
         ));
 
@@ -206,11 +225,7 @@ class CartController extends Controller
 
 
             foreach($carts as $cart) {
-                // need a product array just like tags in foobooks made from Cart contents to get 
-                // product id 
-               $productsOrdered[$count++] = $cart['id'];
-
-              
+               $productsOrdered[$count++] = $cart['id'];     
             }
 
             foreach ($productsOrdered as $product) {
@@ -228,7 +243,6 @@ class CartController extends Controller
             //     $message->to($user->email);
             //     $message->subject('Quik Pizza Confirmation');
             // });
-
         }
 
         // get cleared contents of Cart

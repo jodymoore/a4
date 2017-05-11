@@ -4,8 +4,11 @@
 
 @include('header')
 <div id="myOrder">
-	<h4>My ORDER</h4>
+      
+   <h4>My ORDER</h4>
+
 </div>
+
 
 <div >
 <form method="POST" action="/order/execute">
@@ -23,7 +26,7 @@
             @foreach($carts as $cart)
              
                 <div id="displayCart-wrapper">
-
+                    
                     <div id="cartLeft">
                         <strong>{{$cart['attributes']['topping']}}</strong> <br>
                         <input id="name" type="hidden" name="name" value="{{ $cart['name'] }}" > 
