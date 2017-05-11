@@ -29,7 +29,7 @@
                           <a href="/edit/{{ Auth::user()->id }}"
                               onclick="event.preventDefault();
                                        document.getElementById('edit-form').submit();">
-                              Edit
+                              Edit Account
                           </a>
 
                           <form id="edit-form" action="/edit/{{ Auth::user()->id }}" method="get" >
