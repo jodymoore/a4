@@ -20,6 +20,11 @@ class CartController extends Controller
      */
     public function show(Request $request) {
 
+        // if not logged in redirect to login page /home
+        if(!Auth::check()) {
+            return redirect()->route('login');
+        }
+
         $cartCollection = Cart::getContent();
         $carts = $cartCollection->toArray();
 
