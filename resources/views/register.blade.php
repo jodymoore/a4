@@ -7,7 +7,6 @@
 	<h4>Create Your Quik Pizza Account</h4>
 </div>
 
-
 <div >
 <form method="POST" action="/register">
 
@@ -24,7 +23,7 @@
 	        <input id="Email" type='text' name="Email" value={{ old('you@example.com','jodymoorellc@live.com') }} ><br>
 
 	        <label for="phoneNumber" ><h5>Phone Number</h5></label><br>
-	        <input id="phoneNumber" type='text' name="phoneNumber" value={{ old('(xxx)xxx-xxxx)','(xxx)xxx-xxxx)') }} >&nbsp(xxx)xxx-xxxx)
+	        <input id="phoneNumber" type='text' name="phoneNumber" value={{ old('(xxx)xxx-xxxx)','(xxx)xxx-xxxx)') }} >&nbsp
 	        <input id="Ext" type='text' name="Ext"  value="Ext" ><br>
 
 	        <label for="password" ><h5>Password</h5></label><br>

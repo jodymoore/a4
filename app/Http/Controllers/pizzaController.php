@@ -68,7 +68,7 @@ class PizzaController extends Controller
             'name' => 'required|string|max:255',
             'email' => [
                 'required',
-                Rule::unique('users')->ignore($user->id),
+                 Rule::unique('users')->ignore($user->id),
             ],
             'password' => 'required|string|min:6|confirmed',
             'phoneNumber' => 'required|alpha_dash|size:12 ',

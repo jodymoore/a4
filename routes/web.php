@@ -16,24 +16,6 @@ if(config('app.env') == 'local') {
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 }
 
-Route::get('/debug-email', function() {
-    dump(Config::get('mail'));
-
-      $user = User::where('id','=',1)->first();
-       \Mail::send('confirm', ['user' => $user],
-               function($message) use ($user) {
-                $message->to($user->email);
-                $message->subject('Mailgun Testing');
-            });
-
-            //     \Mail::send([], [], function ($message) {
-            //   $message->to('jodymoore@g.harvard.edu')
-            //     ->subject('Hello World')
-            //     ->setBody('This is a test message; Testing 123.');
-            // });
-});
-
-
 
 /**
 *  Main home page visitors see when they visit just /
@@ -68,11 +50,6 @@ Route::post('/save', 'PizzaController@saveEdits');
 *  /newOrder
 */
 Route::get('/newOrder', 'PizzaController@showNewOrder');
-
-/**
-*  /newOrder
-*/
-Route::get('/drinks', 'PizzaController@showDrinkOrder');
 
 /**
 *  /order
@@ -121,14 +98,3 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-if(App::environment('local')) {
-
-    Route::get('/drop', function() {
-
-        DB::statement('DROP database pizza_shop');
-        DB::statement('CREATE database pizza_shop');
-
-        return 'Dropped pizza_shop; created pizza_shop.';
-    });
-
-};
