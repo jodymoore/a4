@@ -80,7 +80,6 @@ class CartController extends Controller
             $order = $product->size." ".strtolower($product->topping)." "." pizza";
         }
             
-
         // Cart array format
         Cart::add(array(
             'id' => $id,
@@ -93,7 +92,6 @@ class CartController extends Controller
           ),
         ));
 
-        dump(Cart::getContent()->toArray());
         Session::flash('message',$order.' was added to your order.');
 
         if (URL::previous() == 'http://a4.loc/drinks') {
@@ -103,9 +101,6 @@ class CartController extends Controller
             // need to hand this to order blade or checkout.
             return view('popPizzas');  
         }
-
-
-
     }
 
     public function CreateOwnOrder(Request $request) {
@@ -126,7 +121,6 @@ class CartController extends Controller
         $price = $product->price;
         $topping = $product->topping;
 
-
         $amtCheese = $request->selectCheese;
         $amtCheese = $amtCheese." "."cheese";
 
@@ -146,10 +140,8 @@ class CartController extends Controller
                        $key[$i] = ' ';
                    }
                 }
-
                 $order = $order.", ".$key;
                 $price += .25;
-
             }   
         }
 
@@ -206,6 +198,7 @@ class CartController extends Controller
             $id = Auth::id();
          
             $carts = Cart::getContent();
+            $newQty = $request->qty;
 
             $price = 0;
             $prodId = null;
@@ -225,8 +218,17 @@ class CartController extends Controller
 
 
             foreach($carts as $cart) {
-               $productsOrdered[$count++] = $cart['id'];     
+               $productsOrdered[$count++] = $cart['id']; 
+
             }
+
+            // update cart
+            Cart::update($request->id, array(
+              'quantity' => array(
+                  'relative' => false,
+                  'value' => $newQty,
+              ),
+            )); 
 
             foreach ($productsOrdered as $product) {
 

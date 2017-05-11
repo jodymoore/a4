@@ -54,7 +54,7 @@ return [
     | used globally for all e-mails that are sent by your application.
     |
     */
-    'from' => array('address' => 'mail@QuikPizza.com', 'name' => 'Quik Pizza'),
+    'from' => array('address' => 'mail@a4.jodymoore.net', 'name' => 'Quik Pizza'),
 
     /*
     |--------------------------------------------------------------------------

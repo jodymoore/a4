@@ -1,3 +1,402 @@
+
+ /**
+*  small devices (Phones)
+*/
+@media (min-width: 320px) { 
+
+
+
+    #container {
+
+        text-align:center;
+    }
+
+    body {
+        background-image: url('/images/abstract-black.jpg');
+    }
+
+    #nav {
+        
+        border-radius: 5px;
+        width: 80%;
+        height: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -5px;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+
+    #login_carousel {
+        width: 80%;  
+        margin: 0 auto;   
+    }
+
+    form h2 {
+        color: white;
+    }
+
+    #deleteconf {
+        color: white;
+    }
+
+    #reOrder {
+        color: white;
+        width: 100%;
+        display: inline-block;
+        border-bottom: 1px solid white;
+        margin-bottom: 5px;
+        font-size: 18px;
+    }
+
+    #reOrderNow {
+       margin-top: 5%; 
+    }
+
+    #reOrder-container {
+      width: 40%;
+      border: 1px solid white;
+      background-color: black;
+      border-radius: 5px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #prevOrders {
+        color: white;
+    }
+
+    #reOrder a{
+        color: white;
+    }
+
+    .container {
+        background-color: transparent;
+    }
+
+    .form-horizontal {
+        background-color: black;
+    }
+
+    .nav1 {
+        width: 165px;
+        height: 100%;
+    }
+
+    #welcome {
+        color: white;
+        margin-left: -65%;
+        margin-bottom: 15px;
+    }
+
+    nav a {
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+        padding-top: 14px;
+        text-decoration: none;
+        background-color: red;
+        border-radius: 10px;
+        height: 60px;
+        display: inline-block;
+    }
+
+    
+    #form label {
+        margin-left: 15px;
+    }
+
+    #form input {
+        margin-left: 15px;
+        color: black;
+    }
+    .popPizzas-table h4 {
+      float:left;
+      padding-left: 15px;
+    }
+
+    .popPizzas-table p {
+      float:left;
+      padding-left: 15px;
+    }
+
+    .popPizzas-table {
+        width: 500px;
+        height: 250px;
+        background-color: black;
+        opacity: 1;
+        margin-bottom: 20px;
+    }
+
+    #selectCheese {
+        color: black;
+    }
+
+    #selectSize {
+        color: black;
+    }
+
+    .newOrder-table {
+        width: 500px;
+        background-color: black;
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
+
+    #right-col {
+        float: right;
+    }
+
+    .popPizzas-table img {
+        float: left;
+        padding-left: 20px;
+    }
+
+    #orderNow {
+        width: 200px;
+        height: 30px;
+        background-color: red;
+        margin-top: 25%;
+        margin-left: -45%;
+    }
+
+
+    #addToOrder {
+        width: 150px;
+        height: 30px;
+        background-color: red;
+        margin-top: 2%;
+        margin-bottom: 15px;
+    }
+
+    #myOrder {
+        color: white;
+    }
+
+    #checkout {
+       margin-top: -5%;
+       margin-left: 60%;
+       display: inline-block;
+       border-radius: 10px;
+    }
+
+    #total {
+        background-color: white;
+        border-radius: 10px;
+        width: 50px; 
+        margin-left: 266px;
+        margin-bottom: -60px;
+    }
+
+    #own-order {
+        width: 200px;
+        height: 30px;
+        background-color: red;
+        margin-top: 32%;
+        margin-left: -70%;
+    }
+
+    #signIn {
+        color: red;
+        margin-top: -35px;
+        margin-left: 75%;
+    }
+
+    #left-col {
+        float: left;
+    }
+
+    #table {
+        margin-top: 20px;
+        color: white;
+        display: inline-block;
+        width: 80%;
+    }
+
+    #newOrderTable {
+        margin-top: 20px;
+        color: white;
+        display: inline-block;
+        width: 80%;
+        margin-left: 33%;
+        margin-right: 33%;
+    }
+
+    #createAccount {
+        text-align: center;
+        color: white;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 86px;
+        margin-left: -11px;
+    }
+
+    #Lform {
+        float:left;
+        margin-right: 10%;
+    }
+    #Rform select {
+        margin-left: 15px;
+    }
+
+    #wrap {
+
+        margin-top: 3%;
+        width: 360px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    #remove {
+       font-size: 20px;
+       margin-left: 20%;
+    }
+
+    #meats {
+        float:left;
+        width: 47%;
+        background-color: #F5F5DC;
+        color: black;
+        border-radius: 10px;
+        margin-right: 3%;
+    }
+
+    #meats input{
+        float:left;
+        margin-left: -15%;
+    }
+
+    #meats ul{
+        margin-right: 
+    }
+
+    #meats h4{
+        border-bottom: 1px solid black;
+        padding-bottom: 2px;
+    }
+
+    #veg input{
+        float:left;
+        margin-left: -15%;
+    }
+
+    #veg h4{
+        border-bottom: 2px solid black;
+        padding-bottom: 2px;
+    }
+
+    #veg {
+        float:left;
+        width: 47%;
+        background-color: #F5F5DC;
+        color: black;
+        border-radius: 10px;
+        margin-left: 3%;
+
+    }
+
+    #form {
+        padding-top: 15px;
+        display: inline-block;
+        color: white;
+        text-align: left;
+        width: 40%;
+        border: 2px solid white;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px;
+
+    }
+
+    #cart {
+        padding-top: 15px;
+        display: inline-block;
+        color: black;
+        text-align: left;
+        width: 40%;
+        border: 2px solid white;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px;
+        background-color: #dbd8be;
+        padding-bottom: 20px;
+    }
+
+    .message {
+        background-color: green;
+        border-radius: 15px;
+        color: white;
+        width: 50%;
+        padding: 4px 4px 4px 4px;
+    }
+
+    #displayCart-wrapper {
+        width: 100%;
+        display: inline-block;
+        border-top: 2px solid white;
+        border-bottom: 2px solid white;
+        margin-bottom: 5px;
+        font-size: 18px;
+        padding-bottom: 5px;
+        padding-top: 5px;
+    }
+
+    #cartRight {
+       width: 50%; 
+       height: 100%;
+       float: right;
+    }
+
+    #cartLeft {
+        width: 50%;
+        height: 100%;
+        float: left;
+    }
+
+    #cartOrderButton {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .panel-body {
+        padding: 15px;
+        background-color: black;
+        color: white;
+    }
+
+    .form-group {
+        text-align: center;
+    }
+
+    #title h1 {
+        text-align: center;
+        color: white;
+        margin-bottom: 40px;
+    }
+
+    #header-controls {
+        text-align: left;
+        color: white;
+        display: inline-block;
+        margin-right: -50%;
+        margin-left: 10%;
+    }
+
+    footer {
+        text-align:center;
+        padding-top: 2%;
+        margin: 0px 0px 0px 0px; 
+        font-size: 14px;
+      
+}
+
+
+/**
+*  Large devices (Desktops)
+*/
+@media (min-width: 1200px) { 
+
     #container {
 
         text-align:center;
@@ -382,3 +781,5 @@
         font-size: 14px;
         color: white;
     }
+
+}

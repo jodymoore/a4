@@ -18,11 +18,11 @@ class ProductsTableSeeder extends Seeder
     	// Seed pizzas
         $pSizes = ['Small', 'Medium', 'Large'];
         $toppings = ['CHEESE','PEPPERON', 'SUPREME', 'VEGETABLE', 'CREATE YOUR OWN'];
-        $drinks = ['COKE','PEPSI', 'DR PEPPER', 'DIET COKE'];
-
         $desc = 'marinara topped with fresh mozzarella cheese and';
         $priceArry = [5.99,6.99,7.99];
         $bucket = 'https://s3.amazonaws.com/jwm-product-images/';
+        
+        $drinks = ['COKE','PEPSI', 'DR PEPPER', 'DIET COKE'];
         $dSize = '2 liter';
 
         // Seed Pizzas
