@@ -23,8 +23,7 @@ class OrdersTableSeeder extends Seeder
 
         $useridArry = [3,5,1,2,2,5,3,1,3,4];
 
-        $prodId = [3,1,14,2,5,6,8,10,11,15];
-
+        $prodId = [3,1,5,2,5,6,8,10,11,7];
 
         for ($i=0; $i < $numberOfOrders; $i++) { 
         	 $productsArry = [];

@@ -164,6 +164,7 @@ class CartController extends Controller
             }   
         }
 
+
         $cartCollection = Cart::getContent();
         $carts = $cartCollection->toArray();
 
@@ -211,6 +212,9 @@ class CartController extends Controller
         $username = list($user) = explode(' ', $user);
         $firstName = $username[0];
 
+
+        $ingred = "";
+
         $cartArry = [];
 
         if(Cart::isEmpty()) {
@@ -235,18 +239,18 @@ class CartController extends Controller
             $count = 0;
             $productsOrdered = []; 
 
+            foreach($carts as $cart) {
+               $productsOrdered[$count++] = $cart['id']; 
+               $ingred = $cart['name']; 
+            }
+
             // save current order to orders table 
             $cust_order->user_id = $id;
             $cust_order->name = $user->name;
             $cust_order->email = $user->email;
+            $cust_order->ingred = $ingred;
             $cust_order->total = Cart::getTotal();
             $cust_order->save();
-
-
-            foreach($carts as $cart) {
-               $productsOrdered[$count++] = $cart['id']; 
-
-            }
 
             // update cart
             Cart::update($request->id, array(

@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             # The rest of the fields...
             $table->string('name');
             $table->string('email');
+            $table->string('ingred')->nullable();
             $table->float('total');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
        });

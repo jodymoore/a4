@@ -34,9 +34,10 @@ class reOrderController extends Controller
 
         $orders = [];
         $total = [];
-        $id = [];
+        $idArry = [];
         $desc = [];
         $orderId = [];
+        $ingred = '';
 
         $productsOrdered = [];
 
@@ -44,30 +45,31 @@ class reOrderController extends Controller
        
          // need to get products from order_product table
 
-        $products = Order::with('products')->get();
+        $products = Order::with('products')->where('user_id', '=', $id)->get();
 
         foreach($prevOrders as $order) {
+            $ingred = $order['attributes']['ingred'];
             foreach ($order->products as $product) {
                 
                 if ($product->id > 12) {
-                    $orders[] = $product->size." ".strtolower($product->topping);                  
+                    $orders[] = $ingred.' '.'pizza';
                 }
                 else {
-                    $orders[] = $product->size." ".strtolower($product->topping)." "." pizza";
+
+                    $orders[] = $product->size." ".strtolower($product->topping).' '.'pizza';
                 }
                 
                 $total[] = $product->price;
-                $id[] = $product->id;
+                $idArry[] = $product->id;
                 $desc[] = $product->topping;
                 $orderId[]= $order->id;
-
             }
         }
 
         return view('reorder')->with([
             'orders' => $orders,
             'total' => $total,
-            'id' => $id,
+            'idArry' => $idArry,
             'desc' => $desc ,
             'orderId' => $orderId,
             'firstName' => $firstName,

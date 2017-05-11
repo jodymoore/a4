@@ -14,7 +14,7 @@
                         <input id="order" type="hidden" name="order" value="{{ $orders[$x] }}" >
                         <input id="price" type="hidden" name="price" value="{{$total[$x]}}" >
                         <input id="topping" type="hidden" name="topping" value="{{$desc[$x]}}" >
-                        <input id="id" type="hidden" name="id" value="{{$id[$x]}}" >
+                        <input id="id" type="hidden" name="id" value="{{$idArry[$x]}}" >
                         ${{$total[$x]}}&nbsp;
                         {{ $orders[$x] }}
                         <a href="#">  </a><br>
