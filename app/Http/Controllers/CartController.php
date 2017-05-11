@@ -62,6 +62,11 @@ class CartController extends Controller
      *  a dynamic order function 
      */
     public function order(Request $request){
+
+        // if not logged in redirect to login page /home
+        if(!Auth::check()) {
+            return redirect()->route('login');
+        }
          
         $this->validate($request, [
             'selectSize' => 'required',
@@ -102,7 +107,7 @@ class CartController extends Controller
         ));
 
         Session::flash('message',$order.' was added to your order.');
-
+dump(URL::previous());
         if (URL::previous() == 'http://a4.loc/drinks') {
             return view('drinks'); 
         }
@@ -113,6 +118,11 @@ class CartController extends Controller
     }
 
     public function CreateOwnOrder(Request $request) {
+
+        // if not logged in redirect to login page /home
+        if(!Auth::check()) {
+            return redirect()->route('login');
+        }
 
         $this->validate($request, [
             'selectSize' => 'required',
