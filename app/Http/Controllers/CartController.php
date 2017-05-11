@@ -203,6 +203,10 @@ class CartController extends Controller
             return redirect()->route('login');
         }
 
+        $this->validate($request, [
+            'qty' => 'required|min:1|max:10',
+        ]);
+
         $user = Auth::user()->name;
         $username = list($user) = explode(' ', $user);
         $firstName = $username[0];
@@ -247,9 +251,9 @@ class CartController extends Controller
             // update cart
             Cart::update($request->id, array(
               'quantity' => array(
-                  'relative' => false,
-                  'value' => $newQty,
-              ),
+                              'relative' => false,
+                              'value' => $newQty,
+                            ),
             )); 
 
             foreach ($productsOrdered as $product) {

@@ -3,7 +3,7 @@
 @include('header')
 <div id="myOrder">
   @if(isset($firstName))     
-   <h4>{{ $firstName }}'s ORDER</h4>
+   <h4>{{ $firstName }}'s Order</h4>
   @else
     <h4>My ORDER</h4>  
   @endif
