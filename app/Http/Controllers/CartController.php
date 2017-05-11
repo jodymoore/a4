@@ -107,8 +107,8 @@ class CartController extends Controller
         ));
 
         Session::flash('message',$order.' was added to your order.');
-dump(URL::previous());
-        if (URL::previous() == 'http://a4.loc/drinks') {
+
+        if (URL::previous() == 'http://a4.jodymoore.net/drinks') {
             return view('drinks'); 
         }
         else {
