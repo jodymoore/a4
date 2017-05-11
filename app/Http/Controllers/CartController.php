@@ -108,13 +108,8 @@ class CartController extends Controller
 
         Session::flash('message',$order.' was added to your order.');
 
-        if (URL::previous() == 'http://a4.jodymoore.net/drinks') {
-            return view('drinks'); 
-        }
-        else {
-            // need to hand this to order blade or checkout.
-            return view('popPizzas');  
-        }
+        // need to hand this to order blade or checkout.
+        return view('popPizzas');  
     }
 
     public function CreateOwnOrder(Request $request) {
