@@ -92,8 +92,8 @@ class ProductsTableSeeder extends Seeder
 		        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 		        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 		        'topping' => $drink,
-		        'desc' => '2-litre bottle'.' '.$drink,
-		        'size' => '2-litre',
+		        'desc' => '2 liter bottle'.' '.$drink,
+		        'size' => '2 liter',
 		        'image_url' => '/images/'.$drink.'png',
 		        'price' =>  $drinkPrice ,
 		  ]);

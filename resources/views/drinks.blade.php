@@ -12,7 +12,7 @@
     	    <br>
     	    <br>
     	    <br>
-    	    <p>2-litre bottle Coka Cola.&nbsp;&nbsp;&nbsp;$2.99</p>
+    	    <p>2 liter bottle Coka Cola.&nbsp;&nbsp;&nbsp;$2.99</p>
     	    <br>
     	    <br>
     	    <br>
@@ -33,7 +33,7 @@
     	    <br>
     	    <br>
     	    <br>
-    	    <p>2-litre bottle Pepsi.&nbsp;&nbsp;&nbsp;$2.99</p>
+    	    <p>2 liter bottle Pepsi.&nbsp;&nbsp;&nbsp;$2.99</p>
     	    <br>
     	    <br>
     	    <br>
@@ -53,7 +53,7 @@
     	    <br>
     	    <br>
     	    <br>
-    	    <p>2-litre bottle Dr Pepper.&nbsp;&nbsp;&nbsp;$2.99</p>
+    	    <p>2 liter bottle Dr Pepper.&nbsp;&nbsp;&nbsp;$2.99</p>
     	    <br>
     	    <br>
     	    <br>
@@ -74,7 +74,7 @@
     	    <br>
     	    <br>
     	    <br>
-    	    <p>2-litre bottle Diet Cola.&nbsp;&nbsp;&nbsp;$2.99</p>
+    	    <p>2 liter bottle Diet Cola.&nbsp;&nbsp;&nbsp;$2.99</p>
     	    <br>
     	    <br>
     	    <br>
