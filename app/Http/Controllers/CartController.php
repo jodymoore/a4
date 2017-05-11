@@ -204,7 +204,7 @@ class CartController extends Controller
         }
 
         $this->validate($request, [
-            'qty' => 'required|min:1|max:10',
+            'qty' => 'required|numeric|min:1|max:10',
         ]);
 
         $user = Auth::user()->name;
