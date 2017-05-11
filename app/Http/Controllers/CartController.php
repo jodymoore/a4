@@ -22,9 +22,14 @@ class CartController extends Controller
 
         $cartCollection = Cart::getContent();
         $carts = $cartCollection->toArray();
+
+        $user = Auth::user()->name;
+        $username = list($user) = explode(' ', $user);
+        $firstName = $username[0];
     
         return view('cart')->with([
             'carts' => $carts,
+            'firstName' => $firstName,
         ]);
     }
 
@@ -36,6 +41,10 @@ class CartController extends Controller
         $id = $request->id;
         $name = $request->name;
 
+        $user = Auth::user()->name;
+        $username = list($user) = explode(' ', $user);
+        $firstName = $username[0];
+
         Cart::remove($id);
 
         Session::flash('message',$name.' was removed from your order.');
@@ -45,6 +54,7 @@ class CartController extends Controller
 
         return view('cart')->with([
             'carts' => $carts,
+            'firstName' => $firstName,
             ]);
     }
 
@@ -87,8 +97,7 @@ class CartController extends Controller
             'price' => $price,
             'quantity' => 1,
             'attributes' => array(
-                'topping' => $topping,
-                'firstName' => $firstName,        
+                'topping' => $topping,       
           ),
         ));
 
@@ -165,8 +174,7 @@ class CartController extends Controller
             'price' => $price,
             'quantity' => 1,
             'attributes' => array(
-                'topping' => $topping, 
-              'userName' => $userName,    
+                'topping' => $topping,    
           ),
         ));
 
@@ -184,6 +192,10 @@ class CartController extends Controller
         if(!Auth::check()) {
             return redirect()->route('login');
         }
+
+        $user = Auth::user()->name;
+        $username = list($user) = explode(' ', $user);
+        $firstName = $username[0];
 
         $cartArry = [];
 
@@ -255,6 +267,7 @@ class CartController extends Controller
         return view('thankyou')->with([
             'cartArry' => $cartArry,
             'total' => $total,
+            'firstName' => $firstName,
         ]);
     }
 }

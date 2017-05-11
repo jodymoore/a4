@@ -2,7 +2,7 @@
 @section('content')
 @include('header')
 <div id="myOrder">     
-   <h4>My ORDER</h4>
+   <h4>{{ $firstName }}'s ORDER</h4>
 </div>
 <div >
 <form method="POST" action="/order/execute">

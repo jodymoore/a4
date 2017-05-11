@@ -22,6 +22,10 @@ class reOrderController extends Controller
             return redirect()->route('login');
         }
 
+        $user = Auth::user()->name;
+        $username = list($user) = explode(' ', $user);
+        $firstName = $username[0];
+
         // query customer_orders database
         // get login id
         $id = Auth::id(); 
@@ -37,9 +41,7 @@ class reOrderController extends Controller
         $productsOrdered = [];
 
         $prodPrice = 0;
-
-         
-
+       
          // need to get products from order_product table
 
         $products = Order::with('products')->get();
@@ -68,6 +70,7 @@ class reOrderController extends Controller
             'id' => $id,
             'desc' => $desc ,
             'orderId' => $orderId,
+            'firstName' => $firstName,
         ]);
     }
 
@@ -79,7 +82,9 @@ class reOrderController extends Controller
         $id = $request->id;
         $topping = $request->topping;
 
-       # Cart::add($id, $order, $price, 1, array());
+        $user = Auth::user()->name;
+        $username = list($user) = explode(' ', $user);
+        $firstName = $username[0];
 
         // Place order into Cart array format
         Cart::add(array(
@@ -100,6 +105,7 @@ class reOrderController extends Controller
 
         return view('cart')->with([
             'carts' => $carts,
+            'firstName' => $firstName,
         ]);
 
     }

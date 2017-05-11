@@ -4,7 +4,7 @@
 
 @include('header')
 <div id="myOrder">
-	<h4>My ORDER</h4>
+	<h4>{{ $firstName }}'s ORDER</h4>
 </div>
 
 
@@ -27,7 +27,6 @@
                       Qty: {{$value['quantity']}} 
 
                       <input id="id" type="hidden" name="id" value="{{ $value['id'] }}" >     
-
                    </div>
      
                 <div>
