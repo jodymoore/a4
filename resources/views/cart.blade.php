@@ -1,8 +1,12 @@
 @extends('layouts.master')
 @section('content')
 @include('header')
-<div id="myOrder">     
+<div id="myOrder">
+  @if(isset($firstName))     
    <h4>{{ $firstName }}'s ORDER</h4>
+  @else
+    <h4>My ORDER</h4>  
+  @endif
 </div>
 <div >
 <form method="POST" action="/order/execute">

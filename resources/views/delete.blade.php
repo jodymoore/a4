@@ -18,6 +18,8 @@
         <input type='submit' value='Yes, delete this user.' class='btn btn-danger'>
 
     </form>
-
+    <br>
+    
+        <input id="noDelete" type="button" name="noDelete" onclick="window.location='{{ URL::previous() }}'" value="No, DO NOT DELETE" class='btn btn-primary  btn-small'>
 @endsection
 
