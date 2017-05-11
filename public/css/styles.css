@@ -8,10 +8,10 @@
     }
 
     #nav {
-        border: 1px solid white;
+        
         border-radius: 5px;
-        width: 70%;
-        height: 60px;
+        width: 80%;
+        height: 50px;
         margin-left: auto;
         margin-right: auto;
         margin-top: -5px;
@@ -71,8 +71,8 @@
     }
 
     .nav1 {
-        width: 200px;
-        height: 60px;
+        width: 165px;
+        height: 100%;
     }
 
     #welcome {
@@ -81,13 +81,16 @@
     	margin-bottom: 15px;
     }
 
-
     nav a {
         color: white;
+        font-weight: bold;
+        font-size: 14px;
+        padding-top: 14px;
         text-decoration: none;
-        padding: 2px 5px 2px 5px;
         background-color: red;
+        border-radius: 10px;
         height: 60px;
+        display: inline-block;
     }
 
     
