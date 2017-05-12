@@ -38,28 +38,32 @@ class reOrderController extends Controller
         $desc = [];
         $orderId = [];
         $ingred = '';
+        
 
         $productsOrdered = [];
 
         $prodPrice = 0;
        
-         // need to get products from order_product table
-
+        // need to get products from order_product table
         $products = Order::with('products')->where('user_id', '=', $id)->get();
 
         foreach($prevOrders as $order) {
             $ingred = $order['attributes']['ingred'];
+            $number = 0;
             foreach ($order->products as $product) {
                 
                 if ($product->id > 12) {
                     $orders[] = $ingred.' '.'pizza';
+                    $newIngred = explode(' ', $ingred);
+                    $number = (count($newIngred)-4);
+                    $number *= .25;
                 }
                 else {
 
                     $orders[] = $product->size." ".strtolower($product->topping).' '.'pizza';
                 }
-                
-                $total[] = $product->price;
+
+                $total[] = $number + $product->price;
                 $idArry[] = $product->id;
                 $desc[] = $product->topping;
                 $orderId[]= $order->id;
@@ -75,7 +79,6 @@ class reOrderController extends Controller
             'firstName' => $firstName,
         ]);
     }
-
 
     public function submit(Request $request) {
             
