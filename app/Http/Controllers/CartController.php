@@ -203,10 +203,6 @@ class CartController extends Controller
             return redirect()->route('login');
         }
 
-        $this->validate($request, [
-            'qty' => 'required|numeric|min:1|max:10',
-        ]);
-
         if(Cart::isEmpty()) {
             return view('cart');
         }
@@ -217,15 +213,6 @@ class CartController extends Controller
             $firstName = $username[0];
             $ingred = "";
             $cartArry = [];
-            $newQty = $request->qty;
-
-            // update cart
-            Cart::update($request->id, array(
-              'quantity' => array(
-                              'relative' => false,
-                              'value' => $newQty,
-                            ),
-            )); 
             
             // get user id 
             $id = Auth::id();
@@ -253,7 +240,8 @@ class CartController extends Controller
 
             foreach ($productsOrdered as $product) {
                 if($product > 15) {
-                    $product = 15;
+                    $product = 15; // create your own pizzas have large Id's 
+                                   // keep within product index 
                 }
                 $product = Product::where('id', '=', $product)->first();
                 $cust_order->products()->save($product);

@@ -29,10 +29,7 @@
                     </div>
                     <div id="cartRight">
                       ${{$cart['price']}} <br>
-                      <label for="qty">Qty </label>
-                      <input id="qty" type="number" name="qty" min="1" max="10" step="1" 
-                        value ={{$cart['quantity']}} />
-                      
+                      Qty:&nbsp;{{$cart['quantity']}}                      
                       <input id="id" type="hidden" name="id" value="{{ $cart['id'] }}" > 
                       
                           {{ csrf_field() }}
