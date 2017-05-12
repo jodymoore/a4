@@ -164,7 +164,6 @@ class CartController extends Controller
             }   
         }
 
-
         $cartCollection = Cart::getContent();
         $carts = $cartCollection->toArray();
 
@@ -253,7 +252,9 @@ class CartController extends Controller
             $cust_order->save();
 
             foreach ($productsOrdered as $product) {
-
+                if($product > 15) {
+                    $product = 15;
+                }
                 $product = Product::where('id', '=', $product)->first();
                 $cust_order->products()->save($product);
             }
@@ -262,11 +263,6 @@ class CartController extends Controller
             $cartArry = $carts->toArray();
             Cart::clear();
 
-            // \Mail::send('confirm', ['user' => $user],
-            //    function($message) use ($user) {
-            //     $message->to($user->email);
-            //     $message->subject('Quik Pizza Confirmation');
-            // });
         }
 
         // get cleared contents of Cart
