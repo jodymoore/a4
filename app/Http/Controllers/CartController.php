@@ -208,31 +208,31 @@ class CartController extends Controller
             'qty' => 'required|numeric|min:1|max:10',
         ]);
 
-        $user = Auth::user()->name;
-        $username = list($user) = explode(' ', $user);
-        $firstName = $username[0];
-
-
-        $ingred = "";
-
-        $cartArry = [];
-
         if(Cart::isEmpty()) {
-
             return view('cart');
-
         }
         else {
+
+            $user = Auth::user()->name;
+            $username = list($user) = explode(' ', $user);
+            $firstName = $username[0];
+            $ingred = "";
+            $cartArry = [];
+            $newQty = $request->qty;
+
+            // update cart
+            Cart::update($request->id, array(
+              'quantity' => array(
+                              'relative' => false,
+                              'value' => $newQty,
+                            ),
+            )); 
             
             // get user id 
             $id = Auth::id();
-         
             $carts = Cart::getContent();
-            $newQty = $request->qty;
-
             $price = 0;
-            $prodId = null;
-           
+            $prodId = null;          
             // get all the atributes that match $id 
             $user = User::where('id','=',$id)->first();
             $cust_order = new Order();
@@ -251,14 +251,6 @@ class CartController extends Controller
             $cust_order->ingred = $ingred;
             $cust_order->total = Cart::getTotal();
             $cust_order->save();
-
-            // update cart
-            Cart::update($request->id, array(
-              'quantity' => array(
-                              'relative' => false,
-                              'value' => $newQty,
-                            ),
-            )); 
 
             foreach ($productsOrdered as $product) {
 
