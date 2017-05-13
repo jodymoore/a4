@@ -4,7 +4,7 @@
 
 @include('header')
 <div id="myOrder">
-	<h4>{{ $firstName }}'s ORDER</h4>
+	<h4>{{ $firstName }}'s Order</h4>
 </div>
 
 

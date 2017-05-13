@@ -8,6 +8,8 @@ use App\Product;
 use Session;
 use Cart;
 use Illuminate\Support\Facades\Auth;
+use App\CustomClasses\CustomDirectory\OrderClass;
+use App\CustomClasses\CustomDirectory\ProductClass;
 
 
 class reOrderController extends Controller
@@ -16,12 +18,13 @@ class reOrderController extends Controller
      /*
      *  displayReorder
      */
-    public function show(Request $request) {
+    public function getPrevOrders(Request $request) {
         // if not logged in redirect to login page /home
         if(!Auth::check()) {
             return redirect()->route('login');
         }
-
+        
+        // get the user name for blade display
         $user = Auth::user()->name;
         $username = list($user) = explode(' ', $user);
         $firstName = $username[0];
@@ -30,16 +33,13 @@ class reOrderController extends Controller
         // get login id
         $id = Auth::id(); 
 
-        $prevOrders = Order::where('user_id','=',$id)->get();
+        $prevOrders = Order::where('user_id','=',$id)->take(10)->get();
 
         $orders = [];
         $total = [];
-        $idArry = [];
-        $desc = [];
         $orderId = [];
         $ingred = '';
         
-
         $productsOrdered = [];
 
         $prodPrice = 0;
@@ -50,39 +50,50 @@ class reOrderController extends Controller
         foreach($prevOrders as $order) {
             $ingred = $order['attributes']['ingred'];
             $number = 0;
+            $orderPad = new OrderClass($order->id);
+            $orderPad->orderId = $order->id;
             foreach ($order->products as $product) {
-                
+                $productPad = new ProductClass($product->id);
                 if ($product->id > 12) {
-                    $orders[] = $ingred.' '.'pizza';
+                    
+                    // process the charge for added ingredients
                     $newIngred = explode(' ', $ingred);
                     $number = (count($newIngred)-4);
                     $number *= .25;
+
+                    $productPad->productDesc = $ingred.' '.'pizza';
                 }
                 else {
-
-                    $orders[] = $product->size." ".strtolower($product->topping).' '.'pizza';
+                                  // fill up Product Pad
+                    $productPad->productDesc = $product->size." ".strtolower($product->topping).' '.'pizza';
                 }
+  
 
+                $productPad->productId = $product->id;
+
+                $productPad->topping = $product->topping;
+
+                $productPad->productPrice = $product->price; 
+
+
+                $orderPad->products[] = $productPad;
+                $orders[] = $orderPad;
                 $total[] = $number + $product->price;
-                $idArry[] = $product->id;
-                $desc[] = $product->topping;
-                $orderId[]= $order->id;
+  
             }
+            $orderPad->orderPrice = $order->total;
         }
 
         return view('reorder')->with([
             'orders' => $orders,
             'total' => $total,
-            'idArry' => $idArry,
-            'desc' => $desc ,
-            'orderId' => $orderId,
             'firstName' => $firstName,
         ]);
     }
 
     public function submit(Request $request) {
             
-        $order = $request->order;
+        $order = $request->pDesc;
         $price = $request->price;
         $id = $request->id;
         $topping = $request->topping;

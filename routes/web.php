@@ -59,7 +59,7 @@ Route::get('/order', 'CartController@show');
 /**
 *  /order
 */
-Route::get('/reOrder', 'reOrderController@show');
+Route::get('/reOrder', 'reOrderController@getPrevOrders');
 
 /**
 *  /reorder_submit
@@ -69,7 +69,7 @@ Route::post('/reorder_submit', 'reOrderController@submit');
 /**
 *  /remove
 */
-Route::post('/order/remove', 'CartController@remove');
+Route::post('/order/remove', 'CartController@removeItem');
 
 /**
 *  /clearCart
@@ -79,7 +79,12 @@ Route::post('/clearCart', 'CartController@clearCart');
 /**
 *  /order/popPizza
 */
-Route::post('/popOrder', 'CartController@order');
+Route::post('/popOrder', 'CartController@addItem');
+
+/**
+*  /order/update
+*/
+Route::post('/order/update', 'CartController@updateCart');
 
 /**
 *
@@ -92,7 +97,7 @@ Route::post('/newOrder', 'CartController@CreateOwnOrder');
 *  post
 *  /order/execute
 */
-Route::post('/order/execute', 'CartController@execute');
+Route::post('/order/submit', 'CartController@submitOrder');
 
 Auth::routes();
 

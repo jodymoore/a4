@@ -1,9 +1,6 @@
 @extends('layouts.master')
-
 @section('content')
-@include('header')
-   
-
+@include('header')  
     <div id="table">
         <div class= "popPizzas-table" id="left-col">
         <form action="/popOrder" method="post" accept-charset="utf-8">
@@ -11,9 +8,9 @@
     	    <img  id="chs" src="https://s3.amazonaws.com/jwm-product-images/Cheese.png">
     	    <caption><h4>CHEESE</h4></caption><br>
     	    <p>marinara topped with fresh mozzarella </p><br><p> cheese.</p>
-             <br> 
-              <br> 
-               <br> 
+            <br> 
+            <br> 
+            <br> 
 
             <select id="selectSize" name="selectSize" value="Size">
                 <option value="2">Large</option>
@@ -93,5 +90,4 @@
 
         </div>
     </div>
-
 @endsection

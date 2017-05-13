@@ -1,6 +1,8 @@
-# a4
-assignment 4 repo
+A4 assignment repo DWA-15
+Jody Moore
 
-This is a repo for my application Quike Pizza.
-
+Project URL
 http://a4.jodymoore.net/
+
+App: 
+    Quik Pizza - A quick and easy pizza ordering application.

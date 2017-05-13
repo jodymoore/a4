@@ -1,9 +1,7 @@
 @extends('layouts.master')
-
 @section('content')
 @include('header')
-
-<form action="/newOrder" method="post" accept-charset="utf-8">
+<form action="/popOrder" method="post" accept-charset="utf-8">
 
     {{ csrf_field() }}
 
@@ -76,10 +74,9 @@
 		  </div>
 		</div>
 		</div>
-
+        <input id="pid" type="hidden" name="pid" value="13" >
 	    <input id="addToOrder" type="submit" name="addToOrder" value="Add To Order" class='btn btn-primary  btn-small'>
 
     </div>
 </form>
-
 @endsection

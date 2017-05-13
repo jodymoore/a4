@@ -87,6 +87,10 @@
     	margin-bottom: 15px;
     }
 
+    #reOrder-container em {
+        font-size: 10px;
+    }
+
     nav a {
         color: white;
         font-weight: bold;

@@ -20,14 +20,16 @@ class CartController extends Controller
      */
     public function show(Request $request) {
 
-        // if not logged in redirect to login page /home
+        // if not logged in redirect to login page 
         if(!Auth::check()) {
             return redirect()->route('login');
         }
-
+        
+        // get contents of cart
         $cartCollection = Cart::getContent();
         $carts = $cartCollection->toArray();
-
+        
+        // get the user name for blade display
         $user = Auth::user()->name;
         $username = list($user) = explode(' ', $user);
         $firstName = $username[0];
@@ -38,22 +40,27 @@ class CartController extends Controller
         ]);
     }
 
-    /*
-     *  remove
+     /*
+     *  remomeItem 
+     *  Remove item from Cart array  
      */
-    public function remove(Request $request) {
-
-        $id = $request->id;
+    public function removeItem(Request $request) {
+        
+        // get requests
+        $id = $request->remove;   
         $name = $request->name;
-
+        
+        // get the user name for blade display
         $user = Auth::user()->name;
         $username = list($user) = explode(' ', $user);
         $firstName = $username[0];
-
+        
+        // remove item from cart with row id
         Cart::remove($id);
 
         Session::flash('message',$name.' was removed from your order.');
         
+        // get cart contents
         $cartCollection = Cart::getContent();
         $carts = $cartCollection->toArray();
 
@@ -64,141 +71,158 @@ class CartController extends Controller
     }
 
      /*
-     *  a dynamic order function 
+     *  updateCart 
+     *  Update item in Cart array  
      */
-    public function order(Request $request){
+    public function updateCart(Request $request) {
+        
+        // get requests
+        $id = $request->updateRow;  
+        $qty = $request->qty;    
+        $name = $request->name;
+        
+        // get the user Name for blade display
+        $user = Auth::user()->name;
+        $username = list($user) = explode(' ', $user);
+        $firstName = $username[0];
+        
+        // update cart array
+		Cart::update($id, array(
+		  'quantity' => array(
+		      'relative' => false,
+		      'value' => $qty
+		  ),
+		));
 
-        // if not logged in redirect to login page /home
+        Session::flash('message',$name.' was updated in your cart.');
+        
+        // get contents of updated cart array 
+        $cartCollection = Cart::getContent();
+        $carts = $cartCollection->toArray();
+
+        return view('cart')->with([
+            'carts' => $carts,
+            'firstName' => $firstName,
+            ]);
+    }
+
+     /*
+     *  addItem 
+     *  Add item to Cart array  
+     */
+    public function addItem(Request $request){
+
+        // if not logged in redirect to login page 
         if(!Auth::check()) {
             return redirect()->route('login');
         }
-         
+        
+        // validate requests
         $this->validate($request, [
             'selectSize' => 'required',
         ]);
 
+        $orderDesc = '';
+
+       // get the user Name for blade display
         $user = Auth::user()->name;
         $username = list($user) = explode(' ', $user);
         $firstName = $username[0];
-             
+        $sizeId = null;
+
+        // get product id and size     
         $pid = $request->pid;
         $pSize = $request->selectSize;
 
-        $sizeId = null;
-        $id = $pid + $pSize;
+        // index product with size 
+        $pid = $pid + $pSize;
 
-        $product = Product::where('id','=',$id)->first();
+        // get product data from products table
+        $product = Product::where('id','=',$pid)->first();
 
+        // add product attributes to cart variables
         $price = $product->price;
         $topping = $product->topping;
         $desc = $product->desc;
 
-        if ($product->id > 12) {
-            $order = $product->size." ".strtolower($product->topping);           
+        // If product number is 13 or larger include the ingredients
+        if($product->id > 12) {
+
+            // ingredient selections
+	        $input = $request->all('checkboxes');
+
+	        $amtCheese = $request->selectCheese;
+
+            $amtCheese = $amtCheese." "."cheese";
+
+            $orderDesc = $orderDesc.$product->size." pizza".", ".$amtCheese;
+
+	        $badArray = ["_token","pid", "selectSize", "selectCheese", "addToOrder"];
+
+	        foreach ($input as $key => $value) {
+	            if(!in_array($key, $badArray)){
+
+	                // remove underscore
+	                for ($i = 0; $i < strlen($key); $i++){
+	                   if ($key[$i] == '_') {
+	                       $key[$i] = ' ';
+	                   }
+	                }
+	                $orderDesc = $orderDesc.", ".$key;
+	                $price += .25;
+	            }   
+            }
         }
         else {
-            $order = $product->size." ".strtolower($product->topping)." "." pizza";
-        }
-            
-        // Cart array format
-        Cart::add(array(
-            'id' => $id,
-            'name' => $order,
-            'price' => $price,
-            'quantity' => 1,
-            'attributes' => array(
-                'topping' => $topping,       
-          ),
-        ));
-
-        Session::flash('message',$order.' was added to your order.');
-
-        // need to hand this to order blade or checkout.
-        return view('popPizzas');  
-    }
-
-    public function CreateOwnOrder(Request $request) {
-
-        // if not logged in redirect to login page /home
-        if(!Auth::check()) {
-            return redirect()->route('login');
+            $orderDesc = $product->size." ".strtolower($product->topping)." "." pizza";
         }
 
-        $this->validate($request, [
-            'selectSize' => 'required',
-        ]);
-
-        $user = Auth::user()->name;
-        $userName = list($user) = explode(' ', $user);
-
-        $pSize = $request->selectSize;
-        $id = '13' + $pSize;
-
-        $product = Product::where('id','=',$id)->first();
-
-        $order = "";
-        $price = $product->price;
-        $topping = $product->topping;
-
-        $amtCheese = $request->selectCheese;
-        $amtCheese = $amtCheese." "."cheese";
-
-        $order = $order.$product->size." pizza".", ".$amtCheese;
-
-        // ingredient selections
-        $input = $request->all('checkboxes');
-
-        $badArray = ["_token", "selectSize", "selectCheese", "addToOrder"];
-
-        foreach ($input as $key => $value) {
-            if(!in_array($key, $badArray)){
-
-                // remove underscore
-                for ($i = 0; $i < strlen($key); $i++){
-                   if ($key[$i] == '_') {
-                       $key[$i] = ' ';
-                   }
-                }
-                $order = $order.", ".$key;
-                $price += .25;
-            }   
-        }
-
+        // Get cart to evaluate contents
         $cartCollection = Cart::getContent();
         $carts = $cartCollection->toArray();
 
-        foreach ($carts as $cart => $value) {
-
-            if(strcmp($order,$value['name']) == 0) {
-               $id = $id;
-            }
-            else {
-               $id++; 
-            }
+        // Set cart id 
+        $cartId = 0;
+        // if this is the first item index cartId
+        if(Cart::isEmpty()) {
+            $cartId = 1; 
         }
+        else {
+        	// get last items number to advance item# id
+            $lastItem = array_pop( $carts ); 
 
-        // Place order into Cart array format
+            // advance cart row id
+            $cartId = $lastItem['id'];
+            $cartId++;
+ 
+        }
+            
+        // Add items to Cart in Cart array format
         Cart::add(array(
-            'id' => $id,
-            'name' => $order,
+            'id' => $cartId,
+            'name' => $orderDesc,
             'price' => $price,
             'quantity' => 1,
             'attributes' => array(
-                'topping' => $topping,    
+                'topping' => $topping,
+                'pid' => $pid,        
           ),
         ));
 
-        Session::flash('message',$order.' was added to your order.');
-
-        return view('newOrder');
+        Session::flash('message',$orderDesc.' was added to your order.');
+        
+        // return user to previous view to buy more pizza
+        if ($pid >= 13) {
+            return view('newOrder');
+        }
+        else {
+            return view('popPizzas'); 
+        }
     }
 
-     /*
-     *  execute 
-     */
-    public function execute(Request $request) {
+    public function submitOrder(Request $request) {
      
-        // if not logged in redirect to temp form page
+        // if not logged in redirect to login page 
         if(!Auth::check()) {
             return redirect()->route('login');
         }
@@ -207,10 +231,12 @@ class CartController extends Controller
             return view('cart');
         }
         else {
-
+            
+            // get the user name for blade display
             $user = Auth::user()->name;
             $username = list($user) = explode(' ', $user);
             $firstName = $username[0];
+
             $ingred = "";
             $cartArry = [];
             
@@ -218,15 +244,16 @@ class CartController extends Controller
             $id = Auth::id();
             $carts = Cart::getContent();
             $price = 0;
-            $prodId = null;          
-            // get all the atributes that match $id 
+            $prodId = null;  
+
+            // get all the atributes that match $id to email confirmation
             $user = User::where('id','=',$id)->first();
             $cust_order = new Order();
             $count = 0;
             $productsOrdered = []; 
 
             foreach($carts as $cart) {
-               $productsOrdered[$count++] = $cart['id']; 
+               $productsOrdered[$count++] = $cart['attributes']['pid']; 
                $ingred = $cart['name']; 
             }
 
@@ -237,12 +264,10 @@ class CartController extends Controller
             $cust_order->ingred = $ingred;
             $cust_order->total = Cart::getTotal();
             $cust_order->save();
-
+            
+            // save products to pivot table
             foreach ($productsOrdered as $product) {
-                if($product > 15) {
-                    $product = 15; // create your own pizzas have large Id's 
-                                   // keep within product index 
-                }
+
                 $product = Product::where('id', '=', $product)->first();
                 $cust_order->products()->save($product);
             }
@@ -256,7 +281,6 @@ class CartController extends Controller
         // get cleared contents of Cart
         $cartCollection = Cart::getContent();
         $cart = $cartCollection->toArray();
-
 
         return view('thankyou')->with([
             'cartArry' => $cartArry,
