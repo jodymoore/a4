@@ -28,9 +28,14 @@
         }
     },
     "autoload-dev": {
+        "classmap": [
+            "database",
+            "database/seeds/IngredTableSeeder.php"
+        ],
         "psr-4": {
             "Tests\\": "tests/"
         }
+
     },
     "scripts": {
         "post-root-package-install": [
