@@ -17,7 +17,7 @@ class IngredTableSeeder extends Seeder
                   'Medium pizza, reg cheese, pepperoni, mushrooms, pizza'];
         $size = ['Small','Medium'];
 
-        $price = [7.24,7.74];        
+        $price = [7.24,7.75];        
 
         for ($i=0; $i < 2; $i++) { 
 			Ingred::insert([
