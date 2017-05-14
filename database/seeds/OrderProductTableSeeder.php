@@ -25,7 +25,7 @@ class OrderProductTableSeeder extends Seeder
         $numOfProducts = [2,4,6,3,1,4,3,3,1,2];
 
         // array for product ids 
-        $prodId = [3,1,5,2,5,6,8,10,11,7];
+       $prodId = [3,1,5,2,5,13,8,14,11,7];
         
         // instance Order Model
         $order = new Order();
