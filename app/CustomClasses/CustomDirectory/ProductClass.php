@@ -10,6 +10,7 @@ namespace App\CustomClasses\CustomDirectory;
 		public $topping = "";
 		public $productDesc = "constant string";
 		public $productPrice = 0;
+		public $productSize = "";
 
       
 	public function __construct($productid) {
@@ -17,6 +18,7 @@ namespace App\CustomClasses\CustomDirectory;
 		    $topping = "";
 			$productDesc = "no descrition";
 			$productPrice  = 0;
+			$productSize  = 0;
 		}
 
    }

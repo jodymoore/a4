@@ -59,11 +59,13 @@ class reOrderController extends Controller
                     $prodPrice = $number + $product->price;
 
                     $productPad->productDesc = $ingred.' '.'pizza';
+                    $productPad->productSize = $product->size;
                 }
                 else {
                     // fill up Product Pad
                     $productPad->productDesc = $product->size." ".strtolower($product->topping).' '.'pizza';
                     $prodPrice = $product->price;
+                    $productPad->productSize = $product->size;
                 }
   
                 $productPad->productId = $product->id;
@@ -92,6 +94,7 @@ class reOrderController extends Controller
         $price = $request->price;
         $id = $request->id;
         $topping = $request->topping;
+        $size = $request->size;
 
         $user = Auth::user()->name;
         $username = list($user) = explode(' ', $user);
@@ -104,7 +107,10 @@ class reOrderController extends Controller
             'price' => $price,
             'quantity' => 1,
             'attributes' => array(
-                'topping' => $topping,     
+                'topping' => $topping,
+                'pid' => $id, 
+                'size' => $size,  
+
           ),
         ));
 
