@@ -19,4 +19,11 @@ class Order extends Model
 		return $this->belongsTo('App\User');
 	}
 
+
+	public function ing() {
+		# order belongs to ingreds
+		# Define an inverse one-to-many relationship.
+		return $this->belongsToMany('App\Ingred')->withTimestamps();
+	}
+
 }

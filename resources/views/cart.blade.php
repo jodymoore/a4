@@ -30,14 +30,12 @@
                     </div>
                     <div id="cartRight">
                       ${{$cart['price']}} <br>
-                      <label for="qty">Qty </label>
-                      <input id="qty" type="number" name="qty" min="1" max="10" step="1" 
-                        value ="{{$cart['quantity']}}" />                   
+                      Qty:{{$cart['quantity']}}                  
                       
                           {{ csrf_field() }}
 
                       <button id="remove" type="submit" name="remove" value="{{ $cart['id'] }}" formaction="/order/remove" class='btn btn-primary  btn-small' ><i class="fa fa-trash-o"></i></button>
-                      <button id="updateRow" type="submit" name="updateRow" value="{{ $cart['id'] }}" formaction="/order/update" class='btn btn-primary  btn-small' ><i class="fa fa-refresh"></i></button>
+
                    </div>
                 <div>
             @endforeach

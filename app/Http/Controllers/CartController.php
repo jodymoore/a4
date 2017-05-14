@@ -10,7 +10,7 @@ use Cart;
 use App\Product;
 use LoginController;
 use App\User;
-use Mail;
+use App\Ingred;
 use URL;
 
 class CartController extends Controller
@@ -61,42 +61,6 @@ class CartController extends Controller
         Session::flash('message',$name.' was removed from your order.');
         
         // get cart contents
-        $cartCollection = Cart::getContent();
-        $carts = $cartCollection->toArray();
-
-        return view('cart')->with([
-            'carts' => $carts,
-            'firstName' => $firstName,
-            ]);
-    }
-
-     /*
-     *  updateCart 
-     *  Update item in Cart array  
-     */
-    public function updateCart(Request $request) {
-        
-        // get requests
-        $id = $request->updateRow;  
-        $qty = $request->qty;    
-        $name = $request->name;
-        
-        // get the user Name for blade display
-        $user = Auth::user()->name;
-        $username = list($user) = explode(' ', $user);
-        $firstName = $username[0];
-        
-        // update cart array
-		Cart::update($id, array(
-		  'quantity' => array(
-		      'relative' => false,
-		      'value' => $qty
-		  ),
-		));
-
-        Session::flash('message',$name.' was updated in your cart.');
-        
-        // get contents of updated cart array 
         $cartCollection = Cart::getContent();
         $carts = $cartCollection->toArray();
 
@@ -205,7 +169,8 @@ class CartController extends Controller
             'quantity' => 1,
             'attributes' => array(
                 'topping' => $topping,
-                'pid' => $pid,        
+                'pid' => $pid, 
+                'size' => $pSize,       
           ),
         ));
 
@@ -252,11 +217,7 @@ class CartController extends Controller
             $count = 0;
             $productsOrdered = []; 
 
-            foreach($carts as $cart) {
-               $productsOrdered[$count++] = $cart['attributes']['pid']; 
-               $ingred = $cart['name']; 
-            }
-
+            
             // save current order to orders table 
             $cust_order->user_id = $id;
             $cust_order->name = $user->name;
@@ -264,10 +225,28 @@ class CartController extends Controller
             $cust_order->ingred = $ingred;
             $cust_order->total = Cart::getTotal();
             $cust_order->save();
-            
+
+            foreach($carts as $cart) {
+
+               $productsOrdered[$count++] = $cart['attributes']['pid']; 
+               if ($cart['attributes']['pid'] > 12){
+                   $ingred = $cart['name']; 
+                   $Ing = new Ingred();
+                   $Ing->topping= $cart['attributes']['topping'];
+                   $Ing->desc = $ingred;
+                   $Ing->size = $cart['attributes']['size'];
+                   $Ing->price = $cart['price'];
+                   $Ing->save();
+                   $ingred_marker = Ingred::where('id', '=', $Ing->id)->first();
+                   $cust_order->ing()->save($ingred_marker);
+               }
+               else {
+                 $ingred = $cart['name']; 
+               }     
+            }
+         
             // save products to pivot table
             foreach ($productsOrdered as $product) {
-
                 $product = Product::where('id', '=', $product)->first();
                 $cust_order->products()->save($product);
             }

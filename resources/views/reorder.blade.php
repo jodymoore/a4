@@ -17,7 +17,6 @@
                         <input id="price" type="hidden" name="price" value="{{$orderPad->orderPrice}}" >
 
                         <input id="id" type="hidden" name="id" value="{{$orderPad->orderId}}" >
-                        order#&nbsp;{{ $orderPad->orderId}}
                         &nbsp;${{$orderPad->orderPrice}}&nbsp;
                         <br>
 
@@ -25,10 +24,9 @@
                              <input id="topping" type="hidden" name="topping" value="{{$productPad->topping}}" >
                              <input id="pid" type="hidden" name="pid" value="{{$productPad->productId}}" >
                              <input id="pDesc" type="hidden" name="pDesc" value="{{$productPad->productDesc}}" >
-                               product#&nbsp;{{ $productPad->productId }} 
                                {{ $productPad->productDesc }} 
                                @if($productPad->productId > 12)
-                                   {{ $productPad->productPrice}} <em>+ ingredients</em>
+                                   {{ $productPad->productPrice}}
                                @else
                                    {{ $productPad->productPrice }}
                                @endif
