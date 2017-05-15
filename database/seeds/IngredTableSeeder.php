@@ -13,8 +13,8 @@ class IngredTableSeeder extends Seeder
     public function run()
     {
         
-        $desc = ['Small pizza, reg cheese, pepperoni, ham, mushrooms, bell peppers pizza',
-                  'Medium pizza, reg cheese, pepperoni, mushrooms, pizza'];
+        $desc = ['Small pizza, reg cheese, pepperoni, ham, mushrooms, bell peppers',
+                  'Medium pizza, reg cheese, pepperoni, mushrooms'];
         $size = ['Small','Medium'];
 
         $price = [7.24,7.75];        
