@@ -30,9 +30,7 @@ class CartController extends Controller
         $carts = $cartCollection->toArray();
         
         // get the user name for blade display
-        $user = Auth::user()->name;
-        $username = list($user) = explode(' ', $user);
-        $firstName = $username[0];
+        $firstName = $this->getFirstName();
     
         return view('cart')->with([
             'carts' => $carts,
@@ -51,9 +49,8 @@ class CartController extends Controller
         $name = $request->name;
         
         // get the user name for blade display
-        $user = Auth::user()->name;
-        $username = list($user) = explode(' ', $user);
-        $firstName = $username[0];
+
+        $firstName = $this->getFirstName();
         
         // remove item from cart with row id
         Cart::remove($id);
@@ -88,10 +85,9 @@ class CartController extends Controller
 
         $orderDesc = '';
 
-       // get the user Name for blade display
-        $user = Auth::user()->name;
-        $username = list($user) = explode(' ', $user);
-        $firstName = $username[0];
+        // get the user Name for blade display
+        $firstName = $this->getFirstName();
+
         $sizeId = null;
 
         // get product id and size     
@@ -198,9 +194,7 @@ class CartController extends Controller
         else {
             
             // get the user name for blade display
-            $user = Auth::user()->name;
-            $username = list($user) = explode(' ', $user);
-            $firstName = $username[0];
+            $firstName = $this->getFirstName();
 
             $ingred = "";
             $cartArry = [];
@@ -267,4 +261,16 @@ class CartController extends Controller
             'firstName' => $firstName,
         ]);
     }
+
+    public function getFirstName() {
+       /*
+        *  https://www.w3schools.com/php/func_array_list.asp
+        */
+        $user = Auth::user()->name;
+        $username = list($user) = explode(' ', $user);
+        $firstName = $username[0];
+
+        return $firstName;
+
+     }
 }

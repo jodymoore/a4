@@ -14,7 +14,7 @@ use App\CustomClasses\CustomDirectory\ProductClass;
 
 class reOrderController extends Controller
 {
-     /*
+    /*
      *  getPrevOrders
      */
     public function getPrevOrders(Request $request) {
@@ -24,9 +24,7 @@ class reOrderController extends Controller
         }
         
         // get the user name for blade display
-        $user = Auth::user()->name;
-        $username = list($user) = explode(' ', $user);
-        $firstName = $username[0];
+        $firstName = $this->getFirstName();
 
         // query customer_orders database
         // get login id
@@ -58,7 +56,7 @@ class reOrderController extends Controller
                     $number *= .25;
                     $prodPrice = $number + $product->price;
 
-                    $productPad->productDesc = $ingred.' '.'pizza';
+                    $productPad->productDesc = $ingred;
                     $productPad->productSize = $product->size;
                 }
                 else {
@@ -96,9 +94,7 @@ class reOrderController extends Controller
         $topping = $request->topping;
         $size = $request->size;
 
-        $user = Auth::user()->name;
-        $username = list($user) = explode(' ', $user);
-        $firstName = $username[0];
+        $firstName = $this->getFirstName();
 
         // Place order into Cart array format
         Cart::add(array(
@@ -110,7 +106,6 @@ class reOrderController extends Controller
                 'topping' => $topping,
                 'pid' => $id, 
                 'size' => $size,  
-
           ),
         ));
 
@@ -119,11 +114,22 @@ class reOrderController extends Controller
         $cartCollection = Cart::getContent();
         $carts = $cartCollection->toArray();
 
-
         return view('cart')->with([
             'carts' => $carts,
             'firstName' => $firstName,
         ]);
 
     }
+
+    public function getFirstName() {
+        /*
+         *
+         */
+        $user = Auth::user()->name;
+        $username = list($user) = explode(' ', $user);
+        $firstName = $username[0];
+
+        return $firstName;
+     }
+
 }
