@@ -262,15 +262,4 @@ class CartController extends Controller
         ]);
     }
 
-    public function getFirstName() {
-       /*
-        *  https://www.w3schools.com/php/func_array_list.asp
-        */
-        $user = Auth::user()->name;
-        $username = list($user) = explode(' ', $user);
-        $firstName = $username[0];
-
-        return $firstName;
-
-     }
 }

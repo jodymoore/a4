@@ -48,8 +48,7 @@ class reOrderController extends Controller
                 if ($product->id > 12) {
                     foreach($order->ing as $ingred) {
                       $ingred = $ingred->desc;
-                    }
-                    
+                    }         
                     // process the charge for added ingredients
                     $newIngred = explode(' ', $ingred);
                     $number = (count($newIngred)-4);
@@ -120,16 +119,5 @@ class reOrderController extends Controller
         ]);
 
     }
-
-    public function getFirstName() {
-        /*
-         *
-         */
-        $user = Auth::user()->name;
-        $username = list($user) = explode(' ', $user);
-        $firstName = $username[0];
-
-        return $firstName;
-     }
 
 }
